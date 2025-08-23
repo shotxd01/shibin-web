@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShibinShoju - Personal Profile</title>
+    <title>ShibinShoju - Profile</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <video autoplay muted loop id="bg-video">
@@ -14,125 +12,165 @@
         Your browser does not support the video tag.
     </video>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">ShibinShoju</a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#roles" class="nav-link">Roles</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#links" class="nav-link">Links</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+    <div class="overlay"></div>
+
+    <div class="container">
+        <!-- =========== NAVBAR =========== -->
+        <nav class="navbar">
+            <div class="nav-brand">ShibinShoju</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#roles">Roles</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#links">Links</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+             <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
-    </nav>
-
-    <header id="hero" class="hero-section">
-        <div class="hero-content">
-            <img src="public/profile.jpg" alt="ShibinShoju Profile" class="profile-photo">
-            <h1>ShibinShoju</h1>
-            <p class="bio">A passionate community admin and moderator with a knack for building and managing online communities.</p>
-            <div class="hero-buttons">
-                <a href="https://discord.com/users/1338869759441375254" class="btn">DM on Discord</a>
-                <a href="#roles" class="btn">View Roles</a>
-                <a href="#links" class="btn">Servers & Links</a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <section id="about" class="content-section">
-            <div class="card">
-                <h2>About Me</h2>
-                <p>I specialize in community management and moderation, ensuring a safe and engaging environment for all members. I am also a proud member of ShotDevs, a community for developers and tech enthusiasts.</p>
-                <a href="#" class="btn">Join ShotDevs</a>
-            </div>
-        </section>
-
-        <section id="roles" class="content-section">
-            <h2>Roles</h2>
-            <div class="roles-grid">
-                <div class="card">
-                    <h3>Admin</h3>
-                    <p>Malayalees</p>
-                </div>
-                <div class="card">
-                    <h3>Moderator (Old)</h3>
-                    <p>Arjun MP</p>
-                </div>
-                <div class="card">
-                    <h3>Current Moderator</h3>
-                    <p>Vazha</p>
-                    <a href="#" class="btn-invite">Invite</a>
-                </div>
-                <div class="card">
-                    <h3>Current Moderator</h3>
-                    <p>AKMC</p>
-                    <a href="#" class="btn-invite">Invite</a>
-                </div>
-                <div class="card">
-                    <h3>Current Moderator</h3>
-                    <p>HKMC</p>
-                    <a href="#" class="btn-invite">Invite</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="content-section">
-            <h2>Skills</h2>
-            <div class="skills-list">
-                <div class="card">Admin</div>
-                <div class="card">Moderator</div>
-            </div>
-        </section>
-
-        <section id="links" class="content-section">
-            <h2>Links</h2>
-            <div class="links-grid">
-                <div class="card">
-                    <h3>VazhaMC</h3>
-                    <a href="#" class="btn-invite">Server Invite</a>
-                </div>
-                <div class="card">
-                    <h3>HKMC</h3>
-                    <a href="#" class="btn-invite">Server Invite</a>
-                </div>
-                <div class="card">
-                    <h3>AKMC</h3>
-                    <a href="#" class="btn-invite">Server Invite</a>
-                </div>
-                <div class="card">
-                    <h3>ShotDevs</h3>
-                    <a href="#" class="btn-invite">Invite Link</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="content-section">
-            <h2>Contact</h2>
-            <div class="contact-card card">
-                <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" class="discord-status">
-                <a href="https://discord.com/users/1338869759441375254" class="btn">DM on Discord</a>
-                <button class="btn" id="copy-username">Copy Username</button>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2025 ShibinShoju. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#hero">Home</a>
+        </nav>
+        
+        <div class="mobile-menu">
             <a href="#about">About</a>
             <a href="#roles">Roles</a>
+            <a href="#skills">Skills</a>
+            <a href="#links">Links</a>
             <a href="#contact">Contact</a>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+
+        <!-- =========== HERO SECTION =========== -->
+        <header class="hero" id="home">
+            <img src="public/profile.jpg" alt="Profile Photo" class="profile-photo">
+            <h1>ShibinShoju</h1>
+            <p class="tagline">// Admin, Moderator & Developer //</p>
+            <div class="hero-buttons">
+                <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
+                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn alt">Join ShotDevs Server</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- =========== ABOUT SECTION =========== -->
+            <section id="about" class="content-card">
+                <h2>// About Me</h2>
+                <p>A passionate individual with a deep interest in community management and development. I am the founder of ShotDevs, a community for developers and tech enthusiasts.</p>
+                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn">Join ShotDevs</a>
+            </section>
+
+            <!-- =========== ROLES SECTION =========== -->
+            <section id="roles" class="content-card">
+                <h2>// My Roles</h2>
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <h3>Admin</h3>
+                        <p>Malayalees Community</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>Moderator</h3>
+                        <p>Arjun MP (Old Account)</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>Moderator</h3>
+                        <p>Vazha, AKMC, HKMC</p>
+                        <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="glowing-btn-small">Join Vazha</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========== SKILLS SECTION =========== -->
+            <section id="skills" class="content-card">
+                <h2>// Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-badge admin">Admin</div>
+                    <div class="skill-badge moderator">Moderator</div>
+                </div>
+            </section>
+
+            <!-- =========== LINKS SECTION =========== -->
+            <section id="links" class="content-card">
+                <h2>// Server Links</h2>
+                <div class="links-grid">
+                    <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="glowing-btn link">VazhaMC</a>
+                    <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="glowing-btn link">HKMC</a>
+                    <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="glowing-btn link">AKMC</a>
+                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn link">ShotDevs</a>
+                </div>
+            </section>
+
+            <!-- =========== CONTACT SECTION =========== -->
+            <section id="contact" class="content-card">
+                <h2>// Contact Me</h2>
+                <div class="contact-content">
+                    <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" class="discord-status">
+                    <div class="contact-buttons">
+                         <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
+                        <button class="glowing-btn alt" id="copy-username">Copy Username</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- =========== FOOTER =========== -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#home">Home</a> | 
+                <a href="https://discord.gg/T55TGSa9ha" target="_blank">ShotDevs</a>
+            </div>
+            <p>&copy; 2025 ShibinShoju. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // --- Sticky Navbar ---
+        const navbar = document.querySelector('.navbar');
+        window.onscroll = () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        // --- Copy Discord Username ---
+        // NOTE: This requires JavaScript.
+        const copyBtn = document.getElementById('copy-username');
+        copyBtn.addEventListener('click', () => {
+            const username = 'shibinshoju'; // Your Discord username
+            navigator.clipboard.writeText(username).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Username';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+        
+        // --- Section Fade-in Animation ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.content-card').forEach(card => {
+            observer.observe(card);
+        });
+
+    </script>
 </body>
 </html>
