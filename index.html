@@ -5,172 +5,218 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShibinShoju - Profile</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <video autoplay muted loop id="bg-video">
         <source src="public/bg.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
     <div class="overlay"></div>
 
+    <!-- =========== NAVBAR =========== -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <div class="nav-brand">
+            <span class="glitch" data-text="ShibinShoju">ShibinShoju</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#roles">Roles</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#links">Links</a></li>
+        </ul>
+        <div class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-menu">
+        <a href="#about">About</a>
+        <a href="#roles">Roles</a>
+        <a href="#skills">Skills</a>
+        <a href="#links">Links</a>
+    </div>
+
+    <!-- =========== MAIN CONTENT GRID =========== -->
     <div class="container">
-        <!-- =========== NAVBAR =========== -->
-        <nav class="navbar">
-            <div class="nav-brand">ShibinShoju</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#roles">Roles</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#links">Links</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-             <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-        
-        <div class="mobile-menu">
-            <a href="#about">About</a>
-            <a href="#roles">Roles</a>
-            <a href="#skills">Skills</a>
-            <a href="#links">Links</a>
-            <a href="#contact">Contact</a>
+      <div class="main-layout">
+        <!-- ~~ LEFT COLUMN (STICKY) ~~ -->
+        <div class="left-column">
+              <header class="hero">
+                  <img src="public/profile.jpg" alt="Profile Photo" class="profile-photo">
+                  <h1>ShibinShoju</h1>
+                  <p class="tagline">// Community Manager & Founder //</p>
+                  <div class="hero-buttons">
+                      <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">
+                          <i class="fab fa-discord"></i> Message Me
+                      </a>
+                      <button class="glowing-btn alt" id="copy-username">
+                           <i class="fas fa-copy"></i> Copy User
+                      </button>
+                  </div>
+              </header>
+
+              <!-- ~~ INFO / STATS CARD ~~ -->
+              <div class="info-card">
+                  <div class="info-item">
+                      <span class="info-key">STATUS</span>
+                      <span class="info-value online">ONLINE</span>
+                  </div>
+                   <div class="info-item">
+                      <span class="info-key">FOUNDER</span>
+                      <span class="info-value">ShotDevs</span>
+                  </div>
+                   <div class="info-item">
+                      <span class="info-key">MAIN ROLE</span>
+                      <span class="info-value">Admin</span>
+                  </div>
+              </div>
+
+               <!-- ~~ CONTACT WIDGET ~~ -->
+               <div id="contact" class="info-card">
+                   <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" class="discord-status">
+               </div>
         </div>
 
+        <!-- ~~ RIGHT COLUMN (SCROLLABLE) ~~ -->
+        <div class="right-column">
+          <main>
+              <!-- =========== ABOUT SECTION =========== -->
+              <section id="about" class="content-card">
+                  <h2>> About Me</h2>
+                  <p>Passionate community manager and the founder of ShotDevs. With a deep interest for technology and online communities, I lead moderation teams and help build engaging spaces for users.</p>
+                  <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn">
+                      Join ShotDevs <i class="fas fa-arrow-right"></i>
+                  </a>
+              </section>
 
-        <!-- =========== HERO SECTION =========== -->
-        <header class="hero" id="home">
-            <img src="public/profile.jpg" alt="Profile Photo" class="profile-photo">
-            <h1>ShibinShoju</h1>
-            <p class="tagline">// Admin, Moderator & Developer //</p>
-            <div class="hero-buttons">
-                <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn alt">Join ShotDevs Server</a>
-            </div>
-        </header>
-
-        <main>
-            <!-- =========== ABOUT SECTION =========== -->
-            <section id="about" class="content-card">
-                <h2>// About Me</h2>
-                <p>A passionate individual with a deep interest in community management and development. I am the founder of ShotDevs, a community for developers and tech enthusiasts.</p>
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn">Join ShotDevs</a>
-            </section>
-
-            <!-- =========== ROLES SECTION =========== -->
-            <section id="roles" class="content-card">
-                <h2>// My Roles</h2>
-                <div class="roles-grid">
-                    <div class="role-card">
-                        <h3>Admin</h3>
-                        <p>Malayalees Community</p>
-                    </div>
-                    <div class="role-card">
+              <!-- =========== ROLES SECTION =========== -->
+              <section id="roles" class="content-card">
+                  <h2>> Current Roles</h2>
+                  <div class="roles-grid">
+                      <div class="role-card">
+                          <h3>Admin</h3>
+                          <p>Malayalees Community</p>
+                          <span class="role-status">LEAD</span>
+                      </div>
+                      <div class="role-card moderator">
                         <h3>Moderator</h3>
-                        <p>Arjun MP (Old Account)</p>
-                    </div>
-                    <div class="role-card">
-                        <h3>Moderator</h3>
-                        <p>Vazha, AKMC, HKMC</p>
-                        <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="glowing-btn-small">Join Vazha</a>
-                    </div>
-                </div>
-            </section>
+                          <p>AKMC & HKMC</p>
+                          <span class="role-status">ACTIVE</span>
+                      </div>
+                      <div class="role-card ">
+                           <h3>Moderator</h3>
+                           <p>Vazha</p>
+                            <span class="role-status">ACTIVE</span>
+                      </div>
+                       <div class="role-card legacy">
+                           <h3>Moderator</h3>
+                           <p>Arjun MP (Old Account)</p>
+                            <span class="role-status">LEGACY</span>
+                      </div>
+                  </div>
+              </section>
 
-            <!-- =========== SKILLS SECTION =========== -->
-            <section id="skills" class="content-card">
-                <h2>// Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-badge admin">Admin</div>
-                    <div class="skill-badge moderator">Moderator</div>
-                </div>
-            </section>
+              <!-- =========== SKILLS SECTION =========== -->
+              <section id="skills" class="content-card">
+                  <h2>> Skills</h2>
+                  <div class="skills-container">
+                      <div class="skill-badge admin">
+                          <i class="fas fa-user-shield"></i> Admin
+                      </div>
+                      <div class="skill-badge moderator">
+                          <i class="fas fa-gavel"></i> Moderator
+                      </div>
+                      <div class="skill-badge community">
+                          <i class="fas fa-users"></i> Community Building
+                      </div>
+                  </div>
+              </section>
 
-            <!-- =========== LINKS SECTION =========== -->
-            <section id="links" class="content-card">
-                <h2>// Server Links</h2>
-                <div class="links-grid">
-                    <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="glowing-btn link">VazhaMC</a>
-                    <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="glowing-btn link">HKMC</a>
-                    <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="glowing-btn link">AKMC</a>
-                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn link">ShotDevs</a>
-                </div>
-            </section>
-
-            <!-- =========== CONTACT SECTION =========== -->
-            <section id="contact" class="content-card">
-                <h2>// Contact Me</h2>
-                <div class="contact-content">
-                    <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" class="discord-status">
-                    <div class="contact-buttons">
-                         <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
-                        <button class="glowing-btn alt" id="copy-username">Copy Username</button>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- =========== FOOTER =========== -->
-        <footer class="footer">
+              <!-- =========== LINKS SECTION =========== -->
+              <section id="links" class="content-card">
+                  <h2>> Server Directory</h2>
+                  <div class="links-grid">
+                       <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="server-link shotdevs">ShotDevs</a>
+                      <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="server-link vazhamc">VazhaMC</a>
+                      <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="server-link hkmc">HKMC</a>
+                      <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="server-link akmc">AKMC</a>
+                  </div>
+              </section>
+          </main>
+           <!-- =========== FOOTER =========== -->
+          <footer class="footer">
             <div class="footer-links">
-                <a href="#home">Home</a> | 
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank">ShotDevs</a>
+                <a href="#about">About</a> | 
+                <a href="#roles">Roles</a> |
+                <a href="https://discord.gg/T55TGSa9ha" target="_blank">Contact</a>
             </div>
             <p>&copy; 2025 ShibinShoju. All rights reserved.</p>
         </footer>
+        </div>
+      </div>
     </div>
     
     <script>
-        // --- Mobile Menu Toggle ---
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+             // --- Mobile Menu Toggle ---
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelectorAll('.mobile-menu a');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // --- Sticky Navbar ---
-        const navbar = document.querySelector('.navbar');
-        window.onscroll = () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        };
-
-        // --- Copy Discord Username ---
-        // NOTE: This requires JavaScript.
-        const copyBtn = document.getElementById('copy-username');
-        copyBtn.addEventListener('click', () => {
-            const username = 'shibinshoju'; // Your Discord username
-            navigator.clipboard.writeText(username).then(() => {
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyBtn.textContent = 'Copy Username';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
             });
-        });
-        
-        // --- Section Fade-in Animation ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+
+             // Close menu when a link is clicked
+             navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                   menuToggle.classList.remove('active');
+                   mobileMenu.classList.remove('active');
+                });
+             });
+
+            // --- Sticky Navbar ---
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 30) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
                 }
             });
-        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.content-card').forEach(card => {
-            observer.observe(card);
+            // --- Copy Discord Username ---
+            const copyBtn = document.getElementById('copy-username');
+            copyBtn.addEventListener('click', () => {
+                const username = 'shibinshoju'; // Your Discord username
+                navigator.clipboard.writeText(username).then(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                       copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy User';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+            
+            // --- Section Fade-in Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.content-card').forEach(card => {
+                observer.observe(card);
+            });
         });
-
     </script>
 </body>
 </html>
