@@ -142,8 +142,8 @@ body {
 }
 
 .profile-photo {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     border: 3px solid var(--primary-glow);
     box-shadow: 0 0 15px var(--primary-glow), inset 0 0 10px var(--primary-glow);
