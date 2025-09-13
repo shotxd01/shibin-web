@@ -302,10 +302,14 @@ body {
 }
 .skill-badge.moderator {
     background-color: var(--secondary-glow);
-    color: #000;
-     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    color: #fff;
+     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
-
+.skill-badge.developer {
+    background-color: var(--secondary-glow);
+    color: #fff;
+     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
 
 /* --- Links Section --- */
 .links-grid {
