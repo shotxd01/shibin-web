@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shibinsoju - Profile</title>
+
+    <!-- ========== SEO META TAGS ========== -->
+    <title>Shibinsoju - Developer & Portfolio | ShotDevs</title>
+    <meta name="description" content="Shibinsoju's personal portfolio showcasing projects, skills, and links. Admin, Moderator & Developer at ShotDevs community.">
+    <meta name="keywords" content="Shibinsoju, ShotDevs, developer, portfolio, admin, moderator, projects">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shibin.shotdevs.live/">
+
+    <!-- ========== STRUCTURED DATA ========== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shibinsoju",
+      "url": "https://shibin.shotdevs.live",
+      "jobTitle": "Developer",
+      "sameAs": [
+        "https://discord.com/users/1338869759441375254",
+        "https://www.instagram.com/shibn_hussn"
+      ]
+    }
+    </script>
+
+    <!-- ========== STYLESHEET ========== -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,11 +64,10 @@
             <a href="#contact">Contact</a>
         </div>
 
-
         <!-- =========== HERO SECTION =========== -->
         <header class="hero" id="home">
-            <img src="https://i.postimg.cc/7YbQ9719/IMG-20250912-223431-412.jpg" alt="Profile Photo" class="profile-photo">
-            <h1>Shibinsoju</h1>
+            <img src="https://i.postimg.cc/7YbQ9719/IMG-20250912-223431-412.jpg" alt="Shibinsoju profile photo" class="profile-photo">
+            <h1>Shibinsoju - Admin, Moderator & Developer</h1>
             <p class="tagline">// Admin, Moderator & Developer //</p>
             <div class="hero-buttons">
                 <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
@@ -87,7 +109,7 @@
                 <h2>// Pixel Music Bot Project</h2>
                 <div class="pixelbot-media" style="display:flex; justify-content:center; align-items:center;">
                     <div class="pixelbot-photo">
-                        <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Bot Logo" class="pixelbot-logo" style="max-width:300px; border-radius:20px; margin-bottom:20px;">
+                        <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Music Bot Logo" class="pixelbot-logo" style="max-width:300px; border-radius:20px; margin-bottom:20px;">
                     </div>
                 </div>
                 <p><strong>Pixel Music Bot</strong> is a powerful Discord music bot designed to deliver high-quality audio streaming, playlist management, and interactive music features for your server. Enjoy seamless playback, advanced queue controls, and a user-friendly experience for all music lovers.</p>
@@ -102,6 +124,7 @@
                     <a href="#" class="glowing-btn alt">Support Server</a>
                 </div>
             </section>
+
             <!-- =========== SKILLS SECTION =========== -->
             <section id="skills" class="content-card">
                 <h2>// Skills</h2>
@@ -184,7 +207,7 @@
             // --- Copy Discord Username ---
             const copyBtn = document.getElementById('copy-username');
             copyBtn.addEventListener('click', () => {
-                const username = 'shibinshoju'; // Your Discord username
+                const username = 'shibinshoju'; 
                 navigator.clipboard.writeText(username).then(() => {
                     copyBtn.textContent = 'Copied!';
                     setTimeout(() => {
