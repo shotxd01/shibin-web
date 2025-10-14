@@ -220,25 +220,7 @@ body {
     padding-bottom: 10px;
 }
 
-/* --- NEW CSS FOR SHOTDEVS LOGO --- */
-.shotdevs-logo-placeholder {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background-color: #333;
-    margin: 0 auto 30px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 4px solid var(--primary-glow);
-}
 
-.shotdevs-logo-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 /* --- Roles Section --- */
 .roles-grid {
@@ -261,7 +243,29 @@ body {
 }
 
 .role-card h3 {
-    color: var(--primary-glow);
+    color: var(--primary-glow)/* --- NEW CSS FOR SHOTDEVS LOGO --- */
+.shotdevs-logo-placeholder {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #333;
+    margin: 0 auto 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 4px solid var(--primary-glow);
+    /* --- This line adds the glow --- */
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.shotdevs-logo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    
+;
     margin-bottom: 10px;
 }
 
