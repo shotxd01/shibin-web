@@ -17,8 +17,8 @@
     --gradient-primary: linear-gradient(90deg, #E6007A, #00BFFF);
 
     /* Typography */
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Poppins', sans-serif;
+    --font-heading: 'Lexend', 'Poppins', sans-serif;
+    --font-body: 'Lexend', 'Poppins', sans-serif;
     --fw-regular: 400;
     --fw-medium: 500;
     --fw-bold: 700;
@@ -72,6 +72,8 @@ h1, h2, h3 {
     font-weight: var(--fw-bold);
     color: var(--text-primary);
     line-height: 1.2;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
@@ -182,7 +184,7 @@ strong {
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    border-radius: var(--border-radius);
+    border-radius: 50px;
     font-weight: var(--fw-bold);
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -229,6 +231,8 @@ strong {
     border-radius: var(--border-radius);
     margin-bottom: 2rem;
     border: 1px solid #222;
+    border-left-width: 5px;
+    border-image: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary)) 1;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -399,6 +403,10 @@ strong {
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
     .nav-links {
         display: none;
     }
@@ -408,19 +416,30 @@ strong {
     }
     
     .hero {
-        padding: 80px 0;
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: clamp(2.2rem, 8vw, 3rem);
     }
 
     .hero-buttons, .card-actions, .contact-buttons, .contact-social-buttons {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .btn {
-        width: 80%;
+        width: 90%;
+        max-width: 400px;
+        padding: 15px 20px;
     }
 
     .content-card {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .mobile-menu {
+        top: 70px; /* Adjust for new navbar height */
     }
 }
