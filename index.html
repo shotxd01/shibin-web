@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
 
-    <!-- ========== SEO META TAGS ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <title>Shibinsoju - Developer & Portfolio | ShotDevs</title>
     <meta name="description" content="Shibinsoju's personal portfolio showcasing projects, skills, and links. Admin, Moderator & Developer at ShotDevs community.">
     <meta name="keywords" content="Shibinsoju, ShotDevs, developer, portfolio, admin, moderator, projects">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shibin.shotdevs.live/">
 
-    <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,7 +28,6 @@
     }
     </script>
 
-    <!-- ========== STYLESHEET ========== -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -40,7 +39,6 @@
     <div class="overlay"></div>
 
     <div class="container">
-        <!-- =========== NAVBAR =========== -->
         <nav class="navbar">
             <div class="nav-brand">Shibinsoju</div>
             <ul class="nav-links">
@@ -64,142 +62,128 @@
             <a href="#skills">Skills</a>
             <a href="#links">Links</a>
             <a href="#contact">Contact</a>
+            <a href="#pixelbot">Pixel Music Bot</a>
         </div>
-
         
-            <!-- =========== HERO SECTION =========== -->
+        <header class="hero" id="home">
+            <img src="https://i.postimg.cc/7YbQ9719/IMG-20250912-223431-412.jpg" alt="Shibinsoju profile photo" class="profile-photo">
+            <h1 class="hero-title">Shibinsoju</h1>
+            <p class="tagline">// Admin, Moderator & Developer //</p>
+            <div class="shotdevs-highlight">
+                <span>Founder & Owner of <strong>ShotDevs</strong> 🚀</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn">DM on Discord</a>
+                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn alt">Join ShotDevs Server</a>
+            </div>
+        </header>
 
-<header class="hero" id="home">
-    <img src="https://i.postimg.cc/7YbQ9719/IMG-20250912-223431-412.jpg" alt="Shibinsoju profile photo" class="profile-photo">
-    <h1 class="hero-title">Shibinsoju - Admin, Moderator & Developer</h1>
-    <p class="tagline">// Admin, Moderator & Developer //</p>
-    <div class="shotdevs-highlight" style="margin: 18px 0;">
-        <span style="font-size: 1.3rem; color: var(--primary-glow); font-family: var(--font-pixel); text-shadow: 0 0 8px var(--primary-glow);">Founder & Owner of <strong>ShotDevs</strong> 🚀</span>
-    </div>
-    <div class="hero-buttons">
-        <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
-        <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn alt">Join ShotDevs Server</a>
-    </div>
-</header>
-
-<main>
-
-    
-            <!-- =========== SHOTDEVS SECTION =========== -->
-    <section id="shotdevs" class="content-card">
-        <h2>// ShotDevs Startup</h2>
-        <div class="shotdevs-logo-placeholder">
-            <img src="https://iili.io/KeWap4t.png" alt="ShotDevs Logo">
-        </div>
-        <p><strong>ShotDevs</strong> is a development service specializing in creating custom-coded solutions for online communities, with a strong focus on the gaming ecosystem. They position themselves as expert partners who collaborate closely with clients to build high-quality, affordable projects.<br><br>
-            <strong>Our core offerings have expanded to include:</strong>
-        </p>
-        <ul style="margin-bottom:18px;">
-            <li><strong>Custom Discord Bots:</strong> Highly tailored bots with capabilities ranging from simple moderation to complex API integrations.</li>
-            <li><strong>Web Development:</strong> Modern, responsive websites and powerful management dashboards for communities and bots.</li>
-            <li><strong>Minecraft Development:</strong> A new specialization including the creation of custom plugins for unique gameplay and full server setup and configuration (including BungeeCord/Velocity networks).</li>
-        </ul>
-        <div style="display:flex; gap:16px; justify-content:center;">
-            <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn">Discord Server</a>
-            <a href="https://shotdevs.live" class="glowing-btn alt">Website</a>
-        </div>
-    </section>
-</main>
+        <main>
+            <section id="shotdevs" class="content-card">
+                <h2>// ShotDevs Startup</h2>
+                <div class="shotdevs-logo-placeholder">
+                    <img src="https://iili.io/KeWap4t.png" alt="ShotDevs Logo">
+                </div>
+                <p><strong>ShotDevs</strong> is a development service specializing in creating custom-coded solutions for online communities, with a strong focus on the gaming ecosystem.</p>
+                <p><strong>Our core offerings have expanded to include:</strong></p>
+                <ul>
+                    <li><strong>Custom Discord Bots:</strong> Highly tailored bots with capabilities ranging from simple moderation to complex API integrations.</li>
+                    <li><strong>Web Development:</strong> Modern, responsive websites and powerful management dashboards for communities and bots.</li>
+                    <li><strong>Minecraft Development:</strong> Custom plugins for unique gameplay and full server setup and configuration.</li>
+                </ul>
+                <div class="card-actions">
+                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn">Discord Server</a>
+                    <a href="https://shotdevs.live" class="btn alt">Website</a>
+                </div>
+            </section>
         
-            <!-- =========== ABOUT SECTION =========== -->
             <section id="about" class="content-card">
                 <h2>// About Me</h2>
                 <p>A passionate individual with a deep interest in community management and development. I am the founder of ShotDevs, a community for developers and tech enthusiasts.</p>
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn">Join ShotDevs</a>
+                <div class="card-actions">
+                  <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn">Join ShotDevs</a>
+                </div>
             </section>
 
-            <!-- =========== ROLES SECTION =========== -->
             <section id="roles" class="content-card">
                 <h2>// My Roles</h2>
-                        <div class="roles-grid">
-                            <div class="role-card">
-                                <h3>Founder</h3>
-                                <p>Shotdevs</p>
-                                <a href="" target="_blank" class="glowing-btn-small">Join Shotdevs</a>
-                            </div>
-                            <div class="role-card">
-                                <h3>Admin</h3>
-                                <p>Malayalees Community</p>
-                            </div>
-                            <div class="role-card">
-                                <h3>Moderator</h3>
-                                <p>Arjun MP (Old Account)</p>
-                            </div>
-                            <div class="role-card">
-                                <h3>Moderator</h3>
-                                <p>Vazha, AKMC, HKMC</p>
-                                <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="glowing-btn-small">Join Vazha</a>
-                                <a href="https://discord.gg/MK65ZVVP" target="_blank" class="glowing-btn-small">Join HKMC</a>
-                            </div>
-                        </div>
-            </section>
-
-            <!-- =========== PIXEL BOT PROJECT SECTION =========== -->
-            <section id="pixelbot" class="content-card">
-                <h2>// Pixel Music Bot Project</h2>
-                <div class="pixelbot-media" style="display:flex; justify-content:center; align-items:center;">
-                    <div class="pixelbot-photo">
-                        <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Music Bot Logo" class="pixelbot-logo" style="max-width:300px; border-radius:20px; margin-bottom:20px;">
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <h3>Founder</h3>
+                        <p>Shotdevs</p>
+                        <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn small">Join Shotdevs</a>
+                    </div>
+                    <div class="role-card">
+                        <h3>Admin</h3>
+                        <p>Malayalees Community</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>Moderator</h3>
+                        <p>Arjun MP (Old Account)</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>Moderator</h3>
+                        <p>Vazha, AKMC, HKMC</p>
+                        <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="btn small">Join Vazha</a>
+                        <a href="https://discord.gg/MK65ZVVP" target="_blank" class="btn small">Join HKMC</a>
                     </div>
                 </div>
-                <p><strong>Pixel Music Bot</strong> is a powerful Discord music bot designed to deliver high-quality audio streaming, playlist management, and interactive music features for your server. Enjoy seamless playback, advanced queue controls, and a user-friendly experience for all music lovers.</p>
+            </section>
+
+            <section id="pixelbot" class="content-card">
+                <h2>// Pixel Music Bot Project</h2>
+                <div class="pixelbot-media">
+                    <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Music Bot Logo" class="pixelbot-logo">
+                </div>
+                <p><strong>Pixel Music Bot</strong> is a powerful Discord music bot designed to deliver high-quality audio streaming, playlist management, and interactive music features for your server.</p>
                 <ul>
                     <li>High-quality music streaming</li>
                     <li>Playlist and queue management</li>
                     <li>Easy-to-use music commands</li>
                     <li>Supports YouTube, Spotify, and more</li>
                 </ul>
-                <div class="pixelbot-action-buttons" style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1411701701664182302&permissions=8&integration_type=0&scope=bot+applications.commands" class="glowing-btn">Invite Me</a>
-                    <a href="#" class="glowing-btn alt">Support Server</a>
+                <div class="card-actions">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1411701701664182302&permissions=8&integration_type=0&scope=bot+applications.commands" class="btn">Invite Me</a>
+                    <a href="#" class="btn alt">Support Server</a>
                 </div>
             </section>
 
-            <!-- =========== SKILLS SECTION =========== -->
             <section id="skills" class="content-card">
                 <h2>// Skills</h2>
                 <div class="skills-container">
-                    <div class="skill-badge admin">Admin</div>
-                    <div class="skill-badge moderator">Moderator</div>
-                    <div class="skill-badge developer">Developer</div>     
+                    <div class="skill-badge">Admin</div>
+                    <div class="skill-badge">Moderator</div>
+                    <div class="skill-badge">Developer</div>    
                 </div>
             </section>
 
-            <!-- =========== LINKS SECTION =========== -->
             <section id="links" class="content-card">
                 <h2>// Server Links</h2>
                 <div class="links-grid">
-                    <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="glowing-btn link">VazhaMC</a>
-                    <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="glowing-btn link">HKMC</a>
-                    <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="glowing-btn link">AKMC</a>
-                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="glowing-btn link">ShotDevs</a>
+                    <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="btn">VazhaMC</a>
+                    <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="btn">HKMC</a>
+                    <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="btn">AKMC</a>
+                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn">ShotDevs</a>
                 </div>
             </section>
 
-            <!-- =========== CONTACT SECTION =========== -->
             <section id="contact" class="content-card">
                 <h2>// Contact Me</h2>
                 <div class="contact-content">
                     <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" class="discord-status">
                     <div class="contact-buttons">
-                         <a href="https://discord.com/users/1338869759441375254" target="_blank" class="glowing-btn">DM on Discord</a>
-                        <button class="glowing-btn alt" id="copy-username">Copy Username</button>
+                        <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn">DM on Discord</a>
+                        <button class="btn alt" id="copy-username">Copy Username</button>
                     </div>
-                    <div class="contact-social-buttons" style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                        <a href="https://wa.me/8129529846" target="_blank" class="glowing-btn alt">Contact on WhatsApp</a>
-                        <a href="https://www.instagram.com/shibn_hussn?igsh=MXYwZW4zb2gwbHYwcQ==" target="_blank" class="glowing-btn alt">Contact on Instagram</a>
-                        <a href="mailto:shibinsoju49@gmail.com" target="_blank" class="glowing-btn alt">Contact on Gmail</a>
+                    <div class="contact-social-buttons">
+                        <a href="https://wa.me/8129529846" target="_blank" class="btn alt">WhatsApp</a>
+                        <a href="https://www.instagram.com/shibn_hussn?igsh=MXYwZW4zb2gwbHYwcQ==" target="_blank" class="btn alt">Instagram</a>
+                        <a href="mailto:shibinsoju49@gmail.com" target="_blank" class="btn alt">Gmail</a>
                     </div>
                 </div>
             </section>
         </main>
 
-        <!-- =========== FOOTER =========== -->
         <footer class="footer">
             <div class="footer-links">
                 <a href="#home">Home</a> | 
