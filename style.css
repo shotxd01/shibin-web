@@ -105,7 +105,6 @@ strong {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -183,7 +182,6 @@ strong {
 /* --- BUTTONS --- */
 .btn {
     display: inline-block;
-<<<<<<< HEAD
     padding: 12px 28px;
     border-radius: 50px;
     font-weight: var(--fw-bold);
@@ -191,23 +189,8 @@ strong {
     font-size: 0.9rem;
     letter-spacing: 1px;
     border: 2px solid transparent;
-=======
-    padding: 12px 24px;
-    border: 2px solid var(--primary-glow);
-    border-radius: 30px;
-    color: var(--primary-glow);
-    background: transparent;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 10px;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 10px rgba(255,0,255,0.5), 0 0 10px rgba(255,0,255,0.5);
-    text-shadow: 0 0 5px var(--primary-glow);
-    font-family: inherit;
-    font-size: 1rem;
->>>>>>> 98b9023 (Center align server links and smooth section edges)
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
     text-align: center;
 }
 
@@ -216,31 +199,31 @@ strong {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-<<<<<<< HEAD
 .btn:active {
     transform: translateY(-1px);
-=======
-.glowing-btn.alt {
-    border-color: var(--secondary-glow);
-    color: var(--secondary-glow);
-    box-shadow: inset 0 0 10px rgba(0,255,255,0.5), 0 0 10px rgba(0,255,255,0.5);
-    text-shadow: 0 0 5px var(--secondary-glow);
-    border-radius: 30px;
->>>>>>> 98b9023 (Center align server links and smooth section edges)
 }
 
 /* Primary Button */
-.btn {
+.btn-primary {
     background: var(--gradient-primary);
     color: var(--text-primary);
     box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
 }
 
 /* Alternate Button */
-.btn.alt {
+.btn-alt {
     background: transparent;
-    border-image: var(--gradient-primary) 1;
     color: var(--text-primary);
+    border-image: var(--gradient-primary) 1;
+    /* Fallback for browsers that don't support border-image */
+    border: 2px solid var(--accent-primary); 
+}
+
+.btn-alt:hover {
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    border-image: none;
+    box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
 }
 
 .btn.small {
@@ -251,7 +234,6 @@ strong {
 
 /* --- CONTENT CARDS --- */
 .content-card {
-<<<<<<< HEAD
     background: var(--background-secondary);
     padding: 2.5rem;
     border-radius: var(--border-radius);
@@ -262,18 +244,6 @@ strong {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-=======
-    background: var(--panel-bg);
-    margin-bottom: 40px;
-    padding: 30px;
-    border: 2px solid var(--border-color);
-    border-radius: 30px;
-    box-shadow: var(--border-glow);
-    backdrop-filter: blur(5px);
-    opacity: 1;
-    transform: none;
-    transition: none;
->>>>>>> 98b9023 (Center align server links and smooth section edges)
 }
 
 .content-card.visible {
@@ -305,6 +275,9 @@ strong {
     max-width: 200px;
     margin: 0 auto 1.5rem auto;
     display: block;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 20px rgba(230, 0, 122, 0.6);
 }
 
 .roles-grid {
@@ -314,21 +287,13 @@ strong {
 }
 
 .role-card {
-<<<<<<< HEAD
     background: var(--background-primary);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     text-align: center;
-=======
-    background: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 1px solid var(--primary-glow);
-    border-radius: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
->>>>>>> 98b9023 (Center align server links and smooth section edges)
 }
 
-.role-card a {
+.role-card .btn {
     margin-top: 1rem;
     margin-right: 0.5rem;
 }
@@ -343,67 +308,7 @@ strong {
 .skills-container {
     display: flex;
     flex-wrap: wrap;
-<<<<<<< HEAD
     gap: 1rem;
-=======
-    gap: 15px;
-}
-
-.skill-badge {
-    font-family: var(--font-pixel);
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    box-shadow: inset -2px -2px 0px 0px #444;
-}
-
-.skill-badge.admin {
-    background-color: var(--primary-glow);
-    color: #fff;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.skill-badge.moderator {
-    background-color: var(--secondary-glow);
-    color: #fff;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.skill-badge.developer {
-    background-color: var(--secondary-glow);
-    color: #fff;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-/* --- Links Section --- */
-.links-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.glowing-btn.link {
-    text-align: center;
-}
-
-/* --- Contact Section --- */
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.discord-status {
-    max-width: 100%;
-    width: 350px;
-    border-radius: 30px;
-}
-
-.contact-buttons {
-    display: flex;
-    flex-wrap: wrap;
->>>>>>> 98b9023 (Center align server links and smooth section edges)
     justify-content: center;
 }
 
@@ -428,6 +333,7 @@ strong {
 #contact .discord-status {
     margin-bottom: 1.5rem;
     max-width: 100%;
+    border-radius: var(--border-radius);
 }
 
 .contact-buttons, .contact-social-buttons {
@@ -442,7 +348,7 @@ strong {
 .footer {
     text-align: center;
     padding: 3rem 0;
-    border-top: 1px solid var(--background-secondary);
+    border-top: 1px solid #2a2a2a;
     color: var(--text-secondary);
 }
 
@@ -488,7 +394,7 @@ strong {
     display: none;
     flex-direction: column;
     position: fixed;
-    top: 80px;
+    top: 80px; /* Corresponds to navbar padding */
     left: 0;
     width: 100%;
     background: var(--background-secondary);
@@ -548,4 +454,4 @@ strong {
     .mobile-menu {
         top: 70px; /* Adjust for new navbar height */
     }
-}
+    }
