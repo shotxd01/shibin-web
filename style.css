@@ -234,17 +234,49 @@ strong {
 
 /* --- CONTENT CARDS --- */
 .content-card {
+    position: relative; /* Needed for the pseudo-element border */
     background: var(--background-secondary);
     padding: 2.5rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 2rem;
-    border: 1px solid #222;
-    border-left-width: 5px;
-    border-image: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary)) 1;
+    border-radius: 16px; /* Increased for a smoother curve */
+    margin-bottom: 2.5rem;
+    border: none; /* Remove the old border properties */
+    z-index: 1;
+    overflow: hidden; /* Ensures the ::before element respects the border-radius */
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
+
+/* This creates the new gradient border and glow */
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    padding: 1px; /* This padding creates the border thickness */
+    background: var(--gradient-primary);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    z-index: -1;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0.7; /* Start with a subtle border */
+}
+
+.content-card:hover {
+    box-shadow: 0 0 25px rgba(230, 0, 122, 0.2), 0 0 25px rgba(0, 191, 255, 0.2);
+}
+
+.content-card:hover::before {
+    opacity: 1; /* Make the border brighter on hover */
+}
+
 
 .content-card.visible {
     opacity: 1;
