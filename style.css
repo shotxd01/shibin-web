@@ -402,6 +402,7 @@ strong {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    z-index: 2000; /* Ensure it's above the menu */
 }
 
 .mobile-menu-toggle span {
@@ -425,27 +426,60 @@ strong {
 }
 
 .mobile-menu {
-    display: none;
+    display: flex; /* Changed from display: none */
     flex-direction: column;
+    justify-content: center; /* Vertically center links */
+    align-items: center; /* Horizontally center links */
     position: fixed;
-    top: 80px; /* Corresponds to navbar padding */
+    top: 0;
     left: 0;
     width: 100%;
-    background: var(--background-secondary);
+    height: 100%;
+    background: rgba(18, 18, 18, 0.95); /* Slightly darker, more opaque */
+    backdrop-filter: blur(10px);
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #222;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start inaccessible */
+    transform: translateY(-20px); /* Start slightly above */
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+    z-index: 1500;
 }
 
 .mobile-menu.active {
-    display: flex;
+    opacity: 1; /* Fade in */
+    visibility: visible; /* Become accessible */
+    transform: translateY(0); /* Move into place */
 }
 
 .mobile-menu a {
-    padding: 15px 0;
-    color: var(--text-primary);
-    font-size: 1.2rem;
+    width: 80%;
+    max-width: 300px;
+    padding: 18px 0;
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin: 8px 0;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Space between icon and text */
 }
+
+.mobile-menu a:hover,
+.mobile-menu a:focus {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle highlight */
+}
+
+.mobile-menu a i {
+    width: 20px; /* Give icons a consistent width */
+    color: var(--accent-secondary); /* Blue accent for icons */
+}
+
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
