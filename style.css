@@ -208,7 +208,10 @@ strong {
     background: var(--gradient-primary);
     color: var(--text-primary);
     box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
+    border-image: var(--gradient-primary) 1; /* <-- Add this line */
 }
+
+
 
 /* Alternate Button */
 .btn-alt {
