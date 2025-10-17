@@ -14,7 +14,8 @@
     --text-secondary: #B3B3B3;
     --accent-primary: #E6007A;
     --accent-secondary: #00BFFF;
-    --gradient-primary: linear-gradient(90deg, #E6007A, #00BFFF);
+    --gradient-primary: linear-gradient(110deg, #E6007A, #00BFFF);
+
 
     /* Typography */
     --font-heading: 'Lexend', 'Poppins', sans-serif;
@@ -208,9 +209,7 @@ strong {
     background: var(--gradient-primary);
     color: var(--text-primary);
     box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
-    border-image: var(--gradient-primary) 1; /* <-- Add this line */
 }
-
 
 
 /* Alternate Button */
