@@ -122,7 +122,9 @@ strong {
 .nav-brand {
     font-size: 1.5rem;
     font-weight: var(--fw-bold);
+    color: var(--text-primary); /* <-- Add this line */
 }
+
 
 .nav-links {
     display: flex;
