@@ -9,14 +9,12 @@
 :root {
     /* Palette */
     --background-primary: #121212;
-    --background-secondary: #242424;
+    --background-secondary: #242424; /* Lighter card background */
     --text-primary: #FFFFFF;
     --text-secondary: #B3B3B3;
     --accent-primary: #E6007A;
     --accent-secondary: #00BFFF;
-    --gradient-primary: linear-gradient(135deg, #E6007A, #00BFFF);
-
-
+    --gradient-primary: linear-gradient(135deg, #E6007A, #00BFFF); /* Updated angle */
 
     /* Typography */
     --font-heading: 'Lexend', 'Poppins', sans-serif;
@@ -205,29 +203,22 @@ strong {
     transform: translateY(-1px);
 }
 
-/* Primary Button */
+/* Primary Button (FIXED) */
 .btn-primary {
     background: var(--gradient-primary);
     color: var(--text-primary);
     box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
-
-    /* --- NEW FIX --- */
-    /* 1. Make the gradient 2x bigger than the button */
+    /* Gradient fix */
     background-size: 200% 200%;
-    
-    /* 2. Add a subtle animation to make it flow */
     animation: gradient-flow 4s ease infinite;
 }
-
-
 
 /* Alternate Button */
 .btn-alt {
     background: transparent;
     color: var(--text-primary);
     border-image: var(--gradient-primary) 1;
-    /* Fallback for browsers that don't support border-image */
-    border: 2px solid var(--accent-primary); 
+    border: 2px solid var(--accent-primary); /* Fallback */
 }
 
 .btn-alt:hover {
@@ -243,23 +234,22 @@ strong {
 }
 
 
-/* --- CONTENT CARDS --- */
+/* --- CONTENT CARDS (New Style) --- */
 .content-card {
-    position: relative; /* Needed for the pseudo-element border */
+    position: relative;
     background: var(--background-secondary);
     padding: 2.5rem;
-    border-radius: 16px; /* Increased for a smoother curve */
+    border-radius: 16px;
     margin-bottom: 2.5rem;
-    border: none; /* Remove the old border properties */
+    border: none;
     z-index: 1;
-    overflow: hidden; /* Ensures the ::before element respects the border-radius */
+    overflow: hidden;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-in-out;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* This creates the new gradient border and glow */
 .content-card::before {
     content: '';
     position: absolute;
@@ -268,7 +258,7 @@ strong {
     right: 0;
     bottom: 0;
     border-radius: 16px;
-    padding: 1px; /* This padding creates the border thickness */
+    padding: 1px;
     background: var(--gradient-primary);
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
@@ -277,7 +267,7 @@ strong {
             mask-composite: exclude;
     z-index: -1;
     transition: opacity 0.3s ease-in-out;
-    opacity: 0.7; /* Start with a subtle border */
+    opacity: 0.7;
 }
 
 .content-card:hover {
@@ -285,9 +275,8 @@ strong {
 }
 
 .content-card:hover::before {
-    opacity: 1; /* Make the border brighter on hover */
+    opacity: 1;
 }
-
 
 .content-card.visible {
     opacity: 1;
@@ -314,13 +303,15 @@ strong {
 }
 
 /* --- SPECIFIC SECTION STYLES --- */
+
+/* Updated Circular Logo */
 #shotdevs .shotdevs-logo-placeholder img {
-    width: 200px;  /* Set a fixed width */
-    height: 200px; /* Set a fixed height */
+    width: 200px;
+    height: 200px;
     margin: 0 auto 1.5rem auto;
     display: block;
-    border-radius: 50%; /* This makes it circular */
-    object-fit: cover;  /* Prevents image from stretching */
+    border-radius: 50%;
+    object-fit: cover;
     border: 2px solid var(--accent-primary);
     box-shadow: 0 0 20px rgba(230, 0, 122, 0.6);
 }
@@ -369,9 +360,8 @@ strong {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    justify-content: center; /* Add this line */
+    justify-content: center; /* Centered buttons */
 }
-
 
 #contact .contact-content {
     text-align: center;
@@ -409,13 +399,13 @@ strong {
     font-size: 0.9rem;
 }
 
-/* --- MOBILE MENU --- */
+/* --- NEW MOBILE MENU --- */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
-    z-index: 2000; /* Ensure it's above the menu */
+    z-index: 2000;
 }
 
 .mobile-menu-toggle span {
@@ -439,30 +429,30 @@ strong {
 }
 
 .mobile-menu {
-    display: flex; /* Changed from display: none */
+    display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center links */
-    align-items: center; /* Horizontally center links */
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(18, 18, 18, 0.95); /* Slightly darker, more opaque */
+    background: rgba(18, 18, 18, 0.95);
     backdrop-filter: blur(10px);
     padding: 20px;
     text-align: center;
-    opacity: 0; /* Start hidden */
-    visibility: hidden; /* Start inaccessible */
-    transform: translateY(-20px); /* Start slightly above */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
     transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
     z-index: 1500;
 }
 
 .mobile-menu.active {
-    opacity: 1; /* Fade in */
-    visibility: visible; /* Become accessible */
-    transform: translateY(0); /* Move into place */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .mobile-menu a {
@@ -479,20 +469,19 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* Space between icon and text */
+    gap: 15px;
 }
 
 .mobile-menu a:hover,
 .mobile-menu a:focus {
     color: var(--text-primary);
-    background-color: rgba(255, 255, 255, 0.05); /* Subtle highlight */
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .mobile-menu a i {
-    width: 20px; /* Give icons a consistent width */
-    color: var(--accent-secondary); /* Blue accent for icons */
+    width: 20px;
+    color: var(--accent-secondary);
 }
-
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
@@ -531,14 +520,60 @@ strong {
     .content-card {
         padding: 2rem 1.5rem;
     }
+}
 
-    .mobile-menu {
-        top: 70px; /* Adjust for new navbar height */
-    }
-    }
+/* --- Animation for Primary Button --- */
 @keyframes gradient-flow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* --- NEW: Interactive Hover Effects --- */
+.role-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.skill-badge {
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.skill-badge:hover {
+    transform: translateY(-3px);
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+/* --- NEW: Technology Logos Styling --- */
+.tech-title {
+    text-align: center;
+    color: var(--text-secondary);
+    font-weight: var(--fw-medium);
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.tech-container i {
+    font-size: 3rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.tech-container i:hover {
+    color: var(--accent-secondary);
+    transform: scale(1.1);
+        }
