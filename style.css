@@ -670,3 +670,21 @@ body::before {
     margin-right: 10px;
     vertical-align: top;
 }
+
+/* --- New Logo Styling --- */
+.navbar-logo {
+    /* Adjust this height to your preferred size. 
+       40px is a standard height for a compact navbar. */
+    height: 40px; 
+    /* Ensures the image maintains its aspect ratio */
+    width: auto; 
+    /* Optional: Small margin to the right if you decide to add text next to it later */
+    margin-right: 10px; 
+}
+
+/* Optional: Center the logo image within the brand link */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    /* This ensures your logo and any potential text are vertically centered */
+}
