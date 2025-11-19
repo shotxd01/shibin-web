@@ -3,348 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Shibinsoju - Developer & Portfolio | ShotDevs</title>
+    <meta name="description" content="Shibinsoju's personal portfolio. Admin, Moderator & Developer at ShotDevs community.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
-    <title>Shibinsoju - Developer & Portfolio | ShotDevs</title>
-    <meta name="description" content="Shibinsoju's personal portfolio showcasing projects, skills, and links. Admin, Moderator & Developer at ShotDevs community.">
-    <meta name="keywords" content="Shibinsoju, ShotDevs, developer, portfolio, admin, moderator, projects">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shibin.shotdevs.live/">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Shibinsoju",
-      "url": "https://shibin.shotdevs.live",
-      "jobTitle": "Developer",
-      "sameAs": [
-        "https://discord.com/users/1338869759441375254",
-        "https://www.instagram.com/shibn_hussn"
-      ]
-    }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    
     <link rel="icon" type="image/png" href="https://ibb.co/Zb8SFfw">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <video autoplay muted loop id="bg-video">
-        <source src="public/bg.mp4" type="video/mp4">
-        <div style="background: #121212; width: 100%; height: 100%;"></div>
-    </video>
-
-    <div class="overlay"></div>
+    <div class="bg-wrapper">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="public/bg.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="auras">
+            <div class="aura aura-1"></div>
+            <div class="aura aura-2"></div>
+        </div>
+    </div>
 
     <nav class="navbar">
-        <a href="#home" class="nav-brand">
-            <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" 
-                 alt="Shibinsoju Logo" 
-                 class="navbar-logo">
-            Shibinsoju
-        </a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#shotdevs">ShotDevs</a></li>
-            <li><a href="#roles">Roles</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#links">Links</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="mobile-menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">
+                <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Logo">
+                <span>Shibinsoju<span class="dot">.</span></span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#shotdevs" class="highlight-link">ShotDevs</a></li>
+                <li><a href="#roles">Roles</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </nav>
 
-    <div class="mobile-menu">
-        <a href="#about"><i class="fa-solid fa-user-circle"></i> About</a>
-        <a href="#shotdevs"><i class="fa-solid fa-rocket"></i> ShotDevs</a>
-        <a href="#roles"><i class="fa-solid fa-user-shield"></i> Roles</a>
-        <a href="#skills"><i class="fa-solid fa-star"></i> Skills</a>
-        <a href="#links"><i class="fa-solid fa-link"></i> Links</a>
-        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav-content">
+            <a href="#home" class="m-link">Home</a>
+            <a href="#shotdevs" class="m-link">ShotDevs</a>
+            <a href="#about" class="m-link">About</a>
+            <a href="#roles" class="m-link">Roles</a>
+            <a href="#skills" class="m-link">Skills</a>
+            <a href="#contact" class="m-link">Contact</a>
+        </nav>
     </div>
+
+    <div class="main-container">
         
-    <div class="container">
         <header class="hero" id="home">
-            <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju profile photo" class="profile-photo">
-            <h1 class="hero-title">Shibinsoju</h1>
-            <p class="tagline animated-tagline">// Admin, Moderator & Developer //</p>
-            <div class="shotdevs-highlight">
-                Founder & Owner of <strong>ShotDevs</strong> 🚀
-            </div>
-            <div class="hero-buttons">
-                <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn btn-primary">
-                    <i class="fa-brands fa-discord"></i> DM on Discord
-                </a>
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-alt">
-                    Join Server
-                </a>
+            <div class="hero-content">
+                <div class="profile-wrapper">
+                    <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju" class="profile-photo">
+                    <div class="status-badge"><i class="fa-solid fa-code"></i> Coding</div>
+                </div>
+                
+                <h1 class="hero-title">Shibinsoju</h1>
+                <div class="typing-container">
+                    <p class="tagline">// Admin, Moderator & Developer</p>
+                </div>
+                
+                <p class="hero-sub">Founder & Owner of <strong class="text-gradient">ShotDevs</strong> 🚀</p>
+                
+                <div class="hero-buttons">
+                    <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn btn-primary glow-effect">
+                        <i class="fa-brands fa-discord"></i> DM Me
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        More About Me
+                    </a>
+                </div>
             </div>
         </header>
 
         <main>
-            <section id="shotdevs" class="content-card">
-                <h2>
-    // ShotDevs Startup 
-    <span style="font-size: 0.6em; background: var(--accent-primary); color: white; padding: 3px 8px; border-radius: 5px; vertical-align: middle; margin-left: 10px;">
-        OWNER 👑
-    </span>
-</h2>
-
-                <div class="shotdevs-logo-placeholder" style="text-align: center;">
-                    <a href="https://shotdevs.live" target="_blank" rel="noopener noreferrer">
-                        <img src="https://iili.io/KeWap4t.png" alt="ShotDevs Logo" style="width: 150px; border-radius: 50%; border: 2px solid var(--accent-primary); margin-bottom: 20px;">
-                    </a>
-                </div>
-
-                <p><strong>ShotDevs</strong> is a development service specializing in creating custom-coded solutions for online communities, with a strong focus on the gaming ecosystem.</p>
-                <ul>
-                    <li><strong>Custom Discord Bots:</strong> Highly tailored bots ranging from moderation to API integrations.</li>
-                    <li><strong>Web Development:</strong> Modern websites and dashboards.</li>
-                    <li><strong>Minecraft Development:</strong> Custom plugins and server setups.</li>
-                </ul>
-                <div class="card-actions">
-                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-primary">Discord Server</a>
-                    <a href="https://shotdevs.live" class="btn btn-alt">Website</a>
-                </div>
-            </section>
-        
-            <section id="about" class="content-card">
-    <h2>// About Me</h2>
-    <p>
-        I am <strong>Shibin Hussain MK</strong>, a dedicated developer and entrepreneur currently based in <strong>Nilambur, Malappuram</strong>, and proud to be just <strong>16 years old</strong>. My journey is fueled by a deep passion for community management and technology, which led me to found <strong>ShotDevs</strong>. As a developer and tech enthusiast, I focus on building and empowering digital communities.
-    </p>
-    
-    <div class="about-highlight">
-        <i class="fa-solid fa-quote-left"></i>
-        <p>My core mission is to build digital spaces where technical creativity meets real-world application, empowering the next generation of tech enthusiasts.</p>
-    </div>
-    
-    <div class="card-actions" style="margin-top: 30px;">
-      <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-primary">Join My Community</a>
-    </div>
-</section>
-
-
-            <section id="roles" class="content-card">
-                <h2>// My Roles</h2>
-                <div class="roles-grid">
-                    <div class="role-card">
-                        <span class="role-title">Founder</span>
-                        <span class="role-org">ShotDevs</span>
-                        <div style="margin-top: 10px;">
-                            <a href="https://discord.gg/T55TGSa9ha" target="_blank" style="font-size: 0.8rem; color: var(--accent-primary);">Join Server</a>
+            <section id="shotdevs" class="section-spacer reveal">
+                <div class="featured-card">
+                    <div class="card-header">
+                        <span class="badge-owner">OWNER 👑</span>
+                        <h2>ShotDevs Startup</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="shotdevs-visual">
+                            <img src="https://iili.io/KeWap4t.png" alt="ShotDevs Logo" class="floating-logo">
+                        </div>
+                        <div class="shotdevs-info">
+                            <p>A premium development service creating custom solutions for online communities and the gaming ecosystem.</p>
+                            <ul class="feature-list">
+                                <li><i class="fa-solid fa-robot"></i> Custom Discord Bots</li>
+                                <li><i class="fa-solid fa-globe"></i> Modern Web Development</li>
+                                <li><i class="fa-solid fa-cube"></i> Minecraft Solutions</li>
+                            </ul>
+                            <div class="card-actions">
+                                <a href="https://shotdevs.live" target="_blank" class="btn btn-primary small-btn">Visit Website</a>
+                                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-outline small-btn">Join Server</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="role-card">
-                        <span class="role-title">Admin</span>
-                        <span class="role-org">Malayalees Community</span>
+                </div>
+            </section>
+
+            <section id="about" class="section-spacer reveal">
+                <div class="glass-card">
+                    <div class="section-title">
+                        <h2><i class="fa-regular fa-user"></i> About Me</h2>
                     </div>
-                    <div class="role-card">
-                        <span class="role-title">Moderator</span>
-                        <span class="role-org">Arjun MP (Old Account)</span>
-                    </div>
-                    <div class="role-card">
-                        <span class="role-title">Moderator</span>
-                        <span class="role-org">Vazha, AKMC, HKMC</span>
+                    <p>
+                        I am <strong>Shibin Hussain MK</strong>, a 16-year-old developer and entrepreneur from <strong>Nilambur, Malappuram</strong>. My passion for technology led me to found ShotDevs, where I bridge the gap between technical creativity and community management.
+                    </p>
+                    <div class="quote-box">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>Building digital spaces where creativity meets real-world application.</p>
                     </div>
                 </div>
             </section>
 
-            <section id="pixelbot" class="content-card">
-                <h2>// Pixel Music Bot</h2>
-                <div class="pixelbot-media" style="text-align: center; margin-bottom: 20px;">
-                    <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Music Bot" style="width: 120px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,191,255,0.3);">
-                </div>
-                <p><strong>Pixel Music Bot</strong> is a powerful Discord music bot designed to deliver high-quality audio streaming, playlist management, and interactive music features.</p>
-                <ul>
-                    <li>High-quality music streaming</li>
-                    <li>Playlist and queue management</li>
-                    <li>Supports YouTube, Spotify, and more</li>
-                </ul>
-                <div class="card-actions">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1411701701664182302&permissions=8&integration_type=0&scope=bot+applications.commands" class="btn btn-primary">Invite Me</a>
-                    <a href="#" class="btn btn-alt">Support Server</a>
-                </div>
-            </section>
-
-                        <section id="skills" class="content-card">
-                <h2>// My Skills & Tech</h2>
-                
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fa-solid fa-user-shield"></i> Admin</div>
-                    <div class="skill-item"><i class="fa-solid fa-gavel"></i> Moderator</div>
-                    <div class="skill-item"><i class="fa-solid fa-robot"></i> Bot Dev</div>
-                    <div class="skill-item"><i class="fa-solid fa-code"></i> Web Dev</div>  
-                </div>
-
-                <h3 style="text-align: center; margin: 30px 0 15px 0; color: var(--text-secondary);">Technologies</h3>
-
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript
+            <section id="roles" class="section-spacer reveal">
+                <h2 class="section-heading">My Roles</h2>
+                <div class="grid-box">
+                    <div class="role-card">
+                        <div class="role-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h3>Founder</h3>
+                        <p>ShotDevs</p>
                     </div>
-                    <div class="tech-item">
-                        <i class="fa-brands fa-node-js" style="color: #68a063;"></i> Node.js
+                    <div class="role-card">
+                        <div class="role-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                        <h3>Admin</h3>
+                        <p>Malayalees Community</p>
                     </div>
-                    <div class="tech-item">
-                        <i class="fa-brands fa-html5" style="color: #e34f26;"></i> HTML5
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa-brands fa-css3-alt" style="color: #264de4;"></i> CSS3
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa-brands fa-mdb" style="color: #47a248;"></i> MongoDB
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa-brands fa-git-alt" style="color: #f1502f;"></i> Git
+                    <div class="role-card">
+                        <div class="role-icon"><i class="fa-solid fa-gavel"></i></div>
+                        <h3>Moderator</h3>
+                        <p>Vazha, AKMC, HKMC</p>
                     </div>
                 </div>
             </section>
 
+            <section id="pixelbot" class="section-spacer reveal">
+                 <div class="glass-card bot-card">
+                    <div class="bot-content">
+                        <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Bot">
+                        <div class="bot-text">
+                            <h2>Pixel Music Bot</h2>
+                            <p>High-quality audio streaming, playlist management, and interactive music features for your Discord server.</p>
+                            <a href="https://discord.com/oauth2/authorize?client_id=1411701701664182302" class="btn btn-primary">Invite Bot</a>
+                        </div>
+                    </div>
+                 </div>
+            </section>
 
-            <section id="links" class="content-card">
-                <h2>// Server Links</h2>
+            <section id="skills" class="section-spacer reveal">
+                <h2 class="section-heading">Tech Stack</h2>
+                <div class="tech-container">
+                    <div class="tech-item"><i class="fa-brands fa-js" style="color:#F7DF1E"></i> <span>JS</span></div>
+                    <div class="tech-item"><i class="fa-brands fa-node-js" style="color:#68A063"></i> <span>Node</span></div>
+                    <div class="tech-item"><i class="fa-brands fa-html5" style="color:#E34F26"></i> <span>HTML</span></div>
+                    <div class="tech-item"><i class="fa-brands fa-css3-alt" style="color:#264DE4"></i> <span>CSS</span></div>
+                    <div class="tech-item"><i class="fa-brands fa-mdb" style="color:#47A248"></i> <span>Mongo</span></div>
+                    <div class="tech-item"><i class="fa-brands fa-git-alt" style="color:#F1502F"></i> <span>Git</span></div>
+                </div>
+            </section>
+
+            <section id="links" class="section-spacer reveal">
+                <h2 class="section-heading">Communities</h2>
                 <div class="links-grid">
-                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-primary server-btn">
-                        <i class="fa-solid fa-rocket"></i> ShotDevs
+                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="server-link card-hover">
+                        <div class="server-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <span>ShotDevs</span>
                     </a>
-                    <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="btn btn-alt server-btn">
-                        <i class="fa-solid fa-gamepad"></i> VazhaMC
+                    <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="server-link card-hover">
+                        <div class="server-icon"><i class="fa-solid fa-gamepad"></i></div>
+                        <span>VazhaMC</span>
                     </a>
-                    <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="btn btn-alt server-btn">
-                        <i class="fa-solid fa-crown"></i> HKMC
+                    <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="server-link card-hover">
+                        <div class="server-icon"><i class="fa-solid fa-crown"></i></div>
+                        <span>HKMC</span>
                     </a>
-                    <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="btn btn-alt server-btn">
-                        <i class="fa-solid fa-shield-halved"></i> AKMC
+                    <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="server-link card-hover">
+                        <div class="server-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span>AKMC</span>
                     </a>
-                      </div>
+                </div>
             </section>
 
-            <section id="contact" class="content-card" style="text-align: center;">
-                <h2>// Contact Me</h2>
-                
-                <div style="margin: 0 auto 20px; max-width: 350px;">
-                    <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" style="width: 100%; border-radius: 8px;">
-                </div>
+            <section id="contact" class="section-spacer reveal">
+                <div class="contact-box glass-card">
+                    <h2>Let's Connect</h2>
+                    <div class="discord-widget-wrap">
+                        <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status">
+                    </div>
+                    
+                    <div class="copy-area">
+                        <input type="text" value="shibinsoju" id="discord-user" readonly>
+                        <button id="copy-btn"><i class="fa-regular fa-copy"></i></button>
+                    </div>
 
-                <button id="copy-username" class="btn btn-alt small" style="margin-bottom: 20px;">
-                    <i class="fa-regular fa-copy"></i> Copy Username
-                </button>
-
-                <div class="footer-socials">
-                    <a href="https://discord.com/users/1338869759441375254" target="_blank" class="social-icon-btn" title="Discord"><i class="fa-brands fa-discord"></i></a>
-                    <a href="https://wa.me/8129529846" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://www.instagram.com/shibn_hussn?igsh=MXYwZW4zb2gwbHYwcQ==" target="_blank" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="mailto:shibinsoju49@gmail.com" class="social-icon-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <div class="social-row">
+                        <a href="https://discord.com/users/1338869759441375254" class="social-btn discord"><i class="fa-brands fa-discord"></i></a>
+                        <a href="https://wa.me/8129529846" class="social-btn whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/shibn_hussn" class="social-btn instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="mailto:shibinsoju49@gmail.com" class="social-btn email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <footer class="footer">
-            <p>&copy; 2025 Shibinsoju. All rights reserved.</p>
+        <footer>
+            <p>&copy; 2025 Shibinsoju. Built for <strong>ShotDevs</strong>.</p>
         </footer>
     </div>
-    
-    <button id="back-to-top" title="Go to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Final Robust Mobile Menu Logic --- 🟢 FIXED
-            const menuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelectorAll('.mobile-menu a');
 
-            function closeMenu() {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
-            
-            function openMenu() {
-                menuToggle.classList.add('active');
-                mobileMenu.classList.add('active');
-            }
+    <button id="back-to-top"><i class="fa-solid fa-arrow-up"></i></button>
 
-            // 1. Click on the three-dot icon: Check state and toggle
-            menuToggle.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('active')) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            });
-
-            // 2. Click on any link inside the mobile menu (always closes the menu)
-            navLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-
-
-            // --- Sticky Navbar Logic ---
-            const navbar = document.querySelector('.navbar');
-            window.onscroll = () => {
-                // Navbar Scroll Effect
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-
-                // Back to Top Button Logic
-                const backToTopBtn = document.getElementById("back-to-top");
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    backToTopBtn.classList.add("show");
-                } else {
-                    backToTopBtn.classList.remove("show");
-                }
-            };
-
-            // --- Back To Top Click ---
-            document.getElementById("back-to-top").onclick = function() {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            };
-
-            // --- Copy Discord Username Logic ---
-            const copyBtn = document.getElementById('copy-username');
-            copyBtn.addEventListener('click', () => {
-                const username = 'shibinsoju'; 
-                navigator.clipboard.writeText(username).then(() => {
-                    const originalText = copyBtn.innerHTML;
-                    copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-                    setTimeout(() => {
-                        copyBtn.innerHTML = originalText;
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            });
-            
-            // --- Fade-in Animation ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.content-card').forEach(card => {
-                observer.observe(card);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
