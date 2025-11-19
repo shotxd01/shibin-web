@@ -345,60 +345,63 @@ strong {
     font-size: 1.1rem;
 }
 
-/* --- TECHNOLOGIES (Tiles) --- */
-.tech-container {
-    display: flex;
+/* --- UNIFIED SKILLS & TECH GRID --- */
+.skills-grid, .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 1rem;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.tech-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Style for the individual buttons/items */
+.skill-item, .tech-item {
     background: rgba(255,255,255,0.03);
-    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 15px;
     border-radius: 12px;
-    width: 80px;
-    height: 80px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border: 1px solid transparent;
+    gap: 10px;
+    font-weight: var(--fw-medium);
+    font-size: 0.95rem;
     transition: all 0.3s ease;
+    cursor: default;
+    width: 100%;
 }
 
-.tech-item i {
-    font-size: 2.5rem;
+/* Hover Effects */
+.skill-item:hover, .tech-item:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.skill-item i, .tech-item i {
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    transition: color 0.3s ease;
-}
-
-.tech-item:hover {
-    border-color: var(--accent-secondary);
-    background: rgba(0, 191, 255, 0.1);
 }
 
 .tech-item:hover i {
-    color: var(--text-primary);
-    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
-/* --- SKILL BADGES --- */
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+/* MOBILE FIX */
+@media (max-width: 992px) {
+    .skills-grid, .tech-grid {
+        grid-template-columns: 1fr 1fr; /* Force 2 columns side-by-side */
+        gap: 10px;
+    }
+    
+    .skill-item, .tech-item {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
 }
 
-.skill-badge {
-    background: rgba(255,255,255,0.05);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255,255,255,0.1);
-}
 
 /* --- FOOTER & SOCIALS (Centered) --- */
 .footer-socials {
