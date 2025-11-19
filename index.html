@@ -45,13 +45,11 @@
 
     <nav class="navbar">
         <a href="#home" class="nav-brand">
-    <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" 
-         alt="Shibinsoju Logo" 
-         class="navbar-logo">
-    Shibinsoju
-</a>
-
-
+            <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" 
+                 alt="Shibinsoju Logo" 
+                 class="navbar-logo">
+            Shibinsoju
+        </a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#shotdevs">ShotDevs</a></li>
@@ -265,7 +263,36 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
+            // --- Final Robust Mobile Menu Logic --- 🟢 FIXED
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelectorAll('.mobile-menu a');
+
+            function closeMenu() {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
             
+            function openMenu() {
+                menuToggle.classList.add('active');
+                mobileMenu.classList.add('active');
+            }
+
+            // 1. Click on the three-dot icon: Check state and toggle
+            menuToggle.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // 2. Click on any link inside the mobile menu (always closes the menu)
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+
             // --- Sticky Navbar Logic ---
             const navbar = document.querySelector('.navbar');
             window.onscroll = () => {
@@ -278,29 +305,7 @@
 
                 // Back to Top Button Logic
                 const backToTopBtn = document.getElementById("back-to-top");
-                if (document.body.scrollTop > 300 // --- Updated Mobile Menu Logic ---
-const menuToggle = document.querySelector('.mobile-menu-toggle');
-const mobileMenu = document.querySelector('.mobile-menu');
-const navLinks = document.querySelectorAll('.mobile-menu a');
-
-// Function to handle opening/closing the menu
-function toggleMenu() {
-    menuToggle.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-}
-
-// 1. Click on the three-dot icon
-menuToggle.addEventListener('click', toggleMenu);
-
-// 2. Click on any link inside the mobile menu (closes the menu)
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        // Ensure both classes are removed when a link is clicked
-        menuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-    });
-});
-|| document.documentElement.scrollTop > 300) {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                     backToTopBtn.classList.add("show");
                 } else {
                     backToTopBtn.classList.remove("show");
