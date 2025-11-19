@@ -590,3 +590,33 @@ strong {
     0% { box-shadow: 0 0 30px rgba(230, 0, 122, 0.1); }
     100% { box-shadow: 0 0 50px rgba(230, 0, 122, 0.3); }
 }
+
+/* --- ADD LIFE: SUBTLE ANIMATED AURA & GLOW --- */
+
+/* 1. Create a slow-moving neon cloud/aura in the deep background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle radial gradients for corner glow */
+    background: radial-gradient(circle at 10% 10%, rgba(230, 0, 122, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 90% 90%, rgba(0, 191, 255, 0.08) 0%, transparent 20%);
+    z-index: -3; /* Ensure it stays behind the video and overlay */
+    animation: background-pulse 15s ease infinite alternate;
+}
+
+/* Keyframes for the slow breathing movement */
+@keyframes background-pulse {
+    from { transform: scale(1.0); opacity: 1; }
+    to { transform: scale(1.02); opacity: 0.95; }
+}
+
+/* 2. Enhance Profile Photo Glow (Overrides existing rule) */
+.profile-photo {
+    /* Adding a dual-color shadow to make it pop */
+    box-shadow: 0 0 40px rgba(230, 0, 122, 0.6), 0 0 15px rgba(0, 191, 255, 0.4); 
+    border-color: var(--accent-secondary);
+}
