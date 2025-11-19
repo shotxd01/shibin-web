@@ -9,7 +9,7 @@
 :root {
     /* Palette */
     --background-primary: #121212;
-    --background-secondary: #1E1E1E; /* Slightly Darker for contrast */
+    --background-secondary: #1E1E1E;
     --text-primary: #FFFFFF;
     --text-secondary: #B3B3B3;
     --accent-primary: #E6007A;
@@ -52,7 +52,7 @@ body {
     height: auto;
     z-index: -2;
     transform: translateX(-50%) translateY(-50%);
-    opacity: 0.4; /* Dimmed slightly so text pops */
+    opacity: 0.4;
 }
 
 .overlay {
@@ -222,7 +222,6 @@ strong {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Primary Button (Gradient Fill) */
 .btn-primary {
     background: var(--gradient-primary);
     color: var(--text-primary);
@@ -231,7 +230,6 @@ strong {
     animation: gradient-flow 4s ease infinite;
 }
 
-/* Secondary Button (Outline Only - CLEANER LOOK) */
 .btn-alt {
     background: transparent;
     color: var(--text-primary);
@@ -244,6 +242,11 @@ strong {
     background: rgba(0, 191, 255, 0.1);
 }
 
+.small {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}
+
 /* --- CONTENT CARDS --- */
 .content-card {
     position: relative;
@@ -253,11 +256,10 @@ strong {
     margin-bottom: 2.5rem;
     z-index: 1;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.05); /* Subtle border */
+    border: 1px solid rgba(255,255,255,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Top Gradient Border Effect */
 .content-card::before {
     content: '';
     position: absolute;
@@ -281,10 +283,9 @@ strong {
     flex-wrap: wrap;
 }
 
-/* --- IMPROVED ROLES GRID (Mobile Friendly) --- */
+/* --- ROLES GRID --- */
 .roles-grid {
     display: grid;
-    /* On mobile, allow columns to be smaller so 2 fit side-by-side */
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
     gap: 1rem;
 }
@@ -315,7 +316,30 @@ strong {
     color: var(--text-secondary);
 }
 
-/* --- TECHNOLOGIES (Clean Tiles) --- */
+/* --- IMPROVED SERVER LINKS GRID --- */
+.links-grid {
+    display: grid;
+    /* 130px allows 2 columns on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+    gap: 15px;
+    justify-content: center;
+}
+
+.server-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 10px;
+    font-size: 0.9rem;
+}
+
+.server-btn i {
+    font-size: 1.1rem;
+}
+
+/* --- TECHNOLOGIES (Tiles) --- */
 .tech-container {
     display: flex;
     justify-content: center;
@@ -354,7 +378,23 @@ strong {
     transform: scale(1.1);
 }
 
-/* --- FOOTER ICONS (Sleek Row) --- */
+/* --- SKILL BADGES --- */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.skill-badge {
+    background: rgba(255,255,255,0.05);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- FOOTER --- */
 .footer-socials {
     display: flex;
     justify-content: center;
@@ -383,6 +423,13 @@ strong {
     border-color: transparent;
 }
 
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #2a2a2a;
+    color: var(--text-secondary);
+}
+
 /* --- BACK TO TOP BUTTON --- */
 #back-to-top {
     position: fixed;
@@ -395,7 +442,7 @@ strong {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    display: none; /* Hidden by default */
+    display: none;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
@@ -419,7 +466,7 @@ strong {
     to { transform: scale(1); }
 }
 
-/* --- MOBILE MENU (Kept your logic) --- */
+/* --- MOBILE MENU --- */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -467,11 +514,10 @@ strong {
 @media (max-width: 992px) {
     .nav-links { display: none; }
     .mobile-menu-toggle { display: flex; }
-    
     .hero-title { font-size: 2.5rem; }
     
     .btn {
-        width: 100%; /* Full width buttons on mobile */
+        width: 100%;
         max-width: 300px;
     }
     
@@ -488,3 +534,4 @@ strong {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
     }
+    
