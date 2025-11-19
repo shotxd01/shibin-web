@@ -130,10 +130,15 @@ strong {
     box-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 
+/* 🟢 UPDATED: nav-brand styling for logo and text alignment */
 .nav-brand {
+    /* Use flexbox to align the image and text horizontally */
+    display: flex; 
+    align-items: center; /* Centers the image and text vertically */
     font-size: 1.5rem;
     font-weight: var(--fw-bold);
     color: var(--text-primary);
+    /* No need for text-decoration: none as it's an anchor tag */
 }
 
 .nav-links {
@@ -145,6 +150,15 @@ strong {
 .nav-links a {
     color: var(--text-primary);
     font-weight: var(--fw-medium);
+}
+
+/* 🟢 NEW: Logo styling for size and space */
+.navbar-logo {
+    height: 30px; /* Adjusted height for better fit in the navbar */
+    width: auto; 
+    margin-right: 8px; /* Space between the logo and the "Shibinsoju" text */
+    border-radius: 50%; /* Makes the profile photo logo circular */
+    object-fit: cover; /* Ensures the image fills the 30px height nicely */
 }
 
 /* --- HERO SECTION --- */
@@ -165,7 +179,9 @@ strong {
     border: 3px solid var(--accent-primary);
     object-fit: cover;
     margin-bottom: 1.5rem;
-    box-shadow: 0 0 30px rgba(230, 0, 122, 0.3);
+    /* 🟢 ENHANCED: Profile Photo Glow */
+    box-shadow: 0 0 50px rgba(230, 0, 122, 0.8), 0 0 20px rgba(0, 191, 255, 0.6); 
+    border-color: var(--accent-secondary);
     animation: float 6s ease-in-out infinite;
 }
 
@@ -177,14 +193,16 @@ strong {
 
 .hero-title { margin-bottom: 0.5rem; }
 
+/* 🟢 UPDATED: Tagline style adjusted for typewriter effect */
 .tagline {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0; /* Important for typewriter effect */
     background: rgba(255,255,255,0.05);
     padding: 5px 15px;
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.5;
 }
 
 .shotdevs-highlight {
@@ -614,11 +632,8 @@ body::before {
 }
 
 /* 2. Enhanced Profile Photo Glow */
-.profile-photo {
-    /* Made shadow significantly stronger */
-    box-shadow: 0 0 50px rgba(230, 0, 122, 0.8), 0 0 20px rgba(0, 191, 255, 0.6); 
-    border-color: var(--accent-secondary);
-}
+/* The .profile-photo class was updated above */
+
 
 /* 3. New Animation for Tagline (Typewriter Effect) */
 .animated-tagline {
@@ -643,7 +658,7 @@ body::before {
 
 /* Ensure the typing effect works correctly on the existing tagline style */
 .tagline {
-    margin-bottom: 0; /* Remove padding from tagline itself */
+    /* 🟢 REMOVED DUPLICATE: margin-bottom: 0 was already here */
     line-height: 1.5;
 }
 
@@ -669,22 +684,4 @@ body::before {
     font-size: 1.2em;
     margin-right: 10px;
     vertical-align: top;
-}
-
-/* --- New Logo Styling --- */
-.navbar-logo {
-    /* Adjust this height to your preferred size. 
-       40px is a standard height for a compact navbar. */
-    height: 40px; 
-    /* Ensures the image maintains its aspect ratio */
-    width: auto; 
-    /* Optional: Small margin to the right if you decide to add text next to it later */
-    margin-right: 10px; 
-}
-
-/* Optional: Center the logo image within the brand link */
-.nav-brand {
-    display: flex;
-    align-items: center;
-    /* This ensures your logo and any potential text are vertically centered */
 }
