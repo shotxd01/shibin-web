@@ -646,3 +646,27 @@ body::before {
     margin-bottom: 0; /* Remove padding from tagline itself */
     line-height: 1.5;
 }
+
+/* --- ABOUT ME SECTION ENHANCEMENT --- */
+.about-highlight {
+    background: rgba(0, 191, 255, 0.1);
+    border-left: 5px solid var(--accent-secondary);
+    padding: 15px 20px;
+    margin: 30px 0;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.about-highlight p {
+    color: var(--text-primary);
+    font-style: italic;
+    margin-bottom: 0;
+    display: inline;
+}
+
+.about-highlight i {
+    color: var(--accent-secondary);
+    font-size: 1.2em;
+    margin-right: 10px;
+    vertical-align: top;
+}
