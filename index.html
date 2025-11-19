@@ -265,23 +265,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Mobile Menu Logic ---
-            const menuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelectorAll('.mobile-menu a');
-
-            menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
-
+            
             // --- Sticky Navbar Logic ---
             const navbar = document.querySelector('.navbar');
             window.onscroll = () => {
@@ -294,7 +278,29 @@
 
                 // Back to Top Button Logic
                 const backToTopBtn = document.getElementById("back-to-top");
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                if (document.body.scrollTop > 300 // --- Updated Mobile Menu Logic ---
+const menuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelectorAll('.mobile-menu a');
+
+// Function to handle opening/closing the menu
+function toggleMenu() {
+    menuToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+}
+
+// 1. Click on the three-dot icon
+menuToggle.addEventListener('click', toggleMenu);
+
+// 2. Click on any link inside the mobile menu (closes the menu)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        // Ensure both classes are removed when a link is clicked
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    });
+});
+|| document.documentElement.scrollTop > 300) {
                     backToTopBtn.classList.add("show");
                 } else {
                     backToTopBtn.classList.remove("show");
