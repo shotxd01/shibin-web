@@ -591,9 +591,9 @@ strong {
     100% { box-shadow: 0 0 50px rgba(230, 0, 122, 0.3); }
 }
 
-/* --- ADD LIFE: SUBTLE ANIMATED AURA & GLOW --- */
+/* --- NEW: STRONGER AURA & TEXT ANIMATION CSS --- */
 
-/* 1. Create a slow-moving neon cloud/aura in the deep background */
+/* 1. Enhanced Aura (Brighter & Larger) */
 body::before {
     content: '';
     position: fixed;
@@ -601,22 +601,48 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Subtle radial gradients for corner glow */
-    background: radial-gradient(circle at 10% 10%, rgba(230, 0, 122, 0.08) 0%, transparent 20%),
-                radial-gradient(circle at 90% 90%, rgba(0, 191, 255, 0.08) 0%, transparent 20%);
-    z-index: -3; /* Ensure it stays behind the video and overlay */
+    /* Increased size and opacity for visibility */
+    background: radial-gradient(circle at 15% 15%, rgba(230, 0, 122, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 85% 85%, rgba(0, 191, 255, 0.15) 0%, transparent 30%);
+    z-index: -3;
     animation: background-pulse 15s ease infinite alternate;
 }
 
-/* Keyframes for the slow breathing movement */
 @keyframes background-pulse {
-    from { transform: scale(1.0); opacity: 1; }
-    to { transform: scale(1.02); opacity: 0.95; }
+    from { transform: scale(1.0); }
+    to { transform: scale(1.04); }
 }
 
-/* 2. Enhance Profile Photo Glow (Overrides existing rule) */
+/* 2. Enhanced Profile Photo Glow */
 .profile-photo {
-    /* Adding a dual-color shadow to make it pop */
-    box-shadow: 0 0 40px rgba(230, 0, 122, 0.6), 0 0 15px rgba(0, 191, 255, 0.4); 
+    /* Made shadow significantly stronger */
+    box-shadow: 0 0 50px rgba(230, 0, 122, 0.8), 0 0 20px rgba(0, 191, 255, 0.6); 
     border-color: var(--accent-secondary);
+}
+
+/* 3. New Animation for Tagline (Typewriter Effect) */
+.animated-tagline {
+    white-space: nowrap; /* Forces text onto one line */
+    overflow: hidden;
+    width: 0; /* Starts hidden */
+    /* Typing animation + blinking cursor effect */
+    animation: typing 2.0s steps(30, end) forwards,
+               blink 0.75s step-end infinite;
+    animation-delay: 1.5s; /* Delays start so it runs after the page loads */
+    border-right: .15em solid var(--accent-secondary); /* This is the cursor */
+    display: inline-block;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+/* Ensure the typing effect works correctly on the existing tagline style */
+.tagline {
+    margin-bottom: 0; /* Remove padding from tagline itself */
+    line-height: 1.5;
 }
