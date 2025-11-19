@@ -32,73 +32,75 @@
     
     <link rel="icon" type="image/png" href="https://ibb.co/Zb8SFfw">
     
-    <link rel="stylesheet" href="style.css?v=1.9">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <video autoplay muted loop id="bg-video">
         <source src="public/bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+        <div style="background: #121212; width: 100%; height: 100%;"></div>
     </video>
 
     <div class="overlay"></div>
 
-    <div class="container">
-        <nav class="navbar">
-            <a href="#home" class="nav-brand">Shibinsoju</a>>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#shotdevs">ShotDevs</a></li>
-                <li><a href="#roles">Roles</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#links">Links</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#pixelbot">Pixel Music Bot</a></li>
-            </ul>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-
-        <div class="mobile-menu">
-            <a href="#about"><i class="fa-solid fa-user-circle"></i> About</a>
-            <a href="#shotdevs"><i class="fa-solid fa-rocket"></i> ShotDevs</a>
-            <a href="#roles"><i class="fa-solid fa-user-shield"></i> Roles</a>
-            <a href="#skills"><i class="fa-solid fa-star"></i> Skills</a>
-            <a href="#links"><i class="fa-solid fa-link"></i> Links</a>
-            <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-            <a href="#pixelbot"><i class="fa-solid fa-robot"></i> Pixel Music Bot</a>
+    <nav class="navbar">
+        <a href="#home" class="nav-brand">Shibinsoju</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#shotdevs">ShotDevs</a></li>
+            <li><a href="#roles">Roles</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <a href="#about"><i class="fa-solid fa-user-circle"></i> About</a>
+        <a href="#shotdevs"><i class="fa-solid fa-rocket"></i> ShotDevs</a>
+        <a href="#roles"><i class="fa-solid fa-user-shield"></i> Roles</a>
+        <a href="#skills"><i class="fa-solid fa-star"></i> Skills</a>
+        <a href="#links"><i class="fa-solid fa-link"></i> Links</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </div>
         
+    <div class="container">
         <header class="hero" id="home">
             <img src="https://i.postimg.cc/7YbQ9719/IMG-20250912-223431-412.jpg" alt="Shibinsoju profile photo" class="profile-photo">
             <h1 class="hero-title">Shibinsoju</h1>
             <p class="tagline">// Admin, Moderator & Developer //</p>
             <div class="shotdevs-highlight">
-                <span>Founder & Owner of <strong>ShotDevs</strong> 🚀</span>
+                Founder & Owner of <strong>ShotDevs</strong> 🚀
             </div>
             <div class="hero-buttons">
-                <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn btn-primary">DM on Discord</a>
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-alt">Join ShotDevs Server</a>
+                <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn btn-primary">
+                    <i class="fa-brands fa-discord"></i> DM on Discord
+                </a>
+                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-alt">
+                    Join Server
+                </a>
             </div>
         </header>
 
         <main>
             <section id="shotdevs" class="content-card">
                 <h2>// ShotDevs Startup</h2>
-                <div class="shotdevs-logo-placeholder">
-    <a href="https://shotdevs.live" target="_blank" rel="noopener noreferrer">
-        <img src="https://iili.io/KeWap4t.png" alt="ShotDevs Logo">
-    </a>
-</div>
+                <div class="shotdevs-logo-placeholder" style="text-align: center;">
+                    <a href="https://shotdevs.live" target="_blank" rel="noopener noreferrer">
+                        <img src="https://iili.io/KeWap4t.png" alt="ShotDevs Logo" style="width: 150px; border-radius: 50%; border: 2px solid var(--accent-primary); margin-bottom: 20px;">
+                    </a>
+                </div>
 
                 <p><strong>ShotDevs</strong> is a development service specializing in creating custom-coded solutions for online communities, with a strong focus on the gaming ecosystem.</p>
-                <p><strong>Our core offerings have expanded to include:</strong></p>
                 <ul>
-                    <li><strong>Custom Discord Bots:</strong> Highly tailored bots with capabilities ranging from simple moderation to complex API integrations.</li>
-                    <li><strong>Web Development:</strong> Modern, responsive websites and powerful management dashboards for communities and bots.</li>
-                    <li><strong>Minecraft Development:</strong> Custom plugins for unique gameplay and full server setup and configuration.</li>
+                    <li><strong>Custom Discord Bots:</strong> Highly tailored bots ranging from moderation to API integrations.</li>
+                    <li><strong>Web Development:</strong> Modern websites and dashboards.</li>
+                    <li><strong>Minecraft Development:</strong> Custom plugins and server setups.</li>
                 </ul>
                 <div class="card-actions">
                     <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-primary">Discord Server</a>
@@ -109,46 +111,42 @@
             <section id="about" class="content-card">
                 <h2>// About Me</h2>
                 <p>A passionate individual with a deep interest in community management and development. I am the founder of ShotDevs, a community for developers and tech enthusiasts.</p>
-                <div class="card-actions">
-                  <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-primary">Join ShotDevs</a>
-                </div>
             </section>
 
             <section id="roles" class="content-card">
                 <h2>// My Roles</h2>
                 <div class="roles-grid">
                     <div class="role-card">
-                        <h3>Founder</h3>
-                        <p>Shotdevs</p>
-                        <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-alt small">Join Shotdevs</a>
+                        <span class="role-title">Founder</span>
+                        <span class="role-org">ShotDevs</span>
+                        <div style="margin-top: 10px;">
+                            <a href="https://discord.gg/T55TGSa9ha" target="_blank" style="font-size: 0.8rem; color: var(--accent-primary);">Join Server</a>
+                        </div>
                     </div>
                     <div class="role-card">
-                        <h3>Admin</h3>
-                        <p>Malayalees Community</p>
+                        <span class="role-title">Admin</span>
+                        <span class="role-org">Malayalees Community</span>
                     </div>
                     <div class="role-card">
-                        <h3>Moderator</h3>
-                        <p>Arjun MP (Old Account)</p>
+                        <span class="role-title">Moderator</span>
+                        <span class="role-org">Arjun MP (Old Account)</span>
                     </div>
                     <div class="role-card">
-                        <h3>Moderator</h3>
-                        <p>Vazha, AKMC, HKMC</p>
-                        <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="btn btn-alt small">Join Vazha</a>
-                        <a href="https://discord.gg/MK65ZVVP" target="_blank" class="btn btn-alt small">Join HKMC</a>
+                        <span class="role-title">Moderator</span>
+                        <span class="role-org">Vazha, AKMC, HKMC</span>
                     </div>
                 </div>
             </section>
 
             <section id="pixelbot" class="content-card">
-                <h2>// Pixel Music Bot Project</h2>
-                <div class="pixelbot-media">
-                    <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Music Bot Logo" class="pixelbot-logo">
+                <h2>// Pixel Music Bot</h2>
+                <div class="pixelbot-media" style="text-align: center; margin-bottom: 20px;">
+                    <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Music Bot" style="width: 120px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,191,255,0.3);">
                 </div>
-                <p><strong>Pixel Music Bot</strong> is a powerful Discord music bot designed to deliver high-quality audio streaming, playlist management, and interactive music features for your server.</p>
+                <p><strong>Pixel Music Bot</strong> is a powerful Discord music bot designed to deliver high-quality audio streaming, playlist management, and interactive music features.</p>
                 <ul>
                     <li>High-quality music streaming</li>
                     <li>Playlist and queue management</li>
-                    <li>Easy-to-use music commands</li>
                     <li>Supports YouTube, Spotify, and more</li>
                 </ul>
                 <div class="card-actions">
@@ -158,22 +156,33 @@
             </section>
 
             <section id="skills" class="content-card">
-                <h2>// My Skills</h2>
-                <div class="skills-container">
+                <h2>// My Skills & Tech</h2>
+                <div class="skills-container" style="margin-bottom: 30px;">
                     <div class="skill-badge">Admin</div>
                     <div class="skill-badge">Moderator</div>
-                    <div class="skill-badge">Discord Bot Developer</div>
-                    <div class="skill-badge">Website Developer</div>  
+                    <div class="skill-badge">Bot Developer</div>
+                    <div class="skill-badge">Web Developer</div>  
                 </div>
             
-                <h3 class="tech-title">// Technologies I Use</h3>
                 <div class="tech-container">
-                    <i class="fa-brands fa-js" title="JavaScript"></i>
-                    <i class="fa-brands fa-node-js" title="Node.js"></i>
-                    <i class="fa-brands fa-html5" title="HTML5"></i>
-                    <i class="fa-brands fa-css3-alt" title="CSS3"></i>
-                    <i class="fa-brands fa-mdb" title="MongoDB"></i>
-                    <i class="fa-brands fa-git-alt" title="Git"></i>
+                    <div class="tech-item" title="JavaScript">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <div class="tech-item" title="Node.js">
+                        <i class="fa-brands fa-node-js"></i>
+                    </div>
+                    <div class="tech-item" title="HTML5">
+                        <i class="fa-brands fa-html5"></i>
+                    </div>
+                    <div class="tech-item" title="CSS3">
+                        <i class="fa-brands fa-css3-alt"></i>
+                    </div>
+                    <div class="tech-item" title="MongoDB">
+                        <i class="fa-brands fa-mdb"></i>
+                    </div>
+                    <div class="tech-item" title="Git">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </div>
                 </div>
             </section>
 
@@ -183,39 +192,43 @@
                     <a href="https://discord.gg/BGFTxnNhqZ" target="_blank" class="btn btn-alt">VazhaMC</a>
                     <a href="https://discord.gg/3WnSsJmkCC" target="_blank" class="btn btn-alt">HKMC</a>
                     <a href="https://discord.gg/ZWFmufAtjj" target="_blank" class="btn btn-alt">AKMC</a>
-                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-alt">ShotDevs</a>
+                    <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-primary">ShotDevs</a>
                 </div>
             </section>
 
-            <section id="contact" class="content-card">
+            <section id="contact" class="content-card" style="text-align: center;">
                 <h2>// Contact Me</h2>
-                <div class="contact-content">
-                    <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" class="discord-status">
-                    <div class="contact-buttons">
-                        <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn btn-primary">DM on Discord</a>
-                        <button class="btn btn-alt" id="copy-username">Copy Username</button>
-                    </div>
-                    <div class="contact-social-buttons">
-                        <a href="https://wa.me/8129529846" target="_blank" class="btn btn-alt">WhatsApp</a>
-                        <a href="https://www.instagram.com/shibn_hussn?igsh=MXYwZW4zb2gwbHYwcQ==" target="_blank" class="btn btn-alt">Instagram</a>
-                        <a href="mailto:shibinsoju49@gmail.com" target="_blank" class="btn btn-alt">Gmail</a>
-                    </div>
+                
+                <div style="margin: 0 auto 20px; max-width: 350px;">
+                    <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status" style="width: 100%; border-radius: 8px;">
+                </div>
+
+                <button id="copy-username" class="btn btn-alt small" style="margin-bottom: 20px;">
+                    <i class="fa-regular fa-copy"></i> Copy Username
+                </button>
+
+                <div class="footer-socials">
+                    <a href="https://discord.com/users/1338869759441375254" target="_blank" class="social-icon-btn" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://wa.me/8129529846" target="_blank" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/shibn_hussn?igsh=MXYwZW4zb2gwbHYwcQ==" target="_blank" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:shibinsoju49@gmail.com" class="social-icon-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <div class="footer-links">
-                <a href="#home">Home</a> | 
-                <a href="https://discord.gg/T55TGSa9ha" target="_blank">ShotDevs</a>
-            </div>
             <p>&copy; 2025 Shibinsoju. All rights reserved.</p>
         </footer>
     </div>
     
+    <button id="back-to-top" title="Go to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Mobile Menu Toggle ---
+            
+            // --- Mobile Menu Logic ---
             const menuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
             const navLinks = document.querySelectorAll('.mobile-menu a');
@@ -225,7 +238,6 @@
                 mobileMenu.classList.toggle('active');
             });
 
-            // Close menu when a link is clicked
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     menuToggle.classList.remove('active');
@@ -233,31 +245,46 @@
                 });
             });
 
-            // --- Sticky Navbar ---
+            // --- Sticky Navbar Logic ---
             const navbar = document.querySelector('.navbar');
             window.onscroll = () => {
+                // Navbar Scroll Effect
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
+
+                // Back to Top Button Logic
+                const backToTopBtn = document.getElementById("back-to-top");
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
             };
 
-            // --- Copy Discord Username ---
+            // --- Back To Top Click ---
+            document.getElementById("back-to-top").onclick = function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            };
+
+            // --- Copy Discord Username Logic ---
             const copyBtn = document.getElementById('copy-username');
             copyBtn.addEventListener('click', () => {
-                const username = 'shibinsoju'; // Changed to your actual username
+                const username = 'shibinsoju'; 
                 navigator.clipboard.writeText(username).then(() => {
-                    copyBtn.textContent = 'Copied!';
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
                     setTimeout(() => {
-                        copyBtn.textContent = 'Copy Username';
+                        copyBtn.innerHTML = originalText;
                     }, 2000);
                 }).catch(err => {
                     console.error('Failed to copy: ', err);
                 });
             });
             
-            // --- Section Fade-in Animation ---
+            // --- Fade-in Animation ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
