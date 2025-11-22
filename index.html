@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shibinsoju - Developer & Admin | ShotDevs</title>
-    <meta name="description" content="Shibinsoju's personal portfolio. Founder of ShotDevs, Discord Bot Developer, and Community Admin.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="icon" type="image/png" href="favicon.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
@@ -61,9 +58,8 @@
 
     <div class="main-container">
         
-        <!-- HERO -->
         <header class="hero" id="home">
-            <div class="hero-content">
+            <div class="hero-content reveal">
                 <div class="profile-wrapper">
                     <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju" class="profile-photo">
                     <div class="status-badge"><i class="fa-solid fa-code"></i> Coding</div>
@@ -95,7 +91,7 @@
                 <div class="featured-card">
                     <div class="card-header">
                         <span class="badge-owner">OWNER 👑</span>
-                        <h2>ShotDevs Startup</h2>
+                        <h2 style="display:inline-block; margin-left:10px;">ShotDevs Startup</h2>
                     </div>
                     <div class="card-body">
                         <div class="shotdevs-visual">
@@ -108,9 +104,9 @@
                                 <li><i class="fa-solid fa-globe"></i> Modern Web Development</li>
                                 <li><i class="fa-solid fa-cube"></i> Minecraft Solutions</li>
                             </ul>
-                            <div class="card-actions">
-                                <a href="https://shotdevs.live" target="_blank" class="btn btn-primary small-btn">Visit Website</a>
-                                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-outline small-btn">Join Server</a>
+                            <div class="card-actions" style="margin-top:20px; display:flex; gap:10px;">
+                                <a href="https://shotdevs.live" target="_blank" class="btn btn-primary">Visit Website</a>
+                                <a href="https://discord.gg/T55TGSa9ha" target="_blank" class="btn btn-outline">Join Server</a>
                             </div>
                         </div>
                     </div>
@@ -119,15 +115,12 @@
         
             <section id="about" class="section-spacer reveal">
                 <div class="glass-card">
-                    <div class="section-title">
-                        <h2><i class="fa-regular fa-user"></i> About Me</h2>
-                    </div>
+                    <h2 class="section-heading" style="text-align:left; margin-bottom:20px;">About Me</h2>
                     <p class="about-text">
                         I am <strong class="text-white">Shibin Hussain MK</strong>, a 16-year-old developer and entrepreneur from <strong class="text-white">Nilambur, Malappuram</strong>. My passion for technology led me to found <span class="text-cyan">ShotDevs</span>, where I bridge the gap between <span class="text-pink">technical creativity</span> and community management.
                     </p>
-                    <div class="quote-box">
-                        <i class="fa-solid fa-quote-left"></i>
-                        <p>Building digital spaces where creativity meets real-world application.</p>
+                    <div style="margin-top:20px; padding-left:15px; border-left:3px solid var(--primary); color:var(--text-muted);">
+                        <p><em>"Building digital spaces where creativity meets real-world application."</em></p>
                     </div>
                 </div>
             </section>
@@ -154,15 +147,13 @@
             </section>
 
             <section id="pixelbot" class="section-spacer reveal">
-                 <div class="glass-card bot-card">
+                 <div class="glass-card" style="background: radial-gradient(circle at center, rgba(0, 191, 255, 0.1), transparent);">
                     <div class="bot-content">
                         <img src="https://i.postimg.cc/htkCQp2H/file-000000005dbc624694a7ac11936cb953.png" alt="Pixel Bot" class="bot-img">
                         <div class="bot-text">
                             <h2>Pixel Music Bot</h2>
-                            <p>High-quality audio streaming, playlist management, and interactive music features for your Discord server.</p>
-                            <div class="card-actions">
-                                <a href="https://discord.com/oauth2/authorize?client_id=1411701701664182302" class="btn btn-primary">Invite Bot</a>
-                            </div>
+                            <p style="color:var(--text-muted); margin:10px 0;">High-quality audio streaming, playlist management, and interactive music features for your Discord server.</p>
+                            <a href="https://discord.com/oauth2/authorize?client_id=1411701701664182302" class="btn btn-primary">Invite Bot</a>
                         </div>
                     </div>
                  </div>
@@ -178,6 +169,7 @@
                         <div class="tech-item"><i class="fa-brands fa-css3-alt" style="color:#264DE4"></i> <span>CSS</span></div>
                         <div class="tech-item"><i class="fa-brands fa-mdb" style="color:#47A248"></i> <span>MongoDB</span></div>
                         <div class="tech-item"><i class="fa-brands fa-git-alt" style="color:#F1502F"></i> <span>Git</span></div>
+                        <div class="tech-item"><i class="fa-brands fa-java" style="color:#f89820"></i> <span>Java</span></div>
                         
                         <div class="tech-item"><i class="fa-brands fa-js" style="color:#F7DF1E"></i> <span>JS</span></div>
                         <div class="tech-item"><i class="fa-brands fa-node-js" style="color:#68A063"></i> <span>Node.js</span></div>
@@ -185,6 +177,7 @@
                         <div class="tech-item"><i class="fa-brands fa-css3-alt" style="color:#264DE4"></i> <span>CSS</span></div>
                         <div class="tech-item"><i class="fa-brands fa-mdb" style="color:#47A248"></i> <span>MongoDB</span></div>
                         <div class="tech-item"><i class="fa-brands fa-git-alt" style="color:#F1502F"></i> <span>Git</span></div>
+                        <div class="tech-item"><i class="fa-brands fa-java" style="color:#f89820"></i> <span>Java</span></div>
                     </div>
                 </div>
             </section>
@@ -213,10 +206,9 @@
 
             <section id="contact" class="section-spacer reveal">
                 <div class="contact-box glass-card">
-                    <h2>Let's Connect</h2>
+                    <h2 style="margin-bottom:10px;">Let's Connect</h2>
                     <p class="contact-cta">
-    Want a custom bot or website? 
-    <span>DM me on Discord</span> and let's build something amazing together.
+                        Want a custom bot or website? <span style="color:var(--secondary); font-weight:bold;">DM me on Discord</span>.
                     </p>
                     <div class="discord-widget-wrap">
                         <img src="https://discord.c99.nl/widget/theme-3/1338869759441375254.png" alt="Discord Status">
@@ -246,4 +238,5 @@
 
     <script src="script.js"></script>
 </body>
-                            </html>
+    </html>
+    
