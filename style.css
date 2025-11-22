@@ -270,7 +270,17 @@ body {
 .discord-widget-wrap img { width: 100%; border-radius: 10px; margin: 20px 0; max-width: 350px; }
 .copy-area { display: flex; gap: 10px; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 8px; margin: 0 auto 25px; max-width: 350px; }
 .copy-area input { background: transparent; border: none; color: var(--text-muted); flex: 1; text-align: center; outline: none; }
+.contact-cta {
+    margin: 15px 0 25px;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
 
+.contact-cta span {
+    color: var(--secondary);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+}
 #copy-btn {
     background: var(--glass-border);
     color: white;
