@@ -194,7 +194,16 @@ body {
 }
 .badge-owner { background: var(--primary); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; display: inline-block; }
 .card-body { display: flex; align-items: center; gap: 40px; margin-top: 20px; }
-.floating-logo { width: 130px; animation: floatLogo 4s ease-in-out infinite; }
+
+/* FIXED: Circular Logo */
+.floating-logo { 
+    width: 130px; 
+    height: 130px;           /* Added Height */
+    border-radius: 50%;      /* Added Circular Border */
+    object-fit: cover;       /* Ensure image fits */
+    animation: floatLogo 4s ease-in-out infinite; 
+}
+
 @keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .feature-list { list-style: none; margin: 20px 0; display: flex; flex-direction: column; gap: 10px; }
 .feature-list li { display: flex; align-items: center; gap: 10px; color: var(--text-muted); }
