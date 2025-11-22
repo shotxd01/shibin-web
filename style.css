@@ -122,7 +122,30 @@ body {
     display: flex; align-items: center; gap: 5px;
 }
 .status-badge i { color: var(--secondary); }
-.hero-title { font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 10px; }
+
+.hero-title {
+    font-size: clamp(2.6rem, 6vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+/* new hero lines */
+.hero-tagline {
+    max-width: 680px;
+    margin: 0 auto 16px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 400;
+}
+
+.hero-sub {
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
 .tagline { color: var(--text-muted); font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 1px; }
 .text-gradient {
     background: linear-gradient(45deg, var(--primary), var(--secondary));
@@ -144,6 +167,19 @@ body {
 /* --- SECTIONS & CARDS --- */
 .section-spacer { padding: 80px 0; }
 .section-heading { text-align: center; font-size: 2rem; margin-bottom: 50px; position: relative; }
+
+/* subtle gradient underline */
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    opacity: 0.7;
+    border-radius: 999px;
+}
+
 .glass-card, .featured-card, .role-card {
     background: var(--bg-panel); border: 1px solid var(--glass-border);
     border-radius: 20px; padding: 30px; position: relative; overflow: hidden;
@@ -234,7 +270,21 @@ body {
 .discord-widget-wrap img { width: 100%; border-radius: 10px; margin: 20px 0; max-width: 350px; }
 .copy-area { display: flex; gap: 10px; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 8px; margin: 0 auto 25px; max-width: 350px; }
 .copy-area input { background: transparent; border: none; color: var(--text-muted); flex: 1; text-align: center; outline: none; }
-#copy-btn { background: var(--glass-border); color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; }
+
+#copy-btn {
+    background: var(--glass-border);
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#copy-btn:hover {
+    background: var(--primary);
+    box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
+}
 
 .social-row { display: flex; justify-content: center; gap: 15px; }
 .social-btn {
