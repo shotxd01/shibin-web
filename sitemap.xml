@@ -1,78 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-    <!-- Main Page -->
-    <url>
-        <loc>https://shibin.shotdevs.live/</loc>
-        <lastmod>2025-10-10</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-
-    <!-- About Section -->
-    <url>
-        <loc>https://shibin.shotdevs.live/#about</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Roles Section -->
-    <url>
-        <loc>https://shibin.shotdevs.live/#roles</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Pixel Bot Section -->
-    <url>
-        <loc>https://shibin.shotdevs.live/#pixelbot</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Skills Section -->
-    <url>
-        <loc>https://shibin.shotdevs.live/#skills</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Links Section -->
-    <url>
-        <loc>https://shibin.shotdevs.live/#links</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <!-- Contact Section -->
-    <url>
-        <loc>https://shibin.shotdevs.live/#contact</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- External Links (Socials & Servers) -->
-    <url>
-        <loc>https://discord.com/users/1338869759441375254</loc>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://discord.gg/T55TGSa9ha</loc>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://wa.me/8129529846</loc>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://www.instagram.com/shibn_hussn?igsh=MXYwZW4zb2gwbHYwcQ==</loc>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>mailto:shibinsoju49@gmail.com</loc>
-        <priority>0.3</priority>
-    </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://shibin.shotdevs.live/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
