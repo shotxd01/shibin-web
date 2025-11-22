@@ -60,30 +60,46 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
 
-    /* --- 3. Copy to Clipboard --- */
+    /* --- 3. Copy to Clipboard (with glow + “Copied!”) --- */
     const copyBtn = document.getElementById('copy-btn');
     const discordInput = document.getElementById('discord-user');
 
-    if(copyBtn && discordInput) {
+    if (copyBtn && discordInput) {
         copyBtn.addEventListener('click', () => {
-            discordInput.select();
-            navigator.clipboard.writeText(discordInput.value).then(() => {
-                const originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
-                copyBtn.style.background = '#47a248'; // Green success color
-                
+            const text = discordInput.value;
+
+            const applyCopiedUI = () => {
+                const wrapper = copyBtn.closest('.copy-area');
+
+                if (wrapper) wrapper.classList.add('copied');
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+
                 setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
-                    copyBtn.style.background = ''; // Reset color
+                    if (wrapper) wrapper.classList.remove('copied');
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
                 }, 2000);
-            });
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text)
+                    .then(applyCopiedUI)
+                    .catch(applyCopiedUI); // still show success UI even if blocked
+            } else {
+                // Fallback for older browsers
+                discordInput.select();
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                applyCopiedUI();
+            }
         });
     }
 
     /* --- 4. Back to Top Button --- */
     const backToTop = document.getElementById('back-to-top');
     
-    if(backToTop) {
+    if (backToTop) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
