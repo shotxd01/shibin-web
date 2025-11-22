@@ -1,68 +1,78 @@
-# Shibinsoju - Personal Portfolio
+# ⚡ Shibinsoju Portfolio
 
-![Portfolio Hero Section](https://i.imgur.com/8Qc7GvK.png)
+![Project Status](https://img.shields.io/badge/Status-Live-green?style=for-the-badge)
+![Tech Stack](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-blue?style=for-the-badge)
 
-Welcome to the official repository for my personal portfolio website. This project is a modern, responsive single-page site designed to showcase my skills, projects, and my role as the founder of **ShotDevs**.
+Welcome to my personal developer portfolio. This site showcases my work as the **Founder of ShotDevs**, my Discord bots, and my community roles. It features a modern "Dark Mode" aesthetic with neon glow effects and fully responsive design.
 
-**🚀 Live Demo:** [**shibin.shotdevs.live**](https://shibin.shotdevs.live/)
+## 🔗 Live Demo
+**[Visit Portfolio](https://shibinsoju.github.io)** *(Or your custom domain: https://rizx.shotdevs.live)*
 
-***
+---
 
-## Features
+## ✨ Key Features
 
--   **✨ Modern & Sleek Design:** A visually appealing dark theme with gradient accents and smooth animations.
--   **📱 Fully Responsive:** The layout seamlessly adapts to all devices, from large desktop screens to mobile phones.
--   **🎬 Dynamic Video Background:** An engaging video background with a semi-transparent overlay to ensure text is readable.
--   ** Interactive Sections:** Dedicated sections for:
-    -   **About Me:** A brief introduction.
-    -   **ShotDevs Startup:** Details about my developer community and services.
-    -   **Pixel Music Bot:** Showcasing my featured Discord bot project.
-    -   **Roles & Skills:** Highlighting my capabilities and community involvement.
-    -   **Contact:** Direct links and a live Discord status widget.
--   **💨 Smooth Scroll Animations:** Content cards elegantly fade in as you scroll down the page.
--   **🎨 Custom CSS Variables:** Easy-to-manage theme and colors defined in the CSS `:root`.
--   ** hamburger Menu:** A full-screen, animated mobile menu with icons for easy navigation on smaller devices.
+* **🎨 Modern UI/UX:** Dark theme with "ShotDevs" Pink & Cyan neon accents.
+* **📱 Fully Responsive:** Optimized for Mobile, Tablet, and Desktop.
+* **🔄 Infinite Tech Scroll:** Smooth animation showcasing my skills (Node.js, MongoDB, etc.).
+* **✨ Interactive Cards:** Neon glow effects on hover for community links.
+* **🤖 Discord Integration:** Live status widget and "Copy Username" functionality.
+* **🏎️ Performance:** Lightweight, pure HTML/CSS/JS (No heavy frameworks).
 
-***
+---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-This is a pure front-end project built with core web technologies:
+| Technology | Usage |
+| :--- | :--- |
+| **HTML5** | Semantic structure and layout |
+| **CSS3** | Animations, Flexbox/Grid, Responsive Design |
+| **JavaScript** | Mobile Menu, Scroll Reveal API, Copy-to-Clipboard |
+| **Font Awesome** | Icons for social links and UI elements |
+| **Google Fonts** | 'Outfit' and 'Lexend' for typography |
 
--   **HTML5:** For the structure and content of the website.
--   **CSS3:** For all styling, including Flexbox, Grid, custom properties, and animations.
--   **JavaScript:** For interactivity, such as the mobile menu toggle, sticky navbar, and scroll-triggered animations.
--   **Font Awesome:** For the high-quality icons used in the mobile menu.
+---
 
-***
+## 🚀 How to Run Locally
 
-## Getting Started
-
-This is a static website, so no complex setup is required.
+Since this is a static site, you don't need to install any complex dependencies.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/SHIBINSOJU/Your-Portfolio-Repo-Name.git](https://github.com/SHIBINSOJU/Your-Portfolio-Repo-Name.git)
+    git clone [https://github.com/shibinsoju/shibin-web.git](https://github.com/shibinsoju/shibin-web.git)
     ```
-2.  **Navigate to the project directory:**
+2.  **Navigate to the folder:**
     ```bash
-    cd Your-Portfolio-Repo-Name
+    cd shibin-web
     ```
-3.  **Open the file:**
-    Simply open the `index.html` file in your favorite web browser to view the site locally.
+3.  **Open `index.html`:**
+    Simply double-click the `index.html` file to open it in your browser.
 
-***
+---
 
-## Contact
+## 📂 Project Structure
 
-Let's connect!
+```text
+shibin-web/
+├── 📄 index.html      # Main structure
+├── 📄 style.css       # Styling and Animations
+├── 📄 script.js       # Interactive logic
+├── 🖼️ favicon.png     # Browser Icon
+└── 📄 README.md       # Documentation
 
--   **💬 Discord:** `shibinsoju`
--   **✉️ Email:** `shibinsoju49@gmail.com`
--   **📱 Instagram:** [@shibn\_hussn](https://www.instagram.com/shibn_hussn)
+👨‍💻 Author
+Shibin Hussain MK (Shibinsoju)
+ * Founder: ShotDevs
+ * Discord: shibinsoju
+ * Instagram: @shibn_hussn
+⭐ Support
+If you like this portfolio, please give this repository a Star! 🌟
 
-***
+### How to add this to GitHub:
+1.  Go to your repository on GitHub.
+2.  Click **"Add file"** > **"Create new file"**.
+3.  Name the file `README.md`.
+4.  Paste the code above.
+5.  Click **Commit changes**.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This makes your GitHub repo look much more professional to anyone visiting it!
