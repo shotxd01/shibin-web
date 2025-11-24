@@ -200,19 +200,38 @@ body {
 
 .about-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); }
 
-/* --- ROLES STYLES (COMPACT CARDS) --- */
+/* --- ROLES – CLEAN COMPACT DESIGN --- */
 .roles-grid {
+    display: flex;
+    flex-direction: column;
     gap: 18px;
 }
 
+/* reuse .role-card base styles, but tweak for compact layout */
 .role-card-compact {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
-    text-align: left;
     padding: 18px 20px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
 }
 
+/* subtle top gradient accent */
+.role-card-compact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    opacity: 0.6;
+}
+
+/* icon bubble */
 .role-icon-circle {
     width: 42px;
     height: 42px;
@@ -221,24 +240,39 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    background: rgba(255,255,255,0.04);
+    background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.2), transparent 55%);
     border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 0 18px rgba(0,0,0,0.7);
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 
-/* individual colors */
-.role-founder  { color: #E6007A; }
-.role-admin    { color: #00BFFF; }
-.role-mod      { color: #a855f7; }
+/* individual role colors */
+.role-founder { color: #E6007A; }
+.role-admin   { color: #00BFFF; }
+.role-mod     { color: #a855f7; }
 
+/* text block */
 .role-text .role-label {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 650;
+    font-size: 1.02rem;
+    margin-bottom: 2px;
 }
 
 .role-text .role-org {
     font-size: 0.9rem;
+    color: var(--secondary);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.role-text .role-desc {
+    font-size: 0.9rem;
     color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* little lift on hover (desktop mostly) */
+.role-card-compact:hover {
+    transform: translateY(-4px);
 }
 
 /* --- SHOTDEVS CARD --- */
