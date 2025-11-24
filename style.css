@@ -1,4 +1,4 @@
-/* --- 1. VARIABLES & RESET --- */
+/* --- VARIABLES & RESET --- */
 :root {
     --bg-dark: #050505;
     --bg-panel: #121212;
@@ -215,7 +215,7 @@ body {
 }
 @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* --- MUSIC BOT PULSE --- */
+/* --- MUSIC BOT PULSE & BADGES --- */
 .music-pulse-bg {
     background: radial-gradient(circle at center, rgba(121, 40, 202, 0.2) 0%, rgba(5,6,7,0) 70%);
     border: 1px solid rgba(121, 40, 202, 0.3);
@@ -230,6 +230,21 @@ body {
 @keyframes pulse { 0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); } 50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); } 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); } }
 .bot-content { display: flex; align-items: center; gap: 30px; position: relative; z-index: 2; }
 .bot-img { width: 100px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 191, 255, 0.3); }
+
+/* NEW: Dev Badge Style */
+.badge-dev {
+    background: #facc15;
+    color: #000;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    vertical-align: middle;
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+}
 
 /* --- NEON COMMUNITY LINKS --- */
 .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
@@ -258,7 +273,7 @@ body {
 
 .server-icon { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); transition: 0.3s; }
 
-/* --- CONTACT SECTION & ENHANCED COPY BAR --- */
+/* --- CONTACT SECTION --- */
 .contact-box { text-align: center; max-width: 600px; margin: 0 auto; }
 .discord-widget-wrap img { width: 100%; border-radius: 10px; margin: 20px 0; max-width: 350px; }
 .contact-cta { margin: 15px 0 25px; font-size: 1rem; color: var(--text-muted); }
@@ -330,4 +345,5 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     .card-actions { justify-content: center; }
     .links-grid { grid-template-columns: 1fr 1fr; }
     .tech-scroller { mask-image: none; -webkit-mask-image: none; }
-}
+    }
+       
