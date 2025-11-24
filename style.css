@@ -165,7 +165,7 @@ body {
 }
 .about-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); }
 
-/* --- SHOTDEVS CARD (Circular Logo & Float) --- */
+/* --- SHOTDEVS CARD --- */
 .featured-card {
     background: linear-gradient(160deg, rgba(20, 20, 20, 0.9), rgba(5, 5, 5, 1));
     border: 1px solid rgba(230, 0, 122, 0.3);
@@ -187,7 +187,7 @@ body {
 .feature-list li { display: flex; align-items: center; gap: 10px; color: var(--text-muted); }
 .feature-list i { color: var(--secondary); }
 
-/* --- ROLES & SERVICES GRID --- */
+/* --- GRID LAYOUT (Cards) --- */
 .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
 .role-card { text-align: center; transition: 0.3s; }
 .role-card.glow-hover:hover { 
@@ -231,18 +231,10 @@ body {
 .bot-content { display: flex; align-items: center; gap: 30px; position: relative; z-index: 2; }
 .bot-img { width: 100px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 191, 255, 0.3); }
 
-/* NEW: Dev Badge Style */
 .badge-dev {
-    background: #facc15;
-    color: #000;
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    vertical-align: middle;
+    background: #facc15; color: #000; font-size: 0.75rem;
+    padding: 4px 10px; border-radius: 12px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 6px; vertical-align: middle;
     box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
 }
 
@@ -273,13 +265,12 @@ body {
 
 .server-icon { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); transition: 0.3s; }
 
-/* --- CONTACT SECTION --- */
+/* --- CONTACT & COPY BAR --- */
 .contact-box { text-align: center; max-width: 600px; margin: 0 auto; }
 .discord-widget-wrap img { width: 100%; border-radius: 10px; margin: 20px 0; max-width: 350px; }
 .contact-cta { margin: 15px 0 25px; font-size: 1rem; color: var(--text-muted); }
 .contact-cta span { color: var(--secondary); font-weight: 600; text-shadow: 0 0 10px rgba(0, 191, 255, 0.4); }
 
-/* Enhanced Copy Bar Styles */
 .copy-area {
     display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px;
     max-width: 360px; margin: 10px auto 25px;
@@ -300,7 +291,6 @@ body {
 #copy-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 0 20px rgba(0,191,255,0.6); }
 #copy-btn:active { transform: scale(0.96); }
 
-/* Copied Animation State */
 .copy-area.copied {
     box-shadow: 0 0 25px rgba(0, 191, 255, 0.6), inset 0 0 10px rgba(0,0,0,0.9);
     border-color: rgba(0, 191, 255, 0.7);
@@ -312,7 +302,6 @@ body {
 }
 @keyframes copied-pop { 0% { transform: scale(1); } 30% { transform: scale(1.08); } 100% { transform: scale(1); } }
 
-/* Social Buttons */
 .social-row { display: flex; justify-content: center; gap: 15px; }
 .social-btn {
     width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -345,5 +334,4 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     .card-actions { justify-content: center; }
     .links-grid { grid-template-columns: 1fr 1fr; }
     .tech-scroller { mask-image: none; -webkit-mask-image: none; }
-    }
-                  
+                                                                                                                                                              }
