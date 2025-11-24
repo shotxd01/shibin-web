@@ -10,6 +10,9 @@
     --glass-border: rgba(255, 255, 255, 0.08);
     --font-main: 'Outfit', sans-serif;
     --font-code: 'Lexend', sans-serif;
+
+    --radius-card: 20px;
+    --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.65);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,6 +24,12 @@ body {
     font-family: var(--font-main);
     overflow-x: hidden;
     line-height: 1.6;
+}
+
+/* make anchored sections not hide under navbar */
+.section-spacer {
+    padding: 80px 0;
+    scroll-margin-top: 120px;
 }
 
 /* --- HELPER CLASSES --- */
@@ -115,6 +124,11 @@ body {
     box-shadow: 0 0 40px rgba(230, 0, 122, 0.4);
     animation: morph 6s ease-in-out infinite;
 }
+@keyframes morph {
+    0%,100% { border-radius: 50%; }
+    50% { border-radius: 46%; }
+}
+
 .status-badge {
     position: absolute; bottom: 10px; right: 0;
     background: rgba(0,0,0,0.8); border: 1px solid var(--glass-border);
@@ -141,7 +155,8 @@ body {
 /* --- BUTTONS --- */
 .btn {
     padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer;
 }
 .btn-primary { background: var(--primary); color: white; }
 .btn-secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid var(--glass-border); }
@@ -150,7 +165,6 @@ body {
 .glow-effect:hover { box-shadow: 0 0 25px rgba(230, 0, 122, 0.6); }
 
 /* --- SECTIONS & CARDS --- */
-.section-spacer { padding: 80px 0; }
 .section-heading { text-align: center; font-size: 2rem; margin-bottom: 50px; position: relative; }
 
 /* Gradient Underline */
@@ -160,9 +174,26 @@ body {
 }
 
 .glass-card, .featured-card, .role-card {
-    background: var(--bg-panel); border: 1px solid var(--glass-border);
-    border-radius: 20px; padding: 30px; position: relative; overflow: hidden;
+    background: var(--bg-panel); 
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-card);
+    padding: 30px; 
+    position: relative; 
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
+
+/* subtle hover for all main cards */
+.glass-card:hover,
+.featured-card:hover,
+.role-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.85);
+    border-color: rgba(0,191,255,0.4);
+    background: radial-gradient(circle at top, rgba(255,255,255,0.02), #111111 60%);
+}
+
 .about-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); }
 
 /* --- SHOTDEVS CARD --- */
@@ -189,7 +220,7 @@ body {
 
 /* --- GRID LAYOUT (Cards) --- */
 .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.role-card { text-align: center; transition: 0.3s; }
+.role-card { text-align: center; }
 .role-card.glow-hover:hover { 
     border-color: var(--secondary); 
     box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
@@ -220,6 +251,7 @@ body {
     background: radial-gradient(circle at center, rgba(121, 40, 202, 0.2) 0%, rgba(5,6,7,0) 70%);
     border: 1px solid rgba(121, 40, 202, 0.3);
     position: relative; overflow: hidden;
+    border-radius: var(--radius-card);
 }
 .music-pulse-bg::before {
     content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -334,4 +366,9 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     .card-actions { justify-content: center; }
     .links-grid { grid-template-columns: 1fr 1fr; }
     .tech-scroller { mask-image: none; -webkit-mask-image: none; }
-                                                                                                                                                              }
+
+    #back-to-top {
+        bottom: 24px;
+        right: 20px;
+    }
+    }
