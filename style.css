@@ -215,7 +215,7 @@ body {
 .about-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); }
 
 /* ================================
-   ROLES SECTION (FINAL DESIGN)
+   ROLES SECTION
 ================================ */
 
 .roles-list {
@@ -459,28 +459,33 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         bottom: 24px;
         right: 20px;
     }
-    }
-/* Inner card headings (About, ShotDevs, Let's Connect) */
-.section-heading-inner {
-    text-align: center;
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    position: relative;
 }
 
-/* Gradient underline */
+/* --- INNER CARD HEADINGS (Updated) --- */
+/* This handles ShotDevs and Contact Me inner titles */
+
+.section-heading-inner {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: block;
+}
+
+/* The Gradient Underline - Matches main sections */
 .section-heading-inner::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 2px;
-    margin: 10px auto 0;
+    width: 80px;
+    height: 3px;
+    margin: 12px auto 0;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
-    opacity: 0.8;
+    opacity: 1;
     border-radius: 999px;
+    box-shadow: 0 0 10px rgba(230,0,122,0.6);
 }
 
-/* Slightly tighter for contact box */
+/* Minor tweak for contact box spacing */
 .contact-box .section-heading-inner {
     margin-bottom: 16px;
 }
