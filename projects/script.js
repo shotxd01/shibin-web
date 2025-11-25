@@ -3,18 +3,18 @@
 const API_URL = "https://shotdevs.live/api/v1/stat";
 
 async function loadDiscordStats() {
-    const statusLabel   = document.getElementById("discord-status");
-    const guildLabel    = document.getElementById("discord-guild");
-    const membersLabel  = document.getElementById("discord-members");
-    const channelsLabel = document.getElementById("discord-channels");
-    const updatedLabel  = document.getElementById("last-updated");
-    const overallBadge  = document.getElementById("overall-status");
+    const guildLabel    = document.getElementById("guildName");
+    const membersLabel  = document.getElementById("members");
+    const channelsLabel = document.getElementById("channels");
+    const statusLabel   = document.getElementById("status");
+    const updatedLabel  = document.getElementById("lastUpdated");
+    const statusNote    = document.getElementById("statusNote");
 
-    // Safety: if page IDs don’t exist, just stop
-    if (!statusLabel) return;
+    // If page doesn't have these, do nothing
+    if (!guildLabel) return;
 
     try {
-        statusLabel.textContent = "Loading…";
+        statusNote.textContent = "Fetching latest stats…";
 
         const res = await fetch(API_URL, {
             method: "GET",
@@ -27,7 +27,7 @@ async function loadDiscordStats() {
 
         const data = await res.json();
 
-        // ----- pull ONLY discord info -----
+        // Only care about Discord
         const discord = data?.services?.discord;
         const guild   = discord?.guild_info;
 
@@ -35,44 +35,29 @@ async function loadDiscordStats() {
             throw new Error("Discord data missing in API response");
         }
 
-        // Status text
-        statusLabel.textContent = discord.status === "operational"
-            ? "Operational"
-            : discord.status.charAt(0).toUpperCase() + discord.status.slice(1);
+        guildLabel.textContent    = guild.name || "Unknown";
+        membersLabel.textContent  = guild.member_count ?? "--";
+        channelsLabel.textContent = guild.channel_count ?? "--";
 
-        // Badge at the top (optional – if you added that element)
-        if (overallBadge) {
-            overallBadge.textContent = statusLabel.textContent;
-            overallBadge.classList.remove("badge-error", "badge-ok");
+        const statusText = discord.status || "unknown";
+        statusLabel.textContent = statusText.toUpperCase();
 
-            if (discord.status === "operational") {
-                overallBadge.classList.add("badge-ok");
-            } else {
-                overallBadge.classList.add("badge-error");
-            }
-        }
-
-        // Guild name / members / channels
-        if (guildLabel)    guildLabel.textContent    = guild.name || "Unknown";
-        if (membersLabel)  membersLabel.textContent  = guild.member_count ?? "--";
-        if (channelsLabel) channelsLabel.textContent = guild.channel_count ?? "--";
-
-        // Last updated
         if (updatedLabel && data.timestamp) {
             const date = new Date(data.timestamp);
-            updatedLabel.textContent = date.toLocaleString();
+            updatedLabel.textContent = "Last updated: " + date.toLocaleString();
         }
+
+        statusNote.textContent = discord.message || "Discord connection OK";
+
     } catch (err) {
         console.error("Discord stats error:", err);
 
-        // Friendly message for users
-        if (statusLabel) {
-            statusLabel.textContent = "Could not load Discord stats right now.";
-        }
-        if (guildLabel)    guildLabel.textContent    = "--";
-        if (membersLabel)  membersLabel.textContent  = "--";
-        if (channelsLabel) channelsLabel.textContent = "--";
-        if (updatedLabel)  updatedLabel.textContent  = "--";
+        statusLabel.textContent   = "ERROR";
+        guildLabel.textContent    = "ShotDevs Discord";
+        membersLabel.textContent  = "--";
+        channelsLabel.textContent = "--";
+        updatedLabel.textContent  = "Last updated: --";
+        statusNote.textContent    = "Could not load Discord stats right now.";
     }
 }
 
