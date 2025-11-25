@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShotDevs Live Discord Stats</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>ShotDevs Live Server Stats</title>
+  <meta name="description" content="Live Discord server statistics for ShotDevs" />
+
+  <!-- AUTO REFRESH EVERY 30s -->
+  <meta http-equiv="refresh" content="30">
+
+  <!-- FONTS & ICONS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- IMPORTANT PATH FIX -->
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
@@ -18,50 +29,81 @@
 </div>
 
 <div class="main-container">
-  <section class="section-spacer reveal">
-    <div class="glass-card">
 
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;">
-        <h2 class="section-heading-inner">ShotDevs Live Discord Stats</h2>
-        <span class="badge-dev" style="background:#22c55e;">🟢 LIVE</span>
-      </div>
+  <section class="section-spacer reveal">
+    <div class="glass-card" style="max-width:900px;margin:auto;">
+
+      <h2 class="section-heading" style="text-align:center;">
+        <i class="fa-brands fa-discord"></i> ShotDevs Live Server Stats
+      </h2>
+
+      <p style="text-align:center;color:var(--text-muted);margin-bottom:25px;">
+        Real-time data from ShotDevs Discord Server <br>
+        <small>Auto refreshes every 30 seconds</small>
+      </p>
 
       <div class="grid-box">
 
         <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#00BFFF;"><i class="fa-solid fa-users"></i></div>
-          <h3 id="members">Loading...</h3>
+          <div class="role-icon" style="color:#00d0ff;">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h3 id="totalMembers">--</h3>
           <p>Total Members</p>
         </div>
 
         <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#22c55e;"><i class="fa-solid fa-circle-dot"></i></div>
-          <h3 id="online">Loading...</h3>
+          <div class="role-icon" style="color:#4ade80;">
+            <i class="fa-solid fa-signal"></i>
+          </div>
+          <h3 id="onlineMembers">--</h3>
           <p>Online Members</p>
         </div>
 
         <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#a855f7;"><i class="fa-solid fa-hashtag"></i></div>
-          <h3 id="channels">Loading...</h3>
-          <p>Channels</p>
-        </div>
-
-        <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#facc15;"><i class="fa-solid fa-rocket"></i></div>
-          <h3 id="boosts">Loading...</h3>
-          <p>Boost Level</p>
+          <div class="role-icon" style="color:#facc15;">
+            <i class="fa-solid fa-hashtag"></i>
+          </div>
+          <h3 id="channels">--</h3>
+          <p>Total Channels</p>
         </div>
 
       </div>
 
-      <p style="text-align:center;margin-top:20px;color:var(--text-muted);font-size:0.85rem;">
-        Auto refresh every 30 seconds • Powered by ShotDevs API
-      </p>
+      <div style="text-align:center;margin-top:30px;">
+        <a href="/" class="btn btn-secondary">
+          <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
 
     </div>
   </section>
+
 </div>
 
-<script src="../stats.js"></script>
+<!-- SCRIPT PATH FIX -->
+<script src="../script.js"></script>
+
+<script>
+  // CHANGE THIS to your live API endpoint if needed
+  const API_URL = "https://your-api-url-here/stats";
+
+  async function loadStats() {
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+
+      document.getElementById('totalMembers').textContent = data.totalMembers;
+      document.getElementById('onlineMembers').textContent = data.onlineMembers;
+      document.getElementById('channels').textContent = data.channels;
+    } catch (err) {
+      console.error("Stats load failed", err);
+    }
+  }
+
+  loadStats();
+  setInterval(loadStats, 30000);
+</script>
+
 </body>
 </html>
