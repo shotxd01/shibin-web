@@ -489,3 +489,65 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 .contact-box .section-heading-inner {
     margin-bottom: 16px;
 }
+
+/* === PROJECTS SECTION === */
+
+.project-card {
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.project-icon {
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+.project-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 10px 0 15px;
+}
+
+.project-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.project-features li {
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-features i {
+    color: var(--primary);
+}
+
+/* LIVE badge */
+.project-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    border-radius: 999px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.project-badge.live {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 0 15px rgba(34,197,94,0.6);
+    color: #fff;
+}
