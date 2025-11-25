@@ -36,6 +36,20 @@ body {
 .text-cyan { color: var(--secondary); text-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
 .text-pink { color: var(--primary); text-shadow: 0 0 10px rgba(230, 0, 122, 0.3); }
 .text-white { color: white; }
+.icon-cyan {
+    color: var(--secondary);
+    text-shadow: 0 0 8px rgba(0,191,255,0.4);
+}
+
+.icon-pink {
+    color: var(--primary);
+    text-shadow: 0 0 8px rgba(230,0,122,0.4);
+}
+
+.icon-purple {
+    color: #a855f7;
+    text-shadow: 0 0 8px rgba(168,85,247,0.4);
+}
 
 /* --- BACKGROUND ANIMATIONS --- */
 .bg-wrapper {
