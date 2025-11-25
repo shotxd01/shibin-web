@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShotDevs Live Discord Stats test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShotDevs Discord Live Stats</title>
 
-  <!-- Main site styles -->
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Use your main site styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
   <style>
     body {
       background: radial-gradient(circle at top, #2a0f1f, #07090f);
       color: #fff;
-      font-family: 'Outfit', sans-serif;
+      font-family: "Outfit", sans-serif;
     }
 
     .stats-wrapper {
@@ -24,17 +27,18 @@
 
     .stats-title {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       margin-bottom: 30px;
+      font-weight: 700;
     }
 
     .stats-card {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 25px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
     }
 
     .discord-header {
@@ -49,8 +53,8 @@
       color: #5865f2;
     }
 
-    .server-name {
-      font-size: 1.5rem;
+    .discord-header-text {
+      font-size: 1.6rem;
       font-weight: 600;
     }
 
@@ -58,10 +62,11 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 15px;
+      margin-top: 10px;
     }
 
     .stat-box {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 14px;
       padding: 18px;
       text-align: center;
@@ -80,53 +85,123 @@
 
     .last-update {
       text-align: center;
-      margin-top: 15px;
-      font-size: 0.8rem;
+      margin-top: 18px;
+      font-size: 0.85rem;
       color: #aaa;
     }
 
-    .status-pill {
+    .status-message {
       text-align: center;
-      margin-top: 10px;
+      margin-top: 6px;
       font-size: 0.9rem;
-      color: #ccc;
+      color: #999;
+    }
+
+    .error {
+      color: #ff4d6d;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
-
   <div class="stats-wrapper">
     <h1 class="stats-title">ShotDevs Discord Live Stats</h1>
 
-    <div class="stats-card" id="statsCard">
+    <div class="stats-card">
       <div class="discord-header">
         <i class="fa-brands fa-discord"></i>
-        <div class="server-name" id="guildName">Loading...</div>
+        <div id="discord-header-text" class="discord-header-text">Loading...</div>
       </div>
 
       <div class="stats-grid">
         <div class="stat-box">
-          <h3 id="members">--</h3>
+          <h3 id="members-count">--</h3>
           <span>Members</span>
         </div>
 
         <div class="stat-box">
-          <h3 id="channels">--</h3>
+          <h3 id="channels-count">--</h3>
           <span>Channels</span>
         </div>
 
         <div class="stat-box">
-          <h3 id="status">--</h3>
+          <h3 id="status-text">--</h3>
           <span>Discord Status</span>
         </div>
       </div>
 
-      <div class="last-update" id="lastUpdated">Last updated: --</div>
-      <div class="status-pill" id="statusNote">Fetching data from ShotDevs API…</div>
+      <div id="last-updated" class="last-update">Last updated: --</div>
+      <div id="status-message" class="status-message">
+        Fetching data from ShotDevs API…
+      </div>
     </div>
   </div>
 
-  <!-- External JS just for this page -->
-  <script src="projects/script.js"></script>
+  <script>
+    // Use the *correct* endpoint your screenshot showed
+    const API_URL = "https://shotdevs.live/api/v1/status/all";
+
+    async function loadDiscordStats() {
+      const headerText   = document.getElementById("discord-header-text");
+      const membersEl    = document.getElementById("members-count");
+      const channelsEl   = document.getElementById("channels-count");
+      const statusEl     = document.getElementById("status-text");
+      const lastUpdated  = document.getElementById("last-updated");
+      const statusMsgEl  = document.getElementById("status-message");
+
+      try {
+        headerText.textContent  = "Loading…";
+        statusMsgEl.textContent = "Fetching data from ShotDevs API…";
+
+        const res = await fetch(API_URL, { cache: "no-cache" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+
+        const data    = await res.json();
+        const discord = data?.services?.discord;
+        const guild   = discord?.guild_info;
+
+        if (!discord || !guild) {
+          throw new Error("Discord data missing in API response");
+        }
+
+        // Fill values
+        headerText.textContent = guild.name || "SHOT DEVS";
+
+        membersEl.textContent  = guild.member_count ?? "--";
+        channelsEl.textContent = guild.channel_count ?? "--";
+
+        const rawStatus = discord.status || "unknown";
+        statusEl.textContent =
+          rawStatus === "operational"
+            ? "Operational"
+            : rawStatus.charAt(0).toUpperCase() + rawStatus.slice(1);
+
+        if (data.timestamp) {
+          const dt = new Date(data.timestamp);
+          lastUpdated.textContent = "Last updated: " + dt.toLocaleString();
+        } else {
+          lastUpdated.textContent = "Last updated: --";
+        }
+
+        statusMsgEl.textContent = discord.message || "Stats loaded successfully.";
+      } catch (err) {
+        console.error("Discord stats error:", err);
+        headerText.textContent  = "Error";
+        headerText.classList.add("error");
+
+        membersEl.textContent   = "--";
+        channelsEl.textContent  = "--";
+        statusEl.textContent    = "--";
+        lastUpdated.textContent = "Last updated: --";
+        statusMsgEl.textContent = "Could not load Discord stats right now.";
+        statusMsgEl.classList.add("error");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadDiscordStats();
+      setInterval(loadDiscordStats, 30000);
+    });
+  </script>
 </body>
 </html>
