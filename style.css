@@ -460,3 +460,18 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         right: 20px;
     }
     }
+/* ShotDevs icon colors */
+.featured-card .sd-cyan {
+    color: var(--secondary) !important;
+    text-shadow: 0 0 10px rgba(0,191,255,0.5);
+}
+
+.featured-card .sd-pink {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(230,0,122,0.5);
+}
+
+.featured-card .sd-purple {
+    color: #a855f7 !important;
+    text-shadow: 0 0 10px rgba(168,85,247,0.5);
+}
