@@ -16,6 +16,7 @@
       background: radial-gradient(circle at top, #2a0f1f, #07090f);
       color: #fff;
       font-family: "Outfit", sans-serif;
+      min-height: 100vh;
     }
 
     .stats-wrapper {
@@ -94,10 +95,12 @@
       margin-top: 6px;
       font-size: 0.9rem;
       color: #999;
+      min-height: 20px; /* Prevents jumping */
     }
 
+    /* Error States */
     .error {
-      color: #ff4d6d;
+      color: #ff4d6d !important;
       font-weight: 600;
     }
   </style>
@@ -115,104 +118,27 @@
       <div class="stats-grid">
         <div class="stat-box">
           <h3 id="members-count">--</h3>
-          <span>Members Online</span>
+          <span>Members</span>
         </div>
 
         <div class="stat-box">
           <h3 id="channels-count">--</h3>
-          <span>Active Channels</span>
+          <span>Channels</span>
         </div>
 
         <div class="stat-box">
           <h3 id="status-text">--</h3>
-          <span>Server Status</span>
+          <span>Status</span>
         </div>
       </div>
 
       <div id="last-updated" class="last-update">Last updated: --</div>
       <div id="status-message" class="status-message">
-        Connecting to Discord Widget...
+        Initializing...
       </div>
     </div>
   </div>
 
-  <script>
-    // YOUR GUILD ID
-    const GUILD_ID = "1105742461566988328"; 
-    const API_URL = `https://discord.com/api/guilds/${GUILD_ID}/widget.json`;
-
-    async function loadDiscordStats() {
-      const headerText   = document.getElementById("discord-header-text");
-      const membersEl    = document.getElementById("members-count");
-      const channelsEl   = document.getElementById("channels-count");
-      const statusEl     = document.getElementById("status-text");
-      const lastUpdated  = document.getElementById("last-updated");
-      const statusMsgEl  = document.getElementById("status-message");
-
-      try {
-        headerText.textContent  = "Loading…";
-        statusMsgEl.textContent = "Connecting to Discord Widget...";
-
-        // Fetch data from Discord's public widget API
-        const res = await fetch(API_URL);
-        
-        // Handle common widget errors
-        if (res.status === 403) {
-            throw new Error("Widget Disabled. Go to Server Settings > Widget > Enable.");
-        }
-        if (!res.ok) {
-            throw new Error(`Discord API Error: ${res.status}`);
-        }
-
-        const data = await res.json();
-
-        // 1. Update Server Name
-        headerText.textContent = data.name || "Discord Server";
-
-        // 2. Update Members (Widget returns 'presence_count' which is usually ONLINE members)
-        // Note: The widget API does not share total member count for privacy, only online.
-        membersEl.textContent  = data.presence_count ?? "--";
-
-        // 3. Update Channels (Count the channels array provided by the widget)
-        const channelCount = data.channels ? data.channels.length : 0;
-        channelsEl.textContent = channelCount > 0 ? channelCount : "--";
-
-        // 4. Update Status (If we got data, the server is online)
-        statusEl.textContent = "Operational";
-        statusEl.style.color = "#00ff88"; // Optional: make it green
-
-        // 5. Update Time
-        const dt = new Date();
-        lastUpdated.textContent = "Last updated: " + dt.toLocaleString();
-        
-        statusMsgEl.textContent = "Live data via Discord Widget";
-        
-        // Clear errors
-        headerText.classList.remove("error");
-        statusMsgEl.classList.remove("error");
-
-      } catch (err) {
-        console.error("Widget Error:", err);
-        
-        headerText.textContent  = "Error";
-        headerText.classList.add("error");
-        
-        membersEl.textContent   = "--";
-        channelsEl.textContent  = "--";
-        statusEl.textContent    = "Offline";
-        statusEl.style.color    = "#ff4d6d"; 
-
-        lastUpdated.textContent = "Last updated: --";
-        statusMsgEl.textContent = err.message; // Show specific error to help you debug
-        statusMsgEl.classList.add("error");
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      loadDiscordStats();
-      // Refresh every 30 seconds
-      setInterval(loadDiscordStats, 30000);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
