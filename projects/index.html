@@ -1,109 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShotDevs Live Server Stats</title>
-  <meta name="description" content="Live Discord server statistics for ShotDevs" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShotDevs · Live Status</title>
+    <meta name="description" content="Live status dashboard for the ShotDevs platform and Discord server.">
 
-  <!-- AUTO REFRESH EVERY 30s -->
-  <meta http-equiv="refresh" content="30">
+    <!-- same fonts + icons as main site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-  <!-- FONTS & ICONS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <!-- main theme css (go up one folder) -->
+    <link rel="stylesheet" href="../style.css">
 
-  <!-- IMPORTANT PATH FIX -->
-  <link rel="stylesheet" href="../style.css">
+    <!-- extra styles just for status page -->
+    <style>
+        .status-header {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+            margin-bottom:15px;
+        }
+        .status-pill {
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:6px 14px;
+            border-radius:999px;
+            font-size:0.8rem;
+            font-weight:600;
+            letter-spacing:0.03em;
+            text-transform:uppercase;
+        }
+        .status-pill--loading {
+            background:rgba(255,255,255,0.05);
+            color:#a1a1a1;
+        }
+        .status-ok {
+            background:rgba(34,197,94,0.12);
+            color:#4ade80;
+        }
+        .status-degraded {
+            background:rgba(234,179,8,0.12);
+            color:#facc15;
+        }
+        .status-error {
+            background:rgba(248,113,113,0.15);
+            color:#f87171;
+        }
+        .status-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+            gap:20px;
+            margin-top:25px;
+        }
+        .service-card h3 {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:6px;
+        }
+        .service-meta {
+            font-size:0.85rem;
+            color:var(--text-muted);
+            margin-top:6px;
+        }
+        .service-meta span {
+            display:inline-block;
+            margin-right:12px;
+        }
+        .status-updated {
+            font-size:0.8rem;
+            color:var(--text-muted);
+            margin-top:8px;
+        }
+        .back-link {
+            font-size:0.9rem;
+            color:var(--text-muted);
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+        }
+        .back-link:hover {
+            color:var(--secondary);
+        }
+        .projects-hero-note {
+            font-size:0.95rem;
+            color:var(--text-muted);
+            margin-top:8px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="bg-wrapper" aria-hidden="true">
-  <div class="auras">
-    <div class="aura aura-1"></div>
-    <div class="aura aura-2"></div>
-  </div>
-  <div class="grid-overlay"></div>
-</div>
-
-<div class="main-container">
-
-  <section class="section-spacer reveal">
-    <div class="glass-card" style="max-width:900px;margin:auto;">
-
-      <h2 class="section-heading" style="text-align:center;">
-        <i class="fa-brands fa-discord"></i> ShotDevs Live Server Stats
-      </h2>
-
-      <p style="text-align:center;color:var(--text-muted);margin-bottom:25px;">
-        Real-time data from ShotDevs Discord Server <br>
-        <small>Auto refreshes every 30 seconds</small>
-      </p>
-
-      <div class="grid-box">
-
-        <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#00d0ff;">
-            <i class="fa-solid fa-users"></i>
-          </div>
-          <h3 id="totalMembers">--</h3>
-          <p>Total Members</p>
+    <!-- background -->
+    <div class="bg-wrapper" aria-hidden="true">
+        <div class="auras">
+            <div class="aura aura-1"></div>
+            <div class="aura aura-2"></div>
         </div>
-
-        <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#4ade80;">
-            <i class="fa-solid fa-signal"></i>
-          </div>
-          <h3 id="onlineMembers">--</h3>
-          <p>Online Members</p>
-        </div>
-
-        <div class="role-card glow-hover">
-          <div class="role-icon" style="color:#facc15;">
-            <i class="fa-solid fa-hashtag"></i>
-          </div>
-          <h3 id="channels">--</h3>
-          <p>Total Channels</p>
-        </div>
-
-      </div>
-
-      <div style="text-align:center;margin-top:30px;">
-        <a href="/" class="btn btn-secondary">
-          <i class="fa-solid fa-arrow-left"></i> Back to Home
-        </a>
-      </div>
-
+        <div class="grid-overlay"></div>
     </div>
-  </section>
 
-</div>
+    <!-- navbar (simple) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html#home" class="nav-brand">
+                <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="ShotDevs logo">
+                <span>ShotDevs<span class="dot">.</span></span>
+            </a>
 
-<!-- SCRIPT PATH FIX -->
-<script src="../script.js"></script>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Portfolio</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
 
-<script>
-  // CHANGE THIS to your live API endpoint if needed
-  const API_URL = "https://your-api-url-here/stats";
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
 
-  async function loadStats() {
-    try {
-      const res = await fetch(API_URL);
-      const data = await res.json();
+    <!-- mobile overlay just links back to main page sections -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="mobile-nav-content">
+            <a href="../index.html#home" class="m-link">Portfolio</a>
+            <a href="../index.html#projects" class="m-link">Projects</a>
+            <a href="../index.html#contact" class="m-link">Contact</a>
+        </div>
+    </div>
 
-      document.getElementById('totalMembers').textContent = data.totalMembers;
-      document.getElementById('onlineMembers').textContent = data.onlineMembers;
-      document.getElementById('channels').textContent = data.channels;
-    } catch (err) {
-      console.error("Stats load failed", err);
-    }
-  }
+    <div class="main-container">
 
-  loadStats();
-  setInterval(loadStats, 30000);
-</script>
+        <main>
+            <section class="section-spacer reveal" id="status">
+                <div class="glass-card">
+                    <div class="status-header">
+                        <div>
+                            <h2 class="section-heading" style="margin-bottom:10px;">ShotDevs Live Status</h2>
+                            <p class="projects-hero-note">
+                                Real-time health of the <span class="text-cyan">ShotDevs</span> platform and Discord server.
+                            </p>
+                        </div>
+                        <a href="../index.html#projects" class="back-link">
+                            <i class="fa-solid fa-arrow-left"></i> Back to projects
+                        </a>
+                    </div>
 
+                    <div>
+                        <span id="overall-pill" class="status-pill status-pill--loading">
+                            <i class="fa-solid fa-circle-notch fa-spin"></i>
+                            <span id="overall-status-text">Loading…</span>
+                        </span>
+                        <p class="status-updated">
+                            Last updated: <span id="updated-at">--</span>
+                        </p>
+                        <p id="overall-message" style="margin-top:10px; color:var(--text-muted);">
+                            Fetching current stats from the ShotDevs API…
+                        </p>
+                    </div>
+
+                    <div class="status-grid" style="margin-top:25px;">
+
+                        <!-- Discord -->
+                        <div class="glass-card service-card">
+                            <h3><i class="fa-brands fa-discord"></i> Discord Server</h3>
+                            <p id="discord-message" style="color:var(--text-muted); font-size:0.9rem;">–</p>
+                            <div class="service-meta">
+                                <span>Guild: <strong id="guild-name">--</strong></span>
+                                <span>Members: <strong id="member-count">--</strong></span>
+                                <span>Channels: <strong id="channel-count">--</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Minecraft -->
+                        <div class="glass-card service-card">
+                            <h3><i class="fa-solid fa-cubes-stacked"></i> Minecraft</h3>
+                            <p id="minecraft-message" style="color:var(--text-muted); font-size:0.9rem;">–</p>
+                        </div>
+
+                        <!-- Database -->
+                        <div class="glass-card service-card">
+                            <h3><i class="fa-solid fa-database"></i> Database</h3>
+                            <p id="database-message" style="color:var(--text-muted); font-size:0.9rem;">–</p>
+                        </div>
+
+                        <!-- Cloudinary -->
+                        <div class="glass-card service-card">
+                            <h3><i class="fa-solid fa-cloud"></i> Cloudinary</h3>
+                            <p id="cloudinary-message" style="color:var(--text-muted); font-size:0.9rem;">–</p>
+                        </div>
+
+                        <!-- Media -->
+                        <div class="glass-card service-card">
+                            <h3><i class="fa-solid fa-photo-film"></i> Media</h3>
+                            <p id="media-message" style="color:var(--text-muted); font-size:0.9rem;">–</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Shibinsoju · Powered by <strong>ShotDevs API</strong>.</p>
+        </footer>
+    </div>
+
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- reuse your global JS for navbar / scroll / copy button -->
+    <script src="../script.js"></script>
+
+    <!-- status page logic -->
+    <script>
+        const API_URL = 'https://shotdevs.live/api/v1/status';
+
+        function setOverallStatus(status, message, timestamp) {
+            const pill = document.getElementById('overall-pill');
+            const textEl = document.getElementById('overall-status-text');
+            const msgEl = document.getElementById('overall-message');
+            const updatedEl = document.getElementById('updated-at');
+
+            const s = (status || 'unknown').toLowerCase();
+            pill.className = 'status-pill ' +
+                (s === 'operational' ? 'status-ok'
+                 : s === 'degraded' ? 'status-degraded'
+                 : 'status-error');
+
+            textEl.textContent = s.charAt(0).toUpperCase() + s.slice(1);
+            msgEl.textContent = message || '';
+            if (timestamp) {
+                updatedEl.textContent = new Date(timestamp).toLocaleString();
+            }
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        }
+
+        async function loadStatus() {
+            try {
+                const res = await fetch(API_URL);
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+
+                const services = data.services || {};
+                const overall = data.overall || {};
+
+                // overall
+                setOverallStatus(overall.status, overall.message, data.timestamp);
+
+                // discord
+                const discord = services.discord || {};
+                const guild = discord.guild_info || {};
+                setText('discord-message', discord.message || '—');
+                setText('guild-name', guild.name || 'SHOT DEVS');
+                setText('member-count', guild.member_count != null ? guild.member_count : '--');
+                setText('channel-count', guild.channel_count != null ? guild.channel_count : '--');
+
+                // minecraft
+                const mc = services.minecraft || {};
+                setText('minecraft-message', (mc.status || 'unknown') + ' – ' + (mc.message || ''));
+
+                // db
+                const db = services.database || {};
+                setText('database-message', (db.status || 'unknown') + ' – ' + (db.message || ''));
+
+                // cloudinary
+                const cd = services.cloudinary || {};
+                setText('cloudinary-message', (cd.status || 'unknown') + ' – ' + (cd.message || ''));
+
+                // media
+                const media = services.media || {};
+                setText('media-message', (media.status || 'unknown') + ' – ' + (media.message || ''));
+
+            } catch (err) {
+                console.error('Status load failed:', err);
+                setOverallStatus('error', 'Could not load stats right now. Please try again later.');
+            }
+        }
+
+        loadStatus();
+        setInterval(loadStatus, 30000); // refresh every 30s
+    </script>
 </body>
 </html>
