@@ -535,16 +535,6 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 }
 
 /* LIVE badge */
-.project-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 5px 12px;
-    font-size: 0.7rem;
-    border-radius: 999px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
 
 .project-badge.live {
     background: linear-gradient(135deg, #22c55e, #16a34a);
@@ -558,3 +548,133 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
   color: var(--primary);
   margin-top: 10px;
 }
+
+/* --- IMPROVED PROJECT CARD --- */
+
+/* Center alignment specific for this card */
+.project-card {
+    text-align: center;
+    position: relative;
+    padding-top: 50px; /* Space for the floating badge */
+    overflow: visible; /* Let badge float out */
+}
+
+/* The Icon Circle */
+.project-header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.project-icon-circle {
+    width: 60px;
+    height: 60px;
+    background: rgba(88, 101, 242, 0.1); /* Discord Blue tint */
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #5865f2;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.2);
+}
+
+.project-header-center h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Description */
+.project-desc-center {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    padding: 0 10px;
+}
+
+/* Colorful Features List */
+.project-features-center {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 30px auto;
+    display: inline-block;
+    text-align: left; /* Keep list text aligned left for readability */
+}
+
+.project-features-center li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.project-features-center li i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    filter: drop-shadow(0 0 5px currentColor); /* Makes the icons glow */
+}
+
+/* Button Centering */
+.project-actions-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Gradient Button Style */
+.btn-gradient {
+    background: linear-gradient(90deg, #E6007A, #00d0ff); /* Pink to Cyan */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(230, 0, 122, 0.4);
+}
+
+/* Improved Badge */
+.project-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+.pulsing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #00ff88;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+}
+
