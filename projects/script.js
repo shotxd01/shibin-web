@@ -1,6 +1,6 @@
 // projects/script.js
 
-const API_URL = "https://shotdevs.live/api/v1/stat";
+const API_URL = "https://shotdevs.live/api/v1/status/all";
 
 async function loadDiscordStats() {
     const guildLabel    = document.getElementById("guildName");
