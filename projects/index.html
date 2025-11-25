@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShotDevs Live Stats</title>
+  <title>ShotDevs Live Discord Stats</title>
 
+  <!-- Main site styles -->
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -84,10 +85,11 @@
       color: #aaa;
     }
 
-    .error {
+    .status-pill {
       text-align: center;
-      color: #ff4d6d;
-      font-weight: 600;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #ccc;
     }
   </style>
 </head>
@@ -115,51 +117,16 @@
 
         <div class="stat-box">
           <h3 id="status">--</h3>
-          <span>Status</span>
+          <span>Discord Status</span>
         </div>
       </div>
 
       <div class="last-update" id="lastUpdated">Last updated: --</div>
+      <div class="status-pill" id="statusNote">Fetching data from ShotDevs API…</div>
     </div>
   </div>
 
-<script>
-const API_URL = "https://shotdevs.live/api/v1/stat";
-
-async function loadDiscordStats() {
-  try {
-    const res = await fetch(API_URL);
-    const data = await res.json();
-
-    const discord = data.services.discord;
-
-    if (!discord || discord.status !== "operational") {
-      throw new Error("Discord data not available");
-    }
-
-    const guild = discord.guild_info;
-
-    document.getElementById("guildName").textContent = guild.name;
-    document.getElementById("members").textContent = guild.member_count;
-    document.getElementById("channels").textContent = guild.channel_count;
-    document.getElementById("status").textContent = discord.status.toUpperCase();
-
-    document.getElementById("lastUpdated").textContent =
-      "Last updated: " + new Date(data.timestamp).toLocaleTimeString();
-
-  } catch (err) {
-    document.getElementById("statsCard").innerHTML = `
-      <p class="error">Could not load Discord stats right now.</p>
-    `;
-  }
-}
-
-// Initial load
-loadDiscordStats();
-
-// Auto refresh every 30 seconds
-setInterval(loadDiscordStats, 30000);
-</script>
-
+  <!-- External JS just for this page -->
+  <script src="script.js"></script>
 </body>
 </html>
