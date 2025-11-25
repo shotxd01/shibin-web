@@ -460,18 +460,27 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         right: 20px;
     }
     }
-/* ShotDevs icon colors */
-.featured-card .sd-cyan {
-    color: var(--secondary) !important;
-    text-shadow: 0 0 10px rgba(0,191,255,0.5);
+/* Inner card headings (About, ShotDevs, Let's Connect) */
+.section-heading-inner {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-.featured-card .sd-pink {
-    color: var(--primary) !important;
-    text-shadow: 0 0 10px rgba(230,0,122,0.5);
+/* Gradient underline */
+.section-heading-inner::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    opacity: 0.8;
+    border-radius: 999px;
 }
 
-.featured-card .sd-purple {
-    color: #a855f7 !important;
-    text-shadow: 0 0 10px rgba(168,85,247,0.5);
+/* Slightly tighter for contact box */
+.contact-box .section-heading-inner {
+    margin-bottom: 16px;
 }
