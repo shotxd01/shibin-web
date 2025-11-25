@@ -3,7 +3,7 @@
 const API_URL = "https://shotdevs.live/api/v1/status/all";
 
 async function loadDiscordStats() {
-    // Select elements
+    // 1. Select all HTML elements
     const guildLabel    = document.getElementById("guildName");
     const membersLabel  = document.getElementById("members");
     const channelsLabel = document.getElementById("channels");
@@ -11,68 +11,81 @@ async function loadDiscordStats() {
     const updatedLabel  = document.getElementById("lastUpdated");
     const statusNote    = document.getElementById("statusNote");
 
-    // Helper to safely set text if element exists
+    // 2. Helper to safely update text (prevents crashes if ID is wrong)
     const setText = (element, text) => {
         if (element) element.textContent = text;
     };
 
-    // If the main label is missing, we assume the widget isn't on this page
+    // If we can't find the main element, stop (widget not on this page)
     if (!guildLabel) return;
 
     try {
-        setText(statusNote, "Fetching latest stats…");
+        setText(statusNote, "Fetching data...");
 
+        // 3. Fetch from API
         const res = await fetch(API_URL, {
             method: "GET",
-            cache: "no-cache", // Ensures we don't get stale data
+            // 'cors' mode is default, but ensuring the server allows it is key
+            mode: 'cors', 
+            cache: "no-cache"
         });
 
         if (!res.ok) {
-            throw new Error(`HTTP Error: ${res.status}`);
+            throw new Error(`Server returned HTTP ${res.status}`);
         }
 
         const data = await res.json();
         
-        // Debugging: View the actual API response in Console
-        console.log("API Response:", data); 
+        // --- DEBUGGING ---
+        // Open your browser Console (F12) to see this data structure
+        console.log("API Response Success:", data); 
 
-        // Extract Data
+        // 4. Validate Data Structure
+        // We look for data.services.discord.guild_info based on your structure
         const discord = data?.services?.discord;
         const guild   = discord?.guild_info;
 
         if (!discord || !guild) {
-            throw new Error("Discord data missing in API response");
+            throw new Error("JSON is valid, but 'discord' data is missing.");
         }
 
-        // Update DOM safely
-        setText(guildLabel, guild.name || "Unknown");
-        setText(membersLabel, guild.member_count ?? "--");
-        setText(channelsLabel, guild.channel_count ?? "--");
+        // 5. Update HTML
+        setText(guildLabel, guild.name || "Unknown Server");
+        setText(membersLabel, guild.member_count ?? "0");
+        setText(channelsLabel, guild.channel_count ?? "0");
 
-        const statusText = discord.status || "unknown";
+        // Handle status text
+        const statusText = discord.status || "Unknown";
         setText(statusLabel, statusText.toUpperCase());
 
-        if (data.timestamp) {
-            const date = new Date(data.timestamp);
-            setText(updatedLabel, "Last updated: " + date.toLocaleString());
+        // Handle status color (Optional visual flare)
+        if (statusLabel) {
+            statusLabel.style.color = (statusText === 'online') ? '#00ff88' : '#ffaa00';
         }
 
-        setText(statusNote, discord.message || "Discord connection OK");
+        // Handle timestamp
+        if (data.timestamp) {
+            const date = new Date(data.timestamp);
+            setText(updatedLabel, "Last updated: " + date.toLocaleTimeString());
+        }
+
+        setText(statusNote, discord.message || "System Operational");
 
     } catch (err) {
-        console.error("Discord stats error:", err);
+        // --- ERROR HANDLING ---
+        console.error("Fetch Failed:", err);
 
-        // Fallback UI
-        setText(statusLabel, "ERROR");
-        setText(guildLabel, "ShotDevs Discord"); // Or keep previous text
+        setText(statusLabel, "OFFLINE");
+        setText(guildLabel, "Connection Failed");
         setText(membersLabel, "--");
         setText(channelsLabel, "--");
-        setText(updatedLabel, "Last updated: --");
-        setText(statusNote, "Could not load Discord stats.");
+        
+        // Show the specific error in the note so you know WHY it failed
+        setText(statusNote, `Error: ${err.message}`);
     }
 }
 
-// Run once and then every 30s
+// Run on load, then refresh every 30 seconds
 document.addEventListener("DOMContentLoaded", () => {
     loadDiscordStats();
     setInterval(loadDiscordStats, 30000);
