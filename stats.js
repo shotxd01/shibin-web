@@ -1,15 +1,32 @@
+const API_URL = "http://localhost:3000/api/discord/stats"; 
+// 👉 Change this to your domain when hosted
+// Example: https://shotdevs.live/api/discord/stats
+
 async function loadStats() {
   try {
-    const res = await fetch('/api/discord/stats');
-    const data = await res.json();
+    const response = await fetch(API_URL);
 
-    document.getElementById('totalMembers').textContent = data.members;
-    document.getElementById('onlineMembers').textContent = data.online;
-    document.getElementById('totalChannels').textContent = data.channels;
-    document.getElementById('boostLevel').textContent = data.boosts;
+    if (!response.ok) {
+      throw new Error("API response failed");
+    }
 
-  } catch (err) {
-    console.error("Stats API error:", err);
+    const data = await response.json();
+
+    document.getElementById("members").textContent = data.members ?? "---";
+    document.getElementById("online").textContent = data.online ?? "---";
+    document.getElementById("channels").textContent = data.channels ?? "---";
+    document.getElementById("boosts").textContent = data.boosts ?? "---";
+
+    console.log("✅ Stats refreshed:", data);
+
+  } catch (error) {
+    console.error("❌ Failed to load Discord stats:", error);
+
+    // Fallback display if API fails
+    document.getElementById("members").textContent = "---";
+    document.getElementById("online").textContent = "---";
+    document.getElementById("channels").textContent = "---";
+    document.getElementById("boosts").textContent = "---";
   }
 }
 
