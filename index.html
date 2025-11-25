@@ -12,6 +12,139 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- NEW PROJECT CARD STYLES --- */
+        .project-card {
+            text-align: center;
+            position: relative;
+            padding-top: 50px;
+            overflow: visible;
+        }
+
+        /* Icon Circle */
+        .project-header-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .project-icon-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #5865f2;
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.2);
+        }
+
+        .project-header-center h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        /* Description */
+        .project-desc-center {
+            font-size: 0.95rem;
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+
+        /* Features List */
+        .project-features-center {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto 30px auto;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .project-features-center li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        .project-features-center li i {
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+            filter: drop-shadow(0 0 5px currentColor);
+        }
+
+        /* Center Button */
+        .project-actions-center {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        /* Gradient Button */
+        .btn-gradient {
+            background: linear-gradient(90deg, #E6007A, #00d0ff);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230, 0, 122, 0.4);
+        }
+
+        /* Live Badge */
+        .project-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+
+        .pulsing-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+    </style>
 </head>
 <body>
     
@@ -206,41 +339,50 @@
                     </div>
                 </div>
             </section>
-        <section id="projects" class="section-spacer reveal">
-    <h2 class="section-heading">Projects</h2>
 
-    <div class="grid-box">
+            <section id="projects" class="section-spacer reveal">
+                <h2 class="section-heading">Projects</h2>
 
-        <div class="glass-card project-card glow-hover">
+                <div class="grid-box">
 
-            <div class="project-badge live">LIVE</div>
+                    <div class="glass-card project-card glow-hover">
+                        
+                        <div class="project-badge live">
+                            <span class="pulsing-dot"></span> LIVE
+                        </div>
 
-            <div class="project-header">
-                <i class="fa-brands fa-discord project-icon"></i>
-                <h3>ShotDevs Live Server Stats</h3>
-            </div>
+                        <div class="project-header-center">
+                            <div class="project-icon-circle">
+                                <i class="fa-brands fa-discord"></i>
+                            </div>
+                            <h3>ShotDevs <span class="text-gradient">Stats</span></h3>
+                        </div>
 
-            <p class="project-desc">
-                Real-time dashboard powered by Discord API showing live server data such as
-                members, online users, channels and boost level.
-            </p>
+                        <p class="project-desc-center">
+                            A real-time dashboard powered by the Discord API. Watch your community grow with live data updates.
+                        </p>
 
-            <ul class="project-features">
-                <li><i class="fa-solid fa-users"></i> Live member count</li>
-                <li><i class="fa-solid fa-signal"></i> Online activity</li>
-                <li><i class="fa-solid fa-tower-broadcast"></i> Auto refresh every 30s</li>
-            </ul>
+                        <ul class="project-features-center">
+                            <li>
+                                <i class="fa-solid fa-users" style="color: #00d0ff;"></i> <span>Live Member Count</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-signal" style="color: #E6007A;"></i> <span>Online Activity</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-bolt" style="color: #a855f7;"></i> <span>Auto-Refresh (30s)</span>
+                            </li>
+                        </ul>
 
-            <div class="project-actions">
-                <a href="/projects/" class="btn btn-primary">
-                    View Live Demo <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
+                        <div class="project-actions-center">
+                            <a href="./project/index.html" class="btn btn-gradient">
+                                View Live Demo <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
 
-        </div>
-
-    </div>
-        </section>
+                    </div>
+                    </div>
+            </section>
             <section id="pixelbot" class="section-spacer reveal">
                  <div class="glass-card music-pulse-bg">
                     <div class="bot-content">
@@ -343,5 +485,4 @@
 
     <script src="script.js"></script>
 </body>
-    </html>
-    
+</html>
