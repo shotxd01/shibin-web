@@ -17,7 +17,7 @@
         /* Push content down so it doesn't hide behind the navbar */
         .content-spacer {
             padding-top: 120px;
-            min-height: 80vh; /* Keeps footer at bottom */
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -34,8 +34,33 @@
             width: 100%;
             max-width: 800px;
             margin: 0 20px;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* LOGO ANIMATION */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .server-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* HEADER */
         .discord-header {
             display: flex;
             align-items: center;
@@ -44,20 +69,17 @@
             margin-bottom: 30px;
         }
 
-        .discord-header i {
-            font-size: 2.5rem;
-            color: #5865f2;
-        }
-
         .discord-header-text {
             font-size: 2rem;
             font-weight: 700;
+            text-align: center;
         }
 
+        /* MAIN STATS GRID */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
 
@@ -76,36 +98,102 @@
         }
 
         .stat-box h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 0;
-            color: #00d0ff; /* Matches your theme Cyan */
+            color: #00d0ff; /* Cyan */
             font-weight: 800;
         }
 
         .stat-box span {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #aaa;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
         }
 
+        /* SYSTEM HEALTH SECTION */
+        .system-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0 15px 0;
+            opacity: 0.6;
+        }
+
+        .system-header .title {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .system-header .line {
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+            flex-grow: 1;
+        }
+
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .system-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #ddd;
+        }
+
+        @media (min-width: 600px) {
+            .system-item {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .system-item i { color: #00d0ff; }
+
+        /* Glowing Dots */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #555;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .status-dot.operational { background-color: #00ff88; box-shadow: 0 0 10px #00ff88; }
+        .status-dot.error { background-color: #ff4d6d; box-shadow: 0 0 10px #ff4d6d; }
+        .status-dot.degraded { background-color: #facc15; box-shadow: 0 0 10px #facc15; }
+
+        /* FOOTER INFO */
         .last-update {
             text-align: center;
             margin-top: 25px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #666;
         }
 
         .status-message {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 5px;
             font-size: 0.9rem;
             color: #999;
             font-family: monospace;
         }
 
-        /* Error Text */
-        .error { color: #ff007f !important; } /* Matches your theme Pink */
+        .error { color: #ff4d6d !important; }
         
         /* Mobile Nav Button Override */
         .nav-btn-back {
@@ -154,15 +242,24 @@
             </h1>
 
             <div class="stats-card">
+                
+                <div class="logo-container">
+                    <img id="server-icon" src="https://iili.io/KeWap4t.png" alt="Server Icon" class="server-logo">
+                </div>
+
                 <div class="discord-header">
-                    <i class="fa-brands fa-discord"></i>
                     <div id="discord-header-text" class="discord-header-text">Loading...</div>
                 </div>
         
                 <div class="stats-grid">
                     <div class="stat-box">
                         <h3 id="members-count">--</h3>
-                        <span>Members</span>
+                        <span>Total Members</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <h3 id="online-count" style="color: #00ff88;">--</h3>
+                        <span>Online Now</span>
                     </div>
             
                     <div class="stat-box">
@@ -172,7 +269,33 @@
             
                     <div class="stat-box">
                         <h3 id="status-text">--</h3>
-                        <span>Status</span>
+                        <span>API Status</span>
+                    </div>
+                </div>
+
+                <div class="system-header">
+                    <span class="line"></span>
+                    <span class="title">SYSTEM HEALTH</span>
+                    <span class="line"></span>
+                </div>
+
+                <div class="system-grid">
+                    <div class="system-item">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Database</span>
+                        <div id="db-indicator" class="status-dot"></div>
+                    </div>
+
+                    <div class="system-item">
+                        <i class="fa-solid fa-cube"></i>
+                        <span>Minecraft</span>
+                        <div id="mc-indicator" class="status-dot"></div>
+                    </div>
+
+                    <div class="system-item">
+                        <i class="fa-solid fa-cloud"></i>
+                        <span>Media</span>
+                        <div id="media-indicator" class="status-dot"></div>
                     </div>
                 </div>
         
