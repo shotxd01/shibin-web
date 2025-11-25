@@ -16,7 +16,7 @@
     <style>
         /* Push content down so it doesn't hide behind the navbar */
         .content-spacer {
-            padding-top: 120px;
+            padding-top: 160px; /* ✅ Increased to 160px to fix title overlap */
             min-height: 80vh;
             display: flex;
             flex-direction: column;
@@ -100,6 +100,16 @@
             margin: 0;
             color: #00d0ff; /* Cyan */
             font-weight: 800;
+        }
+
+        /* ✅ SPECIAL RULE: Fixes the giant "Operational" text */
+        #status-text {
+            font-size: 1.3rem !important; 
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.4rem; /* Keeps box alignment consistent */
         }
 
         .stat-box span {
