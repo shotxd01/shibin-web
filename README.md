@@ -70,8 +70,8 @@ shibin-web/
 ├── 📄 script.js       # Main site logic (Mobile menu, etc.)
 └── 📄 README.md       # Documentation
 ```
-👨‍💻 Author
-Shibin Hussain MK (Shibinsoju)
+## 👨‍💻 Author
+**Shibin Hussain MK (Shibinsoju)**
  * 👑 Founder: ShotDevs
  * 💬 Discord: shibinsoju
  * 📸 Instagram: @shibn_hussn
