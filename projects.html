@@ -135,15 +135,30 @@
 
         .error { color: #ff4d6d !important; }
         
+                
         .nav-btn-back {
-            background: linear-gradient(135deg, #00d0ff, #E6007A);
+            
+            
+            /* 🟢 ADD THIS INSTEAD (Glass/Outline Style) */
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            
+            /* Keep these the same */
             padding: 8px 20px;
             border-radius: 50px;
             color: white;
             font-weight: 600;
             text-decoration: none;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
+
+        .nav-btn-back:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #00d0ff;
+        }
+
     </style>
 </head>
 <body>
