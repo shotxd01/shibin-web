@@ -69,7 +69,7 @@ shibin-web/
 ├── 📄 style.css       # Global Styles and Animations
 ├── 📄 script.js       # Main site logic (Mobile menu, etc.)
 └── 📄 README.md       # Documentation
-
+```
 👨‍💻 Author
 Shibin Hussain MK (Shibinsoju)
  * 👑 Founder: ShotDevs
