@@ -11,19 +11,17 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Push content down so it doesn't hide behind the navbar */
         .content-spacer {
-            padding-top: 160px; /* ✅ Increased to 160px to fix title overlap */
+            padding-top: 160px;
             min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Stats Card specific styling */
         .stats-card {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -37,7 +35,6 @@
             position: relative;
         }
 
-        /* LOGO ANIMATION */
         .logo-container {
             display: flex;
             justify-content: center;
@@ -59,7 +56,6 @@
             100% { transform: translateY(0px); }
         }
 
-        /* HEADER */
         .discord-header {
             display: flex;
             align-items: center;
@@ -73,7 +69,6 @@
             text-align: center;
         }
 
-        /* MAIN STATS GRID */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -98,18 +93,17 @@
         .stat-box h3 {
             font-size: 2rem;
             margin: 0;
-            color: #00d0ff; /* Cyan */
+            color: #00d0ff;
             font-weight: 800;
         }
 
-        /* ✅ SPECIAL RULE: Fixes the giant "Operational" text */
         #status-text {
             font-size: 1.3rem !important; 
             margin-bottom: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 2.4rem; /* Keeps box alignment consistent */
+            height: 2.4rem;
         }
 
         .stat-box span {
@@ -121,7 +115,6 @@
             display: block;
         }
 
-        /* FOOTER INFO */
         .last-update {
             text-align: center;
             margin-top: 35px;
@@ -139,7 +132,6 @@
 
         .error { color: #ff4d6d !important; }
         
-        /* Mobile Nav Button Override */
         .nav-btn-back {
             background: linear-gradient(135deg, #00d0ff, #E6007A);
             padding: 8px 20px;
@@ -163,14 +155,14 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="nav-brand">
+            <a href="index.html" class="nav-brand">
                 <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju logo">
                 <span>Shibinsoju<span class="dot">.</span></span>
             </a>
             
             <ul class="nav-links" style="display: flex;">
                 <li>
-                    <a href="../index.html" class="nav-btn-back">
+                    <a href="index.html" class="nav-btn-back">
                         <i class="fa-solid fa-arrow-left"></i> Home
                     </a>
                 </li>
@@ -180,13 +172,11 @@
 
     <div class="main-container">
         <section class="content-spacer">
-            
             <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 20px;">
                 <span class="text-gradient">Live Stats</span>
             </h1>
 
             <div class="stats-card">
-                
                 <div class="logo-container">
                     <img id="server-icon" src="https://iili.io/KeWap4t.png" alt="Server Icon" class="server-logo">
                 </div>
@@ -228,7 +218,6 @@
                     Join Server <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
-
         </section>
 
         <footer>
@@ -236,7 +225,84 @@
         </footer>
     </div>
 
-    
-    <script src="./script.js"></script>
+    <script>
+        // --- API CONFIGURATION ---
+        const CUSTOM_API_URL = "https://shotdevs.live/api/v1/status/all";
+        const WIDGET_API_URL = "https://discord.com/api/guilds/1105742461566988328/widget.json";
+
+        async function loadDiscordStats() {
+            const headerText   = document.getElementById("discord-header-text");
+            const membersEl    = document.getElementById("members-count");
+            const onlineEl     = document.getElementById("online-count");
+            const channelsEl   = document.getElementById("channels-count");
+            const statusEl     = document.getElementById("status-text");
+            const lastUpdated  = document.getElementById("last-updated");
+            const statusMsgEl  = document.getElementById("status-message");
+
+            try {
+                statusMsgEl.innerHTML = "Fetching Data...";
+
+                // --- 1. FETCH CUSTOM API ---
+                const customRes = await fetch(CUSTOM_API_URL, { cache: "no-cache" });
+
+                if (!customRes.ok) {
+                    throw new Error(`API Error: ${customRes.status}`);
+                }
+
+                const data = await customRes.json();
+                
+                // Validate Data
+                const discord = data?.services?.discord;
+                const guild = discord?.guild_info;
+
+                if (!guild) throw new Error("API connected but 'guild_info' is missing.");
+
+                // Update Stats
+                headerText.textContent = guild.name || "SHOT DEVS";
+                membersEl.textContent  = guild.member_count ?? "--";
+                channelsEl.textContent = guild.channel_count ?? "--";
+
+                const rawStatus = discord.status || "unknown";
+                statusEl.textContent = rawStatus === "operational" ? "Operational" : "Issues";
+                statusEl.style.color = rawStatus === "operational" ? "#00ff88" : "#ff4d6d";
+
+                // --- 2. FETCH WIDGET (Online Count) ---
+                try {
+                    const widgetRes = await fetch(WIDGET_API_URL);
+                    if (widgetRes.ok) {
+                        const widgetData = await widgetRes.json();
+                        onlineEl.textContent = widgetData.presence_count;
+                    }
+                } catch (e) {
+                    console.warn("Widget fetch failed", e);
+                }
+
+                // Finish
+                const dt = new Date();
+                lastUpdated.textContent = "Last updated: " + dt.toLocaleTimeString();
+                statusMsgEl.textContent = "System Operational • Live Data";
+                statusMsgEl.style.color = "#999"; 
+                headerText.classList.remove("error");
+
+            } catch (err) {
+                console.error(err);
+                
+                headerText.textContent  = "Error";
+                headerText.classList.add("error");
+                
+                // PRINT ERROR TO SCREEN FOR DEBUGGING
+                statusMsgEl.innerHTML = `<span style="color: #ff4d6d;">⚠️ ${err.message}</span>`;
+                
+                if (err.message.includes("Failed to fetch")) {
+                    statusMsgEl.innerHTML += `<br><span style="font-size:0.8rem; color:#fff;">(Network/CORS Error. Backend blocking site.)</span>`;
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadDiscordStats();
+            setInterval(loadDiscordStats, 30000); // Refresh every 30s
+        });
+    </script>
 </body>
 </html>
