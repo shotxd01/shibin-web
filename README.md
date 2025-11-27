@@ -1,23 +1,32 @@
-# ⚡ Shibinsoju Portfolio
+# ⚡ Shibinsoju Portfolio & Live Dashboard
 
-![Project Status](https://img.shields.io/badge/Status-Live-green?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS-blue?style=for-the-badge)
+![Project Status](https://img.shields.io/badge/Status-Live-00ff88?style=for-the-badge)
+![Tech Stack](https://img.shields.io/badge/Stack-HTML_CSS_JS-blue?style=for-the-badge)
+![ShotDevs](https://img.shields.io/badge/Powered_By-ShotDevs_API-ff007f?style=for-the-badge)
 
-Welcome to my personal developer portfolio. This site showcases my work as the **Founder of ShotDevs**, my Discord bots, and my community roles. It features a modern "Dark Mode" aesthetic with neon glow effects and fully responsive design.
+Welcome to my personal developer portfolio. This site showcases my work as the **Founder of ShotDevs**, my Discord bots, and my community roles. 
+
+It features a custom **Real-time Server Stats Dashboard** that connects to my backend API to display live community data.
 
 ## 🔗 Live Demo
-**[Visit Portfolio](https://shibinsoju.github.io)** *(Or your custom domain: https://rizx.shotdevs.live)*
+**[Visit Portfolio](https://shibin.shotdevs.live)**
 
 ---
 
 ## ✨ Key Features
 
-* **🎨 Modern UI/UX:** Dark theme with "ShotDevs" Pink & Cyan neon accents.
+### 🎨 Core Portfolio
+* **Modern UI/UX:** Dark theme with "ShotDevs" Pink & Cyan neon accents.
 * **📱 Fully Responsive:** Optimized for Mobile, Tablet, and Desktop.
 * **🔄 Infinite Tech Scroll:** Smooth animation showcasing my skills (Node.js, MongoDB, etc.).
-* **✨ Interactive Cards:** Neon glow effects on hover for community links.
-* **🤖 Discord Integration:** Live status widget and "Copy Username" functionality.
-* **🏎️ Performance:** Lightweight, pure HTML/CSS/JS (No heavy frameworks).
+* **🤖 Discord Integration:** "Copy Username" functionality and status widget.
+
+### 📡 New: Live Stats Dashboard (`projects.html`)
+A custom-built dashboard that fetches real-time data from the **ShotDevs API** and Discord Widget.
+* **Live Member Count:** Fetches total members from my private API.
+* **Online Presence:** Fetches online user count from Discord's widget.
+* **API Health Check:** Displays "Operational" or "Issues" based on backend status codes.
+* **Auto-Refresh:** Data updates automatically every 30 seconds without reloading.
 
 ---
 
@@ -25,17 +34,15 @@ Welcome to my personal developer portfolio. This site showcases my work as the *
 
 | Technology | Usage |
 | :--- | :--- |
-| **HTML5** | Semantic structure and layout |
-| **CSS3** | Animations, Flexbox/Grid, Responsive Design |
-| **JavaScript** | Mobile Menu, Scroll Reveal API, Copy-to-Clipboard |
-| **Font Awesome** | Icons for social links and UI elements |
-| **Google Fonts** | 'Outfit' and 'Lexend' for typography |
+| **HTML5** | Semantic structure for Portfolio and Dashboard |
+| **CSS3** | Neon glow effects, animations, Grid/Flexbox |
+| **JavaScript (ES6+)** | `Fetch API` for backend communication, DOM manipulation |
+| **ShotDevs API** | Custom Node.js backend providing server stats |
+| **Font Awesome** | Icons for UI elements |
 
 ---
 
 ## 🚀 How to Run Locally
-
-Since this is a static site, you don't need to install any complex dependencies.
 
 1.  **Clone the repository:**
     ```bash
@@ -45,8 +52,11 @@ Since this is a static site, you don't need to install any complex dependencies.
     ```bash
     cd shibin-web
     ```
-3.  **Open `index.html`:**
-    Simply double-click the `index.html` file to open it in your browser.
+3.  **Open in Browser:**
+    * Double-click `index.html` to see the **Main Portfolio**.
+    * Double-click `projects.html` to see the **Live Stats Dashboard**.
+
+> **Note:** For the API to work locally, the backend must allow CORS from `localhost` or `null` (file system). If you see a CORS error locally, it is a security feature, not a bug. It works perfectly on the live domain.
 
 ---
 
@@ -54,25 +64,21 @@ Since this is a static site, you don't need to install any complex dependencies.
 
 ```text
 shibin-web/
-├── 📄 index.html      # Main structure
-├── 📄 style.css       # Styling and Animations
-├── 📄 script.js       # Interactive logic
-├── 🖼️ favicon.png     # Browser Icon
+├── 📄 index.html      # Main Portfolio Page
+├── 📄 projects.html   # Live Stats Dashboard (API Integration)
+├── 📄 style.css       # Global Styles and Animations
+├── 📄 script.js       # Main site logic (Mobile menu, etc.)
 └── 📄 README.md       # Documentation
 
 👨‍💻 Author
 Shibin Hussain MK (Shibinsoju)
- * Founder: ShotDevs
- * Discord: shibinsoju
- * Instagram: @shibn_hussn
+ * 👑 Founder: ShotDevs
+ * 💬 Discord: shibinsoju
+ * 📸 Instagram: @shibn_hussn
 ⭐ Support
 If you like this portfolio, please give this repository a Star! 🌟
 
-### How to add this to GitHub:
-1.  Go to your repository on GitHub.
-2.  Click **"Add file"** > **"Create new file"**.
-3.  Name the file `README.md`.
-4.  Paste the code above.
-5.  Click **Commit changes**.
-
-This makes your GitHub repo look much more professional to anyone visiting it!
+## 💡 Why this is better:
+1.  **Highlights the API:** I added a specific section for the "Live Stats Dashboard" because fetching data from a custom backend is a **senior-level skill** that recruiters/clients look for.
+2.  **Updated Structure:** It correctly lists `projects.html` in the root folder instead of the `project/` folder we deleted.
+3.  **CORS Note:** I added a small note about CORS so people (or you) don't get confused if the API doesn't load when opening the file directly from a hard drive.
