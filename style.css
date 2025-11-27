@@ -146,11 +146,18 @@ body {
 }
 
 .status-badge {
-    position: absolute; bottom: 10px; right: 0;
-    background: rgba(0,0,0,0.8); border: 1px solid var(--glass-border);
-    padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;
-    display: flex; align-items: center; gap: 5px;
+    position: absolute;
+    
+    /* 👇 CHANGE THESE TWO VALUES 👇 */
+    bottom: -5px;  /* Move it further down */
+    right: -5px;   /* Move it further right */
+    
+    /* Keep the rest... */
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* ... */
 }
+
 .status-badge i { color: var(--secondary); }
 
 .hero-title {
