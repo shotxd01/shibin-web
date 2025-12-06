@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Trigger once on load
 
-    /* --- 3. Copy to Clipboard (with glow + “Copied!”) --- */
+    /* --- 3. Copy to Clipboard (Enhanced) --- */
     const copyBtn = document.getElementById('copy-btn');
     const discordInput = document.getElementById('discord-user');
 
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = discordInput.value;
 
             const applyCopiedUI = () => {
-                const wrapper = copyBtn.closest('.copy-area');
+                const wrapper = document.querySelector('.copy-area');
 
                 if (wrapper) wrapper.classList.add('copied');
                 copyBtn.classList.add('copied');
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text)
                     .then(applyCopiedUI)
-                    .catch(applyCopiedUI); // still show success UI even if blocked
+                    .catch(applyCopiedUI); 
             } else {
                 // Fallback for older browsers
                 discordInput.select();
@@ -111,5 +111,44 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    }
+
+    /* --- 5. Typewriter Effect (Hero Section) --- */
+    const textElement = document.querySelector('.typing-text');
+    
+    if(textElement) {
+        const words = ["Custom Discord Bots", "Modern Websites", "Minecraft Solutions", "Automation Tools"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Deleting is faster
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; // Typing speed
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end of word
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length; // Loop to next word
+                typeSpeed = 500; // Pause before typing new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start the loop
+        type();
     }
 });
