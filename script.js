@@ -1,154 +1,142 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* --- 1. Mobile Menu Logic --- */
-    const menuToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.m-link');
+    // --- 1. MOBILE MENU (Priority Fix) ---
+    try {
+        const menuToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.m-link');
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-            const isActive = menuToggle.classList.contains('active');
-            
-            if (!isActive) {
-                // Open Menu
-                menuToggle.classList.add('active');
-                mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Lock scroll
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevents accidental closures
+                const isActive = mobileMenu.classList.contains('active');
                 
-                // Staggered Animation for links
-                mobileLinks.forEach((link, index) => {
-                    link.style.transitionDelay = `${0.1 + (index * 0.1)}s`;
-                });
-            } else {
-                // Close Menu
-                closeMenu();
-            }
-        });
-
-        // Close menu when clicking any link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        function closeMenu() {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Unlock scroll
-            
-            // Reset delays
-            mobileLinks.forEach(link => {
-                link.style.transitionDelay = '0s';
+                if (!isActive) {
+                    // Open
+                    menuToggle.classList.add('active');
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                    
+                    // Animate Links
+                    mobileLinks.forEach((link, index) => {
+                        link.style.transitionDelay = `${0.1 + (index * 0.1)}s`;
+                    });
+                } else {
+                    closeMenu();
+                }
             });
+
+            // Close when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            function closeMenu() {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto'; 
+                mobileLinks.forEach(link => {
+                    link.style.transitionDelay = '0s';
+                });
+            }
         }
+    } catch (error) {
+        console.error("Navbar Error:", error);
     }
 
-    /* --- 2. Scroll Reveal Animation --- */
-    const reveals = document.querySelectorAll('.reveal');
+    // --- 2. TYPEWRITER EFFECT (Fix for "Stuck" Text) ---
+    try {
+        const textElement = document.querySelector('.typing-text');
+        
+        if (textElement) {
+            const words = ["Custom Discord Bots", "Modern Websites", "Minecraft Plugins", "Automation Tools"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            const type = () => {
+                const currentWord = words[wordIndex];
+                const currentText = currentWord.substring(0, charIndex);
+                
+                textElement.textContent = currentText;
 
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const elementVisible = 100;
+                let typeSpeed = 100;
 
-        reveals.forEach((reveal) => {
-            const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < windowHeight - elementVisible) {
-                reveal.classList.add('active');
-            }
-        });
-    };
+                if (isDeleting) {
+                    typeSpeed = 50; // Deleting speed
+                    charIndex--;
+                } else {
+                    charIndex++;
+                }
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Trigger once on load
+                if (!isDeleting && charIndex === currentWord.length + 1) {
+                    isDeleting = true;
+                    typeSpeed = 2000; // Wait before deleting
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typeSpeed = 500; // Wait before typing next word
+                }
 
-    /* --- 3. Copy to Clipboard (Enhanced) --- */
-    const copyBtn = document.getElementById('copy-btn');
-    const discordInput = document.getElementById('discord-user');
-
-    if (copyBtn && discordInput) {
-        copyBtn.addEventListener('click', () => {
-            const text = discordInput.value;
-
-            const applyCopiedUI = () => {
-                const wrapper = document.querySelector('.copy-area');
-
-                if (wrapper) wrapper.classList.add('copied');
-                copyBtn.classList.add('copied');
-                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-
-                setTimeout(() => {
-                    if (wrapper) wrapper.classList.remove('copied');
-                    copyBtn.classList.remove('copied');
-                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
-                }, 2000);
+                setTimeout(type, typeSpeed);
             };
 
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text)
-                    .then(applyCopiedUI)
-                    .catch(applyCopiedUI); 
-            } else {
-                // Fallback for older browsers
-                discordInput.select();
-                document.execCommand('copy');
-                window.getSelection().removeAllRanges();
-                applyCopiedUI();
-            }
-        });
-    }
-
-    /* --- 4. Back to Top Button --- */
-    const backToTop = document.getElementById('back-to-top');
-    
-    if (backToTop) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    /* --- 5. Typewriter Effect (Hero Section) --- */
-    const textElement = document.querySelector('.typing-text');
-    
-    if(textElement) {
-        const words = ["Custom Discord Bots", "Modern Websites", "Minecraft Solutions", "Automation Tools"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
-
-        function type() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50; // Deleting is faster
-            } else {
-                textElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 100; // Typing speed
-            }
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                isDeleting = true;
-                typeSpeed = 2000; // Pause at end of word
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length; // Loop to next word
-                typeSpeed = 500; // Pause before typing new word
-            }
-
-            setTimeout(type, typeSpeed);
+            // Start loop
+            type(); 
         }
+    } catch (error) {
+        console.error("Typewriter Error:", error);
+    }
 
-        // Start the loop
-        type();
+    // --- 3. SCROLL REVEAL (Fix for Empty Screen) ---
+    try {
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 50; // Lower threshold to trigger sooner
+
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger immediately on load to fix blank screen
+        revealOnScroll(); 
+        setTimeout(revealOnScroll, 500); // Trigger again just in case
+    } catch (error) {
+        console.error("Scroll Reveal Error:", error);
+    }
+
+    // --- 4. COPY BUTTON ---
+    try {
+        const copyBtn = document.getElementById('copy-btn');
+        const discordInput = document.getElementById('discord-user');
+        const copyArea = document.querySelector('.copy-area');
+
+        if (copyBtn && discordInput) {
+            copyBtn.addEventListener('click', () => {
+                discordInput.select();
+                navigator.clipboard.writeText(discordInput.value).then(() => {
+                    const originalText = copyBtn.innerHTML;
+                    
+                    copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+                    copyBtn.classList.add('copied');
+                    if(copyArea) copyArea.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.classList.remove('copied');
+                        if(copyArea) copyArea.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+        }
+    } catch (error) {
+        console.error("Copy Button Error:", error);
     }
 });
