@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shibinsoju - Developer & Admin | ShotDevs</title>
+    <meta name="description" content="Shibinsoju's personal portfolio. Founder of ShotDevs, Discord Bot Developer, and Community Admin.">
     
-    <title>SHIBINSOJU</title>
-    
-    <meta name="description" content="Founder of ShotDevs. Building custom Discord bots, websites, and community solutions.">
-
-    <link rel="icon" type="image/png" href="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png">
-
     <meta property="og:type" content="website">
-    <meta property="og:title" content="SHIBINSOJU | Developer Portfolio">
-    <meta property="og:description" content="Founder of ShotDevs. Node.js Developer & Community Admin. Check out my work!">
+    <meta property="og:url" content="https://shotdevs.live/">
+    <meta property="og:title" content="Shibinsoju | ShotDevs Founder">
+    <meta property="og:description" content="I build high-performance Discord bots & modern websites. Check out my portfolio & services.">
     <meta property="og:image" content="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png">
-    <meta property="og:url" content="https://shibin.shotdevs.live">
-    <meta name="theme-color" content="#E6007A"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="theme-color" content="#E6007A">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
-    
-    </head>
-
+</head>
 <body>
     
-    <div class="bg-wrapper" aria-hidden="true">
+    <div class="bg-wrapper">
         <div class="auras">
             <div class="aura aura-1"></div>
             <div class="aura aura-2"></div>
@@ -36,19 +33,20 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-brand">
-                <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju logo">
+                <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Logo">
                 <span>Shibinsoju<span class="dot">.</span></span>
             </a>
             
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#shotdevs" class="highlight-link">ShotDevs</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -61,6 +59,7 @@
             <a href="#home" class="m-link">Home</a>
             <a href="#about" class="m-link">About</a>
             <a href="#services" class="m-link">Services</a>
+            <a href="#projects" class="m-link">Projects</a>
             <a href="#shotdevs" class="m-link">ShotDevs</a>
             <a href="#skills" class="m-link">Skills</a>
             <a href="#contact" class="m-link">Contact</a>
@@ -72,7 +71,7 @@
         <header class="hero" id="home">
             <div class="hero-content reveal">
                 <div class="profile-wrapper">
-                    <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju avatar" class="profile-photo">
+                    <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju" class="profile-photo">
                     <div class="status-badge"><i class="fa-solid fa-code"></i> Coding</div>
                 </div>
                 
@@ -81,7 +80,9 @@
                 </h1>
 
                 <p class="hero-tagline">
-                    I build powerful Discord systems & modern web solutions for thriving communities.
+                    I build <span class="typing-text"></span><span class="cursor">|</span>
+                    <br>
+                    for thriving online communities.
                 </p>
                 
                 <p class="hero-sub">
@@ -89,7 +90,7 @@
                 </p>
                 
                 <div class="hero-buttons">
-                    <a href="https://discord.com/users/1338869759441375254" target="_blank" rel="noopener noreferrer" class="btn btn-primary glow-effect">
+                    <a href="https://discord.com/users/1338869759441375254" target="_blank" class="btn btn-primary glow-effect">
                         <i class="fa-brands fa-discord"></i> DM Me
                     </a>
                     <a href="#about" class="btn btn-secondary">
@@ -103,11 +104,11 @@
             
             <section id="about" class="section-spacer reveal">
                 <div class="glass-card">
-                    <h2 class="section-heading" style="margin-bottom:20px;">About Me</h2>
+                    <h2 class="section-heading" style="text-align:left; margin-bottom:20px;">About Me</h2>
                     <p class="about-text">
                         I am <strong class="text-white">Shibin Hussain MK</strong>, a 16-year-old developer and entrepreneur from <strong class="text-white">Nilambur, Malappuram</strong>. My passion for technology led me to found <span class="text-cyan">ShotDevs</span>, where I bridge the gap between <span class="text-pink">technical creativity</span> and community management.
                     </p>
-                    <div style="margin-top:20px; padding-left:15px; border-left:3px solid var(--primary); color:var(--text-muted); text-align: left;">
+                    <div style="margin-top:20px; padding-left:15px; border-left:3px solid var(--primary); color:var(--text-muted);">
                         <p><em>"Building digital spaces where creativity meets real-world application."</em></p>
                     </div>
                 </div>
@@ -115,7 +116,6 @@
 
             <section id="roles" class="section-spacer reveal">
                 <h2 class="section-heading">My Roles</h2>
-
                 <div class="roles-list">
                     <article class="roles-card">
                         <div class="roles-icon-wrap roles-founder">
@@ -148,7 +148,7 @@
                     </article>
                 </div>
             </section>
-            
+
             <section id="services" class="section-spacer reveal">
                 <h2 class="section-heading">What I Offer</h2>
                 <div class="grid-box">
@@ -221,9 +221,7 @@
                 <h2 class="section-heading">Projects</h2>
 
                 <div class="grid-box">
-
                     <div class="glass-card project-card glow-hover">
-                        
                         <div class="project-badge live">
                             <span class="pulsing-dot"></span> LIVE
                         </div>
@@ -256,10 +254,10 @@
                                 View Live Demo <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
-
                     </div>
-                    </div>
+                </div>
             </section>
+
             <section id="pixelbot" class="section-spacer reveal">
                  <div class="glass-card music-pulse-bg">
                     <div class="bot-content">
@@ -344,7 +342,6 @@
                     <div class="social-row">
                         <a href="https://discord.com/users/1338869759441375254" class="social-btn discord" target="_blank" rel="noopener noreferrer" aria-label="Discord profile"><i class="fa-brands fa-discord"></i></a>
                         <a href="https://wa.me/8129529846" class="social-btn whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/shibn_hussn" class="social-btn instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="mailto:shibinsoju49@gmail.com" class="social-btn email" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
                     </div>
                 </div>
@@ -359,7 +356,3 @@
     <button id="back-to-top" aria-label="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
-
-    <script src="script.js"></script>
-</body>
-</html>
