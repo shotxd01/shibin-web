@@ -36,20 +36,9 @@ body {
 .text-cyan { color: var(--secondary); text-shadow: 0 0 10px rgba(0, 191, 255, 0.3); }
 .text-pink { color: var(--primary); text-shadow: 0 0 10px rgba(230, 0, 122, 0.3); }
 .text-white { color: white; }
-.icon-cyan {
-    color: var(--secondary);
-    text-shadow: 0 0 8px rgba(0,191,255,0.4);
-}
-
-.icon-pink {
-    color: var(--primary);
-    text-shadow: 0 0 8px rgba(230,0,122,0.4);
-}
-
-.icon-purple {
-    color: #a855f7;
-    text-shadow: 0 0 8px rgba(168,85,247,0.4);
-}
+.icon-cyan { color: var(--secondary); text-shadow: 0 0 8px rgba(0,191,255,0.4); }
+.icon-pink { color: var(--primary); text-shadow: 0 0 8px rgba(230,0,122,0.4); }
+.icon-purple { color: #a855f7; text-shadow: 0 0 8px rgba(168,85,247,0.4); }
 
 /* --- BACKGROUND ANIMATIONS --- */
 .bg-wrapper {
@@ -147,17 +136,12 @@ body {
 
 .status-badge {
     position: absolute;
-    
-    /* 👇 CHANGE THESE TWO VALUES 👇 */
-    bottom: -5px;  /* Move it further down */
-    right: -5px;   /* Move it further right */
-    
-    /* Keep the rest... */
+    bottom: -5px; right: -5px;
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* ... */
+    padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;
+    display: flex; align-items: center; gap: 5px;
 }
-
 .status-badge i { color: var(--secondary); }
 
 .hero-title {
@@ -168,6 +152,25 @@ body {
 }
 .hero-tagline { max-width: 680px; margin: 0 auto 16px; font-size: 1.1rem; color: var(--text-main); font-weight: 400; }
 .hero-sub { max-width: 520px; margin: 0 auto; font-size: 0.95rem; color: var(--text-muted); }
+
+/* --- TYPEWRITER CURSOR (THIS IS WHAT WAS MISSING) --- */
+.typing-text {
+    color: var(--secondary);
+    font-weight: 700;
+}
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--text-main);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    vertical-align: middle;
+    height: 1.2rem;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
 
 .text-gradient {
     background: linear-gradient(45deg, var(--primary), var(--secondary));
@@ -190,7 +193,7 @@ body {
 /* --- SECTIONS & CARDS --- */
 .section-heading { text-align: center; font-size: 2rem; margin-bottom: 50px; position: relative; }
 
-/* Gradient Underline – brighter */
+/* Gradient Underline */
 .section-heading::after {
     content: ''; display: block; width: 80px; height: 3px; margin: 12px auto 0;
     background: linear-gradient(90deg, var(--primary), var(--secondary));
@@ -209,7 +212,7 @@ body {
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
-/* subtle hover for all main cards */
+/* Subtle Hover for Cards */
 .glass-card:hover,
 .featured-card:hover,
 .role-card:hover {
@@ -224,67 +227,37 @@ body {
 /* ================================
    ROLES SECTION
 ================================ */
-
-.roles-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 10px;
-}
+.roles-list { display: flex; flex-direction: column; gap: 18px; margin-top: 10px; }
 
 .roles-card {
-    background: var(--bg-panel);
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    padding: 18px 22px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.45);
-    text-align: left;
-    position: relative;
-    overflow: hidden;
+    background: var(--bg-panel); border-radius: 20px; border: 1px solid var(--glass-border);
+    padding: 18px 22px; display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45); text-align: left;
+    position: relative; overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .roles-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--secondary);
+    transform: translateY(-4px); border-color: var(--secondary);
     box-shadow: 0 0 20px rgba(0,191,255,0.25);
 }
-/* icon circle */
+
 .roles-icon-wrap {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 48px; height: 48px; border-radius: 50%;
     border: 1px solid rgba(255,255,255,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.18), transparent 60%);
     box-shadow: 0 10px 26px rgba(0,0,0,0.8);
 }
+.roles-icon-wrap i { font-size: 1.4rem; }
 
-.roles-icon-wrap i {
-    font-size: 1.4rem;
-}
-
-/* per-role colors */
+/* Per-role Colors */
 .roles-founder { color: #E6007A; }
 .roles-admin   { color: #00BFFF; }
 .roles-mod     { color: #a855f7; }
 
-/* text */
-.roles-text .roles-title {
-    font-weight: 700;
-    font-size: 1.05rem;
-    margin-bottom: 2px;
-}
-
-.roles-text .roles-sub {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
+.roles-text .roles-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 2px; }
+.roles-text .roles-sub { font-size: 0.9rem; color: var(--text-muted); }
 
 /* --- SHOTDEVS CARD --- */
 .featured-card {
@@ -296,9 +269,7 @@ body {
 .card-body { display: flex; align-items: center; gap: 40px; margin-top: 20px; }
 
 .floating-logo { 
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
     animation: floatLogo 4s ease-in-out infinite; 
     border: 3px solid rgba(255,255,255,0.1);
 }
@@ -308,7 +279,7 @@ body {
 .feature-list li { display: flex; align-items: center; gap: 10px; color: var(--text-muted); }
 .feature-list i { color: var(--secondary); }
 
-/* --- GRID LAYOUT (Cards) --- */
+/* --- GRID LAYOUT (Services & Why Me) --- */
 .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
 .role-card { text-align: center; }
 .role-card.glow-hover:hover { 
@@ -468,9 +439,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     }
 }
 
-/* --- INNER CARD HEADINGS (Updated) --- */
-/* This handles ShotDevs and Contact Me inner titles */
-
+/* --- INNER CARD HEADINGS --- */
 .section-heading-inner {
     text-align: center;
     font-size: 1.8rem;
@@ -479,7 +448,6 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     display: block;
 }
 
-/* The Gradient Underline - Matches main sections */
 .section-heading-inner::after {
     content: '';
     display: block;
@@ -492,196 +460,85 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     box-shadow: 0 0 10px rgba(230,0,122,0.6);
 }
 
-/* Minor tweak for contact box spacing */
 .contact-box .section-heading-inner {
     margin-bottom: 16px;
 }
 
 /* === PROJECTS SECTION === */
-
 .project-card {
+    text-align: center;
     position: relative;
-    transition: 0.3s ease;
+    padding-top: 50px;
+    overflow: visible;
 }
 
-.project-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
+.project-header-center {
+    display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 20px;
 }
 
-.project-icon {
-    font-size: 2rem;
-    color: var(--secondary);
+.project-icon-circle {
+    width: 60px; height: 60px;
+    background: rgba(88, 101, 242, 0.1); /* Discord Blue tint */
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; color: #5865f2;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.2);
 }
 
-.project-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin: 10px 0 15px;
+.project-header-center h3 { font-size: 1.5rem; font-weight: 700; }
+
+.project-desc-center {
+    font-size: 0.95rem; color: #aaa; margin-bottom: 25px; line-height: 1.6; padding: 0 10px;
 }
 
-.project-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
+.project-features-center {
+    list-style: none; padding: 0; margin: 0 auto 30px auto; display: inline-block; text-align: left; 
 }
 
-.project-features li {
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.project-features-center li {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.9rem; color: #ddd;
 }
 
-.project-features i {
-    color: var(--primary);
+.project-features-center li i {
+    font-size: 1.1rem; width: 20px; text-align: center; filter: drop-shadow(0 0 5px currentColor); 
 }
 
-/* LIVE badge */
+.project-actions-center { display: flex; justify-content: center; width: 100%; }
+
+.btn-gradient {
+    background: linear-gradient(90deg, #E6007A, #00d0ff); 
+    color: white; padding: 12px 30px; border-radius: 50px;
+    text-decoration: none; font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; border: none;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 0, 122, 0.4);
+}
+
+.project-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(0, 0, 0, 0.6); border: 1px solid #00ff88; color: #00ff88;
+    padding: 5px 12px; border-radius: 20px;
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
 
 .project-badge.live {
     background: linear-gradient(135deg, #22c55e, #16a34a);
     box-shadow: 0 0 15px rgba(34,197,94,0.6);
-    color: #fff;
-}
-
-.big-stat {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--primary);
-  margin-top: 10px;
-}
-
-/* --- IMPROVED PROJECT CARD --- */
-
-/* Center alignment specific for this card */
-.project-card {
-    text-align: center;
-    position: relative;
-    padding-top: 50px; /* Space for the floating badge */
-    overflow: visible; /* Let badge float out */
-}
-
-/* The Icon Circle */
-.project-header-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.project-icon-circle {
-    width: 60px;
-    height: 60px;
-    background: rgba(88, 101, 242, 0.1); /* Discord Blue tint */
-    border: 1px solid rgba(88, 101, 242, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: #5865f2;
-    box-shadow: 0 0 20px rgba(88, 101, 242, 0.2);
-}
-
-.project-header-center h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-/* Description */
-.project-desc-center {
-    font-size: 0.95rem;
-    color: #aaa;
-    margin-bottom: 25px;
-    line-height: 1.6;
-    padding: 0 10px;
-}
-
-/* Colorful Features List */
-.project-features-center {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto 30px auto;
-    display: inline-block;
-    text-align: left; /* Keep list text aligned left for readability */
-}
-
-.project-features-center li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-    color: #ddd;
-}
-
-.project-features-center li i {
-    font-size: 1.1rem;
-    width: 20px;
-    text-align: center;
-    filter: drop-shadow(0 0 5px currentColor); /* Makes the icons glow */
-}
-
-/* Button Centering */
-.project-actions-center {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-/* Gradient Button Style */
-.btn-gradient {
-    background: linear-gradient(90deg, #E6007A, #00d0ff); /* Pink to Cyan */
-    color: white;
-    padding: 12px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-}
-
-.btn-gradient:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(230, 0, 122, 0.4);
-}
-
-/* Improved Badge */
-.project-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid #00ff88;
-    color: #00ff88;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+    color: #fff; border: none;
 }
 
 .pulsing-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #00ff88;
-    border-radius: 50%;
-    animation: pulse-green 2s infinite;
+    width: 6px; height: 6px; background-color: #fff;
+    border-radius: 50%; animation: pulse-green 2s infinite;
 }
 
 @keyframes pulse-green {
-    0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-    70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
-
