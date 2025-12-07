@@ -1,12 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. MOBILE MENU & SCROLL SPY ---
+    // --- 1. MOBILE MENU & SCROLL SPY (FIXED) ---
     const menuToggle = document.getElementById('mobile-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-card'); // Selects your new menu cards
-    const sections = document.querySelectorAll('section, header'); // Sections to track
+    // Select all links inside the mobile menu
+    const navLinks = document.querySelectorAll('.mobile-nav-content a'); 
+    const sections = document.querySelectorAll('section, header'); 
 
-    // Toggle Menu
+    // Function to close menu safely
+    function closeMenu() {
+        if (menuToggle) menuToggle.classList.remove('active');
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto'; // UNLOCK SCROLL INSTANTLY
+    }
+
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -14,51 +21,60 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isActive) {
                 menuToggle.classList.add('active');
                 mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; // Lock Scroll
             } else {
                 closeMenu();
             }
         });
 
-        // Close when clicking a link (Fixes redirection issue)
+        // FIX: Manual Scroll Handling
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMenu();
-                // Allow a tiny delay for smooth scroll to kick in
-                setTimeout(() => {
-                    // Optional: Manually set active if scrollspy lags
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                }, 50);
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop the default jump
+                
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                closeMenu(); // Close menu first
+
+                if (targetSection) {
+                    // Small delay to allow the menu to disappear visually
+                    setTimeout(() => {
+                        const navHeight = document.querySelector('.navbar').offsetHeight || 80;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }, 50); // 50ms delay is enough
+                }
             });
         });
-
-        function closeMenu() {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
     }
 
-    // --- SCROLL SPY (Moves the Blue Box) ---
+    // --- SCROLL SPY (Keeps Blue Box Updated) ---
     function activeMenu() {
         let len = sections.length;
-        while (--len && window.scrollY + 100 < sections[len].offsetTop) {}
+        // Find which section is currently on screen
+        while (--len && window.scrollY + 150 < sections[len].offsetTop) {}
         
         navLinks.forEach(link => link.classList.remove('active'));
         
-        // This checks if we are currently looking at a section
         if(len >= 0) {
             const currentId = sections[len].id;
-            // Find the link that points to this ID
-            const activeLink = document.querySelector(`.nav-card[href="#${currentId}"]`);
+            // Target the link that matches the current ID
+            const activeLink = document.querySelector(`.mobile-nav-content a[href="#${currentId}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
             }
         }
     }
     window.addEventListener('scroll', activeMenu);
-    activeMenu(); // Run on load
+    // Run once on load to highlight 'Home'
+    activeMenu(); 
+    
 
     // --- 2. TYPEWRITER EFFECT ---
     const textElement = document.querySelector('.typing-text');
