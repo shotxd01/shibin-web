@@ -316,7 +316,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 
 /* --- CAROUSEL SLIDER (FULL SECTION) --- */
 .carousel-container {
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     position: relative;
