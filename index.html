@@ -326,8 +326,13 @@
         </main>
 
         <footer>
-            <p>&copy; 2025 Shibinsoju. Built for <strong>ShotDevs</strong>.</p>
-        </footer>
+    <p>&copy; <span id="year"></span> Shibinsoju. Built for <strong>ShotDevs</strong>.</p>
+    
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</footer>
+
     </div>
 
     <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
