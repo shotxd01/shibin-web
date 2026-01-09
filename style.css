@@ -460,3 +460,31 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     padding-left: 15%; /* Indent list to look centered but aligned */
     margin-bottom: 30px;
 }
+
+/* --- FIX SHADOW & ADD SMOOTH TRANSITION --- */
+
+.project-card.carousel-item {
+    /* 1. THE SMOOTH TRANSITION */
+    /* This makes any movement or hover effect feel like fluid/liquid */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.5s ease;
+
+    /* 2. THE SOFTER SHADOW */
+    /* Previous shadow was likely too dark. This is much lighter (0.2 opacity) */
+    /* Format: offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.25); 
+    
+    /* Ensure background is still glassy */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* 3. HOVER EFFECT (To show off the transition) */
+.project-card.carousel-item:active, 
+.project-card.carousel-item:hover {
+    /* Lifts the card up slightly when touched */
+    transform: translateY(-5px) scale(1.01);
+    
+    /* Shadow gets slightly deeper when lifted, but stays soft */
+    box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.35);
+}
