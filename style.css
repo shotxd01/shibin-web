@@ -378,16 +378,17 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     box-shadow: 0 0 10px var(--primary);
 }
 
-/* --- UTILITY CLASSES FOR PROJECTS --- */
+/* --- PROJECT THEMES (ALL IN ONE) --- */
 
-/* Icons Colors */
-.icon-blue { color: #00d0ff; }
-.icon-purple { color: #a855f7; }
-.icon-pink { color: #E6007A; }
-.icon-red { color: #ff4444; }
-.icon-yellow { color: #facc15; }
+/* 1. ShotDevs Theme (Pink) */
+.project-icon-circle.shotdevs {
+    color: #E6007A;
+    background: rgba(230, 0, 122, 0.1);
+    border-color: rgba(230, 0, 122, 0.3);
+    box-shadow: 0 0 15px rgba(230, 0, 122, 0.2);
+}
 
-/* Hardcore Theme (HKMC) */
+/* 2. Hardcore Theme (Red) */
 .project-badge.hardcore {
     border: 1px solid #ff4444;
     color: #ff4444;
@@ -406,3 +407,9 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     -webkit-text-fill-color: transparent;
 }
 
+/* 3. Utility Icons */
+.icon-blue { color: #00d0ff; }
+.icon-purple { color: #a855f7; }
+.icon-pink { color: #E6007A; }
+.icon-red { color: #ff4444; }
+.icon-yellow { color: #facc15; }
