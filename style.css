@@ -536,3 +536,75 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         width: 100%;
     }
 }
+
+/* --- FIX FOR ROLES SECTION (Compact & Row Layout) --- */
+
+.roles-list {
+    display: grid;
+    /* DESKTOP: Force 3 columns in one row */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.roles-card {
+    /* RESET SIZE: Remove the massive height/padding from the other fix */
+    min-height: auto !important; 
+    height: auto !important;
+    padding: 20px !important; /* Small, neat padding */
+    
+    /* Layout */
+    display: flex;
+    align-items: center; /* Center vertically */
+    gap: 15px; /* Space between icon and text */
+    
+    /* Look */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Icon adjustment */
+.roles-icon-wrap {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 1.2rem;
+    flex-shrink: 0; /* Prevents icon from getting squashed */
+}
+
+/* Text adjustment */
+.roles-text {
+    text-align: left; /* Keep text left-aligned */
+}
+
+.roles-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.roles-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* --- MOBILE SPECIFIC FIX --- */
+@media (max-width: 768px) {
+    .roles-list {
+        /* On phone, stack them 1 by 1 */
+        grid-template-columns: 1fr; 
+    }
+    
+    .roles-card {
+        /* Ensure they stay small on mobile too */
+        min-height: 80px !important; 
+    }
+}
