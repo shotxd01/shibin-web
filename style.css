@@ -310,3 +310,17 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     transform: translateY(0);
     opacity: 1;
 }
+
+/* --- GITHUB BUTTON SPECIFIC --- */
+.social-btn.github {
+    background: #2b3137; /* GitHub Dark Grey */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-btn.github:hover {
+    background: #000000; /* Pure Black on hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* White/Silver Glow */
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1); /* Matches your existing animation */
+}
+
