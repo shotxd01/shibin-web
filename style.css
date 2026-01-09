@@ -314,22 +314,22 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     opacity: 1;
 }
 
-/* --- CAROUSEL SLIDER (UPDATED) --- */
+/* --- CAROUSEL SLIDER (FIXED) --- */
 .carousel-container {
-    max-width: 900px; /* Wider for better visibility on PC/Tablet */
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
     position: relative;
-    padding: 0 10px; /* Prevents touching screen edges */
+    padding: 0; /* Remove padding here so swipe goes edge-to-edge */
 }
 
 .carousel-track {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* The "Reels" snap effect */
-    gap: 20px;
-    padding-bottom: 20px; /* Space for scrollbar (hidden) */
-    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    scroll-snap-type: x mandatory;
+    gap: 15px; /* Slightly smaller gap for mobile */
+    padding: 10px 20px 30px 20px; /* Top, Right, Bottom, Left padding */
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Hide scrollbar Firefox */
 }
 
@@ -338,19 +338,30 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     display: none;
 }
 
+/* DESKTOP DEFAULT: Full width cards */
 .carousel-item {
-    min-width: 100%; /* Default: Show 1 full card on Desktop */
+    min-width: 100%;
     scroll-snap-align: center;
-    flex: 0 0 auto;
-    transition: transform 0.3s ease; /* Smooth hover effect */
+    flex: 0 0 100%; /* Forces 100% width rigidly */
+    transition: transform 0.3s ease;
 }
 
 /* --- MOBILE SPECIFIC (The "Peek" Effect) --- */
 @media (max-width: 768px) {
     .carousel-item {
-        /* On phones, make cards slightly smaller (85%) */
-        /* This lets the user see the edge of the NEXT card so they know to swipe */
-        min-width: 85%; 
+        /* This is the aggressive fix */
+        min-width: 85% !important; 
+        flex: 0 0 85% !important; /* Forces card to be 85% of screen */
+        width: 85% !important;
+        
+        /* Adds a little visual pop on mobile */
+        transform: scale(0.98); 
+    }
+    
+    /* Center alignment fix for the swipe */
+    .carousel-track {
+        padding-left: 7.5%; /* Centers the 85% card (100-85 = 15 / 2 = 7.5) */
+        padding-right: 7.5%;
     }
 }
 
@@ -359,7 +370,9 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: -10px; /* Pulls dots up closer to cards */
+    position: relative;
+    z-index: 2;
 }
 
 .carousel-dots .dot {
@@ -367,12 +380,13 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     height: 10px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 
 .carousel-dots .dot.active {
-    background: var(--primary); /* Pink active dot */
-    transform: scale(1.2);
-    box-shadow: 0 0 10px var(--primary);
+    background: var(--primary);
+    transform: scale(1.3);
+    box-shadow: 0 0 15px var(--primary);
 }
+
