@@ -608,3 +608,59 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         min-height: 80px !important; 
     }
 }
+
+/* --- FIX FOR "MY ROLES" CARDS (Stealth Glass Mode) --- */
+
+.roles-card {
+    /* 1. DEFAULT STATE: Blends in with background (No "Black Dot" look) */
+    background: rgba(0, 0, 0, 0.2); /* Very see-through black */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Faint border */
+    backdrop-filter: none; /* No blur initially for cleaner look */
+    
+    /* Smooth Transition */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Spacing & Layout */
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+/* 2. TOUCH / HOVER STATE: The "Little Glass" Effect */
+.roles-card:hover,
+.roles-card:active {
+    /* Lights up slightly */
+    background: rgba(255, 255, 255, 0.08); 
+    
+    /* Adds the blur and glow */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    
+    /* Slight movement */
+    transform: translateX(5px);
+}
+
+/* 3. Icon Styling (to keep them popping) */
+.roles-icon-wrap {
+    background: rgba(255, 255, 255, 0.05);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+/* Glow the icon on hover too */
+.roles-card:hover .roles-icon-wrap {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1) rotate(5deg);
+}
