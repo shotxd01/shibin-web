@@ -495,3 +495,25 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     color: #E6007A;
     box-shadow: 0 0 10px rgba(230, 0, 122, 0.2);
 }
+
+/* --- FIX FOR "LONG" ROLES ON DESKTOP --- */
+
+/* Only apply this on screens wider than 768px (Tablets & PC) */
+@media (min-width: 768px) {
+    
+    .roles-list {
+        display: flex;           /* Makes them sit in a row */
+        justify-content: center; /* Centers them in the middle */
+        gap: 20px;               /* Space between cards */
+        flex-wrap: wrap;         /* Allows wrapping if screen is small */
+        max-width: 1000px;       /* Prevents them from spreading too far */
+        margin: 0 auto;          /* Centers the whole block */
+    }
+
+    .roles-card {
+        /* Makes each card occupy roughly 1/3rd of the space */
+        flex: 1 1 300px;         
+        min-width: 250px;        /* Ensures they don't get too tiny */
+        max-width: 350px;        /* Ensures they don't get too wide */
+    }
+}
