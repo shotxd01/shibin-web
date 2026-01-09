@@ -144,4 +144,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
+
+    // --- 6. CAROUSEL DOTS LOGIC (NEW) ---
+    const track = document.querySelector('.carousel-track');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+
+    // Only run if the carousel exists on the page
+    if (track && dots.length > 0) {
+        track.addEventListener('scroll', () => {
+            const scrollPosition = track.scrollLeft;
+            const width = track.offsetWidth; 
+            
+            // Calculate which card index is currently mostly visible
+            // Math.round ensures we switch dots exactly when halfway through a swipe
+            const index = Math.round(scrollPosition / width);
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Safety check to ensure we don't try to access a dot that doesn't exist
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+        });
+    }
 });
