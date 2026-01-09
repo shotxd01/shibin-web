@@ -378,3 +378,31 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     box-shadow: 0 0 10px var(--primary);
 }
 
+/* --- UTILITY CLASSES FOR PROJECTS --- */
+
+/* Icons Colors */
+.icon-blue { color: #00d0ff; }
+.icon-purple { color: #a855f7; }
+.icon-pink { color: #E6007A; }
+.icon-red { color: #ff4444; }
+.icon-yellow { color: #facc15; }
+
+/* Hardcore Theme (HKMC) */
+.project-badge.hardcore {
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+}
+
+.project-icon-circle.hardcore {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+    border-color: rgba(255, 68, 68, 0.3);
+}
+
+.text-hardcore {
+    background: linear-gradient(45deg, #ff4444, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
