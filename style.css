@@ -314,20 +314,19 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     opacity: 1;
 }
 
-/* --- CAROUSEL SLIDER --- */
+/* --- CAROUSEL SLIDER (UPDATED) --- */
 .carousel-container {
-    max-width: 900px; /* Changed from 600px to 900px for better fit */
+    max-width: 900px; /* Wider for better visibility on PC/Tablet */
     width: 100%;
     margin: 0 auto;
     position: relative;
-    padding: 0 10px; /* Prevents touching screen edges on mobile */
+    padding: 0 10px; /* Prevents touching screen edges */
 }
-
 
 .carousel-track {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* This creates the "Reels" snap effect */
+    scroll-snap-type: x mandatory; /* The "Reels" snap effect */
     gap: 20px;
     padding-bottom: 20px; /* Space for scrollbar (hidden) */
     -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
@@ -340,13 +339,20 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 }
 
 .carousel-item {
-    min-width: 100%; /* Shows 1 card at a time */
+    min-width: 100%; /* Default: Show 1 full card on Desktop */
     scroll-snap-align: center;
     flex: 0 0 auto;
+    transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
-/* On Mobile: Show a tiny peek of the next card so user knows to swipe */
-
+/* --- MOBILE SPECIFIC (The "Peek" Effect) --- */
+@media (max-width: 768px) {
+    .carousel-item {
+        /* On phones, make cards slightly smaller (85%) */
+        /* This lets the user see the edge of the NEXT card so they know to swipe */
+        min-width: 85%; 
+    }
+}
 
 /* Dots Styling */
 .carousel-dots {
@@ -362,6 +368,7 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .carousel-dots .dot.active {
