@@ -316,10 +316,13 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 
 /* --- CAROUSEL SLIDER --- */
 .carousel-container {
-    max-width: 600px; /* Limits width on PC so it doesn't look stretched */
+    max-width: 900px; /* Changed from 600px to 900px for better fit */
+    width: 100%;
     margin: 0 auto;
     position: relative;
+    padding: 0 10px; /* Prevents touching screen edges on mobile */
 }
+
 
 .carousel-track {
     display: flex;
