@@ -488,3 +488,28 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     /* Shadow gets slightly deeper when lifted, but stays soft */
     box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.35);
 }
+
+/* --- HORIZON THEME (Minecraft Green) --- */
+
+/* 1. Badge & Icon Circle */
+.project-badge.horizon {
+    border: 1px solid #4ade80; /* Bright Green */
+    color: #4ade80;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+.project-icon-circle.horizon {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+/* 2. Text Gradient */
+.text-horizon {
+    background: linear-gradient(45deg, #4ade80, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 3. Utility Icon Color */
+.icon-green { color: #4ade80; }
