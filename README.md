@@ -1,12 +1,12 @@
-# ⚡ Shibinsoju Portfolio & Live Dashboard
+# ⚡ Shibinsoju Portfolio & Live Projects
 
 ![Project Status](https://img.shields.io/badge/Status-Live-00ff88?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Stack-HTML_CSS_JS-blue?style=for-the-badge)
-![ShotDevs](https://img.shields.io/badge/Powered_By-ShotDevs_API-ff007f?style=for-the-badge)
+![ShotDevs](https://img.shields.io/badge/Powered_By-ShotDevs-E6007A?style=for-the-badge)
 
-Welcome to my personal developer portfolio. This site showcases my work as the **Founder of ShotDevs**, my Discord bots, and my community roles. 
+Welcome to my personal developer portfolio. I am the **Founder of ShotDevs**, a full-stack developer, and a community manager.
 
-It features a custom **Real-time Server Stats Dashboard** that connects to my backend API to display live community data.
+This site features a **modern, glassmorphism UI** with a custom-built, swipeable project carousel that showcases my active services and communities.
 
 ## 🔗 Live Demo
 **[Visit Portfolio](https://shibin.shotdevs.live)**
@@ -15,18 +15,37 @@ It features a custom **Real-time Server Stats Dashboard** that connects to my ba
 
 ## ✨ Key Features
 
-### 🎨 Core Portfolio
-* **Modern UI/UX:** Dark theme with "ShotDevs" Pink & Cyan neon accents.
-* **📱 Fully Responsive:** Optimized for Mobile, Tablet, and Desktop.
-* **🔄 Infinite Tech Scroll:** Smooth animation showcasing my skills (Node.js, MongoDB, etc.).
-* **🤖 Discord Integration:** "Copy Username" functionality and status widget.
+### 🎨 Visuals & UI
+* **Neon Glass Aesthetic:** Dark theme with "ShotDevs" Pink (#E6007A) and Cyan accents.
+* **Animated Auras:** Floating background gradients for a premium feel.
+* **Infinite Tech Scroll:** Smooth marquee animation displaying my stack (Node.js, MongoDB, etc.).
 
-### 📡 New: Live Stats Dashboard (`projects.html`)
-A custom-built dashboard that fetches real-time data from the **ShotDevs API** and Discord Widget.
-* **Live Member Count:** Fetches total members from my private API.
-* **Online Presence:** Fetches online user count from Discord's widget.
-* **API Health Check:** Displays "Operational" or "Issues" based on backend status codes.
-* **Auto-Refresh:** Data updates automatically every 30 seconds without reloading.
+### 📱 Interactive Project Carousel (New!)
+A fully responsive, Instagram-style slider built with **CSS Scroll Snap** and JavaScript auto-rotation.
+* **Touch & Swipe:** Optimized for mobile devices with smooth edge-to-edge scrolling.
+* **Auto-Rotation:** Slides automatically every 3 seconds and pauses on interaction.
+* **Dynamic Themes:** Each project card has a unique color identity defined by CSS classes.
+
+---
+
+## 🚀 Featured Projects
+
+The portfolio currently highlights three major projects in the carousel:
+
+### 1. 📊 ShotDevs Stats (Live Dashboard)
+* **Theme:** Pink & Cyan Gradient 🩷🩵
+* **Function:** Fetches real-time data from the Discord API.
+* **Tech:** Displays live member counts and auto-refreshes every 30 seconds.
+
+### 2. 💀 HKMC Network
+* **Theme:** Hardcore Red ❤️
+* **Description:** Kerala's #1 Hardcore Lifesteal SMP.
+* **Features:** Highlights the GrimAC Anti-Cheat and premium Ryzen hosting infrastructure.
+
+### 3. 🧩 Horizon Hub (HMS)
+* **Theme:** ShotDevs Purple/Pink 💜
+* **Description:** The ultimate library for Minecraft mods, shaders, and textures.
+* **Features:** A central hub for downloading safe resources for Java & Bedrock.
 
 ---
 
@@ -34,11 +53,21 @@ A custom-built dashboard that fetches real-time data from the **ShotDevs API** a
 
 | Technology | Usage |
 | :--- | :--- |
-| **HTML5** | Semantic structure for Portfolio and Dashboard |
-| **CSS3** | Neon glow effects, animations, Grid/Flexbox |
-| **JavaScript (ES6+)** | `Fetch API` for backend communication, DOM manipulation |
-| **ShotDevs API** | Custom Node.js backend providing server stats |
-| **Font Awesome** | Icons for UI elements |
+| **HTML5** | Semantic structure and SEO tags |
+| **CSS3** | Flexbox, Grid, Scroll Snap, Keyframe Animations |
+| **JavaScript (ES6+)** | Auto-rotation logic, DOM manipulation, Mobile Menu |
+| **Font Awesome 6** | Custom UI icons (Discord, Server, Download) |
+
+---
+
+## 📂 Project Structure
+
+```text
+shibin-web/
+├── 📄 index.html      # Main Portfolio (Single Page App)
+├── 📄 style.css       # Global Styles, Glassmorphism, Carousel Logic
+├── 📄 script.js       # Auto-scroller, Mobile Menu, Year Auto-update
+└── 📄 README.md       # Documentation
 
 ---
 
@@ -53,32 +82,16 @@ A custom-built dashboard that fetches real-time data from the **ShotDevs API** a
     cd shibin-web
     ```
 3.  **Open in Browser:**
-    * Double-click `index.html` to see the **Main Portfolio**.
-    * Double-click `projects.html` to see the **Live Stats Dashboard**.
-
-> **Note:** For the API to work locally, the backend must allow CORS from `localhost` or `null` (file system). If you see a CORS error locally, it is a security feature, not a bug. It works perfectly on the live domain.
+    * Simply double-click `index.html`. No build process required!
 
 ---
 
-## 📂 Project Structure
-
-```text
-shibin-web/
-├── 📄 index.html      # Main Portfolio Page
-├── 📄 projects.html   # Live Stats Dashboard (API Integration)
-├── 📄 style.css       # Global Styles and Animations
-├── 📄 script.js       # Main site logic (Mobile menu, etc.)
-└── 📄 README.md       # Documentation
-```
 ## 👨‍💻 Author
-**Shibin Hussain MK (Shibinsoju)**
- * 👑 Founder: ShotDevs
- * 💬 Discord: shibinsoju
- * 📸 Instagram: @shibn_hussn
-⭐ Support
-If you like this portfolio, please give this repository a Star! 🌟
 
-## 💡 Why this is better:
-1.  **Highlights the API:** I added a specific section for the "Live Stats Dashboard" because fetching data from a custom backend is a **senior-level skill** that recruiters/clients look for.
-2.  **Updated Structure:** It correctly lists `projects.html` in the root folder instead of the `project/` folder we deleted.
-3.  **CORS Note:** I added a small note about CORS so people (or you) don't get confused if the API doesn't load when opening the file directly from a hard drive.
+**Shibin Hussain MK (Shibinsoju)**
+* 👑 **Founder:** ShotDevs
+* 💬 **Discord:** shibinsoju
+* 📸 **Instagram:** [@shibn_hussn](https://www.instagram.com/shibn_hussn)
+
+### ⭐ Support
+If you like this portfolio or use the carousel code, please give this repository a **Star**! 🌟
