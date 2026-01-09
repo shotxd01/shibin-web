@@ -168,3 +168,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+    // --- 7. AUTO-ROTATING CAROUSEL (NEW) ---
+    const track = document.querySelector('.carousel-track');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    
+    if (track && dots.length > 0) {
+        let autoScrollInterval;
+        const scrollSpeed = 3000; // 3 Seconds
+        
+        // 1. Function to move to next slide
+        const autoScroll = () => {
+            const cardWidth = track.offsetWidth;
+            const scrollPos = track.scrollLeft;
+            const maxScroll = track.scrollWidth - track.clientWidth;
+
+            // If we are at the end, scroll back to start. Otherwise, scroll next.
+            if (scrollPos >= maxScroll - 10) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            }
+        };
+
+        // 2. Start the timer
+        const startAutoScroll = () => {
+            stopAutoScroll(); // Safety clear
+            autoScrollInterval = setInterval(autoScroll, scrollSpeed);
+        };
+
+        // 3. Stop the timer (Pause)
+        const stopAutoScroll = () => {
+            clearInterval(autoScrollInterval);
+        };
+
+        // 4. Dot Update Logic
+        track.addEventListener('scroll', () => {
+            const index = Math.round(track.scrollLeft / track.offsetWidth);
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[index]) dots[index].classList.add('active');
+        });
+
+        // 5. Interaction Listeners (Pause on Touch/Hover)
+        track.addEventListener('touchstart', stopAutoScroll, { passive: true });
+        track.addEventListener('mousedown', stopAutoScroll);
+        track.addEventListener('mouseenter', stopAutoScroll); // Pause when mouse enters
+
+        // 6. Resume Listeners (Start again when leaving)
+        track.addEventListener('touchend', startAutoScroll);
+        track.addEventListener('mouseup', startAutoScroll);
+        track.addEventListener('mouseleave', startAutoScroll);
+
+        // Start initially
+        startAutoScroll();
+    }
