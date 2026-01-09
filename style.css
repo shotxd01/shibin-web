@@ -314,70 +314,6 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     opacity: 1;
 }
 
-/* --- CAROUSEL SLIDER (INSTA STYLE - FULL WIDTH) --- */
-.carousel-container {
-    max-width: 1000px; /* Kept your preference */
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    padding: 0; /* No padding = Edge-to-Edge swipe */
-}
-
-.carousel-track {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Snaps perfectly to center */
-    gap: 0; /* No gap between slides, like Insta Stories */
-    padding: 0; 
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    scroll-behavior: smooth; /* Essential for auto-scroll */
-}
-
-/* Hide scrollbar */
-.carousel-track::-webkit-scrollbar {
-    display: none;
-}
-
-/* CARDS: Force 100% Width always */
-.carousel-item {
-    min-width: 100% !important; /* Forces full width on Mobile & Desktop */
-    scroll-snap-align: center;
-    flex: 0 0 100% !important;
-    position: relative;
-    padding: 20px 40px; /* Internal padding so text isn't stuck to edges */
-    box-sizing: border-box; /* Ensures padding doesn't break width */
-}
-
-/* DOTS: Floating on top of the card at the bottom */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    position: absolute;
-    bottom: 25px; /* Floats above the bottom edge */
-    width: 100%;
-    z-index: 10;
-    pointer-events: none; /* Lets you swipe even if touching near dots */
-}
-
-.carousel-dots .dot {
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transition: 0.3s;
-    cursor: pointer;
-    backdrop-filter: blur(2px);
-    pointer-events: auto; /* Re-enable clicks just for dots */
-}
-
-.carousel-dots .dot.active {
-    background: var(--primary);
-    transform: scale(1.3);
-    box-shadow: 0 0 10px var(--primary);
-}
-
 /* --- PROJECT THEMES (ALL IN ONE) --- */
 
 /* 1. ShotDevs Theme (Pink) */
@@ -413,3 +349,75 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
 .icon-pink { color: #E6007A; }
 .icon-red { color: #ff4444; }
 .icon-yellow { color: #facc15; }
+
+/* --- CAROUSEL SLIDER (UPDATED & FIXED) --- */
+
+.carousel-container {
+    max-width: 1000px; /* Looks great on PC */
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+}
+
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Snaps to center */
+    gap: 0;
+    
+    /* FIX: Top/Bottom padding (20px) creates space so the "glow" 
+       doesn't get cut off when you touch the card */
+    padding: 20px 0; 
+    
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* THE CARDS */
+.carousel-item {
+    /* Forces card to be 100% width of the container */
+    min-width: 100% !important; 
+    flex: 0 0 100% !important;
+    scroll-snap-align: center;
+    position: relative;
+    
+    /* Internal padding so text doesn't touch the screen edges */
+    padding: 0 20px; 
+    box-sizing: border-box;
+}
+
+/* DOTS (FIXED: Moved BELOW the card) */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    
+    /* Relative means "sit naturally in the flow", so it pushes 
+       down below the cards instead of floating on top */
+    position: relative; 
+    margin-top: 5px; 
+    width: 100%;
+    z-index: 10;
+}
+
+.carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.carousel-dots .dot.active {
+    background: var(--primary);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--primary);
+}
