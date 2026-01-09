@@ -495,25 +495,44 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     color: #E6007A;
     box-shadow: 0 0 10px rgba(230, 0, 122, 0.2);
 }
+/* --- FIX ROLES SECTION (DESKTOP LAYOUT) --- */
 
-/* --- FIX FOR "LONG" ROLES ON DESKTOP --- */
+.roles-list {
+    display: flex;
+    flex-wrap: wrap;        /* Allows items to wrap on small screens */
+    justify-content: center; /* Centers the cards in the middle */
+    gap: 20px;              /* Space between cards */
+    max-width: 1100px;      /* Prevents the whole section from getting too wide */
+    margin: 0 auto;         /* Centers the container */
+}
 
-/* Only apply this on screens wider than 768px (Tablets & PC) */
-@media (min-width: 768px) {
+.roles-card {
+    /* 1. DESKTOP SIZE */
+    /* Grow if needed, but base size is 300px */
+    flex: 1 1 300px; 
     
-    .roles-list {
-        display: flex;           /* Makes them sit in a row */
-        justify-content: center; /* Centers them in the middle */
-        gap: 20px;               /* Space between cards */
-        flex-wrap: wrap;         /* Allows wrapping if screen is small */
-        max-width: 1000px;       /* Prevents them from spreading too far */
-        margin: 0 auto;          /* Centers the whole block */
-    }
+    /* 2. STOP THE "LONG" LOOK */
+    /* This prevents the card from stretching infinitely on desktop */
+    max-width: 350px; 
+    
+    /* 3. CENTER CONTENT */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    
+    /* Ensure they match other cards visually */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
 
+/* --- MOBILE SPECIFIC (Keep them full width on phone) --- */
+@media (max-width: 768px) {
     .roles-card {
-        /* Makes each card occupy roughly 1/3rd of the space */
-        flex: 1 1 300px;         
-        min-width: 250px;        /* Ensures they don't get too tiny */
-        max-width: 350px;        /* Ensures they don't get too wide */
+        /* On phone, ignore the max-width and fill the screen */
+        max-width: 100%; 
+        width: 100%;
     }
 }
