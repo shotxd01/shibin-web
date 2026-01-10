@@ -120,11 +120,49 @@ body {
 .role-card.glow-hover:hover { border-color: var(--secondary); box-shadow: 0 0 20px rgba(0, 191, 255, 0.2); transform: translateY(-5px); }
 .role-icon { font-size: 2rem; color: var(--secondary); margin-bottom: 15px; }
 
-/* Tech Scroller */
-.tech-scroller { width: 100%; overflow: hidden; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); padding: 20px 0; }
-.tech-track { display: flex; gap: 2rem; width: max-content; animation: scroll 20s linear infinite; }
-.tech-item { background: rgba(255,255,255,0.05); padding: 12px 25px; border-radius: 12px; display: flex; align-items: center; gap: 10px; font-weight: 600; border: 1px solid var(--glass-border); white-space: nowrap; }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* Tech Scroller (Physics Mode) */
+.tech-scroller {
+    width: 100%;
+    /* 1. Enable Scrolling & Physics */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; /* Key for iOS Momentum */
+    
+    /* 2. Visuals */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    padding: 20px 0;
+    
+    /* 3. Hide Scrollbar (Clean Look) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.tech-scroller::-webkit-scrollbar { 
+    display: none; 
+}
+
+.tech-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    /* IMPORTANT: No Animation Here! We let JavaScript drive. */
+}
+
+/* Style the items */
+.tech-item {
+    background: rgba(255,255,255,0.05);
+    padding: 12px 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    border: 1px solid var(--glass-border);
+    white-space: nowrap;
+    /* Optional: Prevents selecting text while flicking */
+    user-select: none; 
+}
 
 /* Music Bot */
 .music-pulse-bg { background: radial-gradient(circle at center, rgba(121, 40, 202, 0.2) 0%, rgba(5,6,7,0) 70%); border: 1px solid rgba(121, 40, 202, 0.3); position: relative; overflow: hidden; border-radius: var(--radius-card); }
