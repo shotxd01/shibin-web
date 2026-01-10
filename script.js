@@ -145,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    // --- 6. UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll) ---
+
+      // --- 6. UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll) ---
     const track = document.querySelector('.carousel-track');
     const dots = document.querySelectorAll('.carousel-dots .dot');
 
@@ -156,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateDots = () => {
             const width = track.offsetWidth;
             const scrollPos = track.scrollLeft;
-            // Math: Scroll Position divided by Card Width = Current Index
             const index = Math.round(scrollPos / width);
             
             dots.forEach(dot => dot.classList.remove('active'));
@@ -170,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardWidth = track.offsetWidth;
             const maxScroll = track.scrollWidth - track.clientWidth;
 
-            // If near end, go to start. Else, go next.
             if (track.scrollLeft >= maxScroll - 10) {
                 track.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
@@ -186,18 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const stopTimer = () => clearInterval(autoScrollInterval);
 
-        // Pause when touching/hovering
         track.addEventListener('touchstart', stopTimer, { passive: true });
         track.addEventListener('mouseenter', stopTimer);
         
-        // Resume when leaving
         track.addEventListener('touchend', startTimer);
         track.addEventListener('mouseleave', startTimer);
 
         // Start the engine!
         startTimer();
     }
-    
-        // Start initially
-        startAutoScroll();
-    }
+}); // <--- THIS closes the main 'DOMContentLoaded' from line 1. NOTHING should be after this.
