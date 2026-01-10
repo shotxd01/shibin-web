@@ -226,5 +226,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Start the engine!
         startTimer();
+
+        // --- 7. TECH STACK "SPINNER" PHYSICS ---
+        const techScroller = document.querySelector('.tech-scroller');
+        
+        if (techScroller) {
+            let isHovered = false;
+            let scrollSpeed = 1; // Adjust speed (Higher = Faster)
+
+            // 1. The Engine: Moves the scrollbar automatically
+            const autoScrollTech = () => {
+                if (!isHovered) {
+                    techScroller.scrollLeft += scrollSpeed;
+                    
+                    // Infinite Loop Reset: If we reach the end, jump back to start invisibly
+                    // (Requires duplicate content to look smooth)
+                    if (techScroller.scrollLeft >= (techScroller.scrollWidth - techScroller.clientWidth) - 10) {
+                       techScroller.scrollLeft = 0;
+                    }
+                }
+                requestAnimationFrame(autoScrollTech);
+            };
+
+            // 2. Interaction: Stop engine when user touches/hovers
+            techScroller.addEventListener('mouseenter', () => isHovered = true);
+            techScroller.addEventListener('touchstart', () => isHovered = true, { passive: true });
+
+            // 3. Resume: Restart engine when user leaves (with a small delay for momentum)
+            techScroller.addEventListener('mouseleave', () => isHovered = false);
+            techScroller.addEventListener('touchend', () => {
+                setTimeout(() => isHovered = false, 2000); // Wait 2 seconds after flick to resume
+            });
+
+            // Start the engine
+            autoScrollTech();
+        }
+        
     }
 }); // <--- THIS closes the main 'DOMContentLoaded' from line 1. NOTHING should be after this.
