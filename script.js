@@ -145,80 +145,59 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    // --- 6. CAROUSEL DOTS LOGIC (NEW) ---
+    // --- 6. UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll) ---
     const track = document.querySelector('.carousel-track');
     const dots = document.querySelectorAll('.carousel-dots .dot');
 
-    // Only run if the carousel exists on the page
-    if (track && dots.length > 0) {
-        track.addEventListener('scroll', () => {
-            const scrollPosition = track.scrollLeft;
-            const width = track.offsetWidth; 
-            
-            // Calculate which card index is currently mostly visible
-            // Math.round ensures we switch dots exactly when halfway through a swipe
-            const index = Math.round(scrollPosition / width);
-            
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Safety check to ensure we don't try to access a dot that doesn't exist
-            if (dots[index]) {
-                dots[index].classList.add('active');
-            }
-        });
-    }
-});
-
-    // --- 7. AUTO-ROTATING CAROUSEL (NEW) ---
-    const track = document.querySelector('.carousel-track');
-    const dots = document.querySelectorAll('.carousel-dots .dot');
-    
     if (track && dots.length > 0) {
         let autoScrollInterval;
-        const scrollSpeed = 3000; // 3 Seconds
         
-        // 1. Function to move to next slide
+        // A. THE MATH: Highlight the correct dot on scroll
+        const updateDots = () => {
+            const width = track.offsetWidth;
+            const scrollPos = track.scrollLeft;
+            // Math: Scroll Position divided by Card Width = Current Index
+            const index = Math.round(scrollPos / width);
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[index]) dots[index].classList.add('active');
+        };
+
+        track.addEventListener('scroll', updateDots);
+
+        // B. THE ENGINE: Auto-move every 3 seconds
         const autoScroll = () => {
             const cardWidth = track.offsetWidth;
-            const scrollPos = track.scrollLeft;
             const maxScroll = track.scrollWidth - track.clientWidth;
 
-            // If we are at the end, scroll back to start. Otherwise, scroll next.
-            if (scrollPos >= maxScroll - 10) {
+            // If near end, go to start. Else, go next.
+            if (track.scrollLeft >= maxScroll - 10) {
                 track.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
                 track.scrollBy({ left: cardWidth, behavior: 'smooth' });
             }
         };
 
-        // 2. Start the timer
-        const startAutoScroll = () => {
-            stopAutoScroll(); // Safety clear
-            autoScrollInterval = setInterval(autoScroll, scrollSpeed);
-        };
-
-        // 3. Stop the timer (Pause)
-        const stopAutoScroll = () => {
+        // C. START/STOP LOGIC
+        const startTimer = () => {
             clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(autoScroll, 3000);
         };
 
-        // 4. Dot Update Logic
-        track.addEventListener('scroll', () => {
-            const index = Math.round(track.scrollLeft / track.offsetWidth);
-            dots.forEach(dot => dot.classList.remove('active'));
-            if (dots[index]) dots[index].classList.add('active');
-        });
+        const stopTimer = () => clearInterval(autoScrollInterval);
 
-        // 5. Interaction Listeners (Pause on Touch/Hover)
-        track.addEventListener('touchstart', stopAutoScroll, { passive: true });
-        track.addEventListener('mousedown', stopAutoScroll);
-        track.addEventListener('mouseenter', stopAutoScroll); // Pause when mouse enters
+        // Pause when touching/hovering
+        track.addEventListener('touchstart', stopTimer, { passive: true });
+        track.addEventListener('mouseenter', stopTimer);
+        
+        // Resume when leaving
+        track.addEventListener('touchend', startTimer);
+        track.addEventListener('mouseleave', startTimer);
 
-        // 6. Resume Listeners (Start again when leaving)
-        track.addEventListener('touchend', startAutoScroll);
-        track.addEventListener('mouseup', startAutoScroll);
-        track.addEventListener('mouseleave', startAutoScroll);
-
+        // Start the engine!
+        startTimer();
+    }
+    
         // Start initially
         startAutoScroll();
     }
