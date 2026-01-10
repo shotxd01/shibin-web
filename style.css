@@ -664,3 +664,37 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
     background: rgba(255, 255, 255, 0.15);
     transform: scale(1.1) rotate(5deg);
 }
+
+/* Scroll progress indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    z-index: 9999;
+    transition: width 0.3s ease;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 768px) {
+    .mobile-menu-overlay {
+        padding: 80px 20px 40px;
+    }
+    
+    .mobile-nav-content {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .nav-card {
+        padding: 18px 24px;
+        font-size: 1.1rem;
+    }
+    
+    .menu-label {
+        margin: 25px 0 12px 5px;
+    }
+}

@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- 3. SCROLL REVEAL ---
+    // --- 3. LOADING ANIMATION ON SCROLL ---
     const reveals = document.querySelectorAll('.reveal');
     const revealOnScroll = () => {
         const windowHeight = window.innerHeight;
@@ -112,6 +112,39 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
+    
+    // Add scroll loading indicator
+    const createScrollIndicator = () => {
+        if (document.querySelector('.scroll-progress')) return; // Prevent duplicates
+        
+        const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 9999;
+            transition: width 0.3s ease;
+        `;
+        document.body.appendChild(progressBar);
+    };
+    
+    const updateScrollProgress = () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.querySelector('.scroll-progress');
+        if (progressBar) {
+            progressBar.style.width = scrolled + "%";
+        }
+    };
+    
+    // Initialize and update scroll progress
+    createScrollIndicator();
+    window.addEventListener('scroll', updateScrollProgress);
 
     // --- 4. COPY BUTTON ---
     const copyBtn = document.getElementById('copy-btn');
