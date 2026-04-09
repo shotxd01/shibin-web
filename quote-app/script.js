@@ -6,11 +6,13 @@ quoteEl.innerText = "Loading...";
 authorEl.innerText = "";
 
 try {
-const res = await fetch("https://api.quotable.io/random?origin=&*");
+const res = await fetch("https://type.fit/api/quotes");
 const data = await res.json();
 
-typeEffect(`"${data.content}"`, quoteEl);
-authorEl.innerText = `- ${data.author}`;
+const random = data[Math.floor(Math.random() * data.length)];
+
+typeEffect(`"${random.text}"`, quoteEl);
+authorEl.innerText = `- ${random.author || "Unknown"}`;
 
 } catch (err) {
 quoteEl.innerText = "Failed to load quote 😢";
