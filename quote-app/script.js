@@ -6,7 +6,7 @@ quoteEl.innerText = "Loading...";
 authorEl.innerText = "";
 
 try {
-const res = await fetch("https://api.quotable.io/random");
+const res = await fetch("https://api.quotable.io/random?origin=&*");
 const data = await res.json();
 
 typeEffect(`"${data.content}"`, quoteEl);
