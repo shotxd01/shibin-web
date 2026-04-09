@@ -1,0 +1,40 @@
+body {
+background: radial-gradient(circle at top, #0f0f0f, #000);
+color: white;
+font-family: Arial;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+}
+
+.container {
+text-align: center;
+background: rgba(20, 20, 20, 0.8);
+padding: 30px;
+border-radius: 20px;
+width: 320px;
+backdrop-filter: blur(10px);
+box-shadow: 0 0 30px rgba(255, 0, 200, 0.3);
+}
+
+#quote {
+min-height: 80px;
+margin: 10px 0;
+}
+
+button {
+margin: 10px;
+padding: 10px 20px;
+border: none;
+background: linear-gradient(45deg, #ff00cc, #3333ff);
+color: white;
+border-radius: 20px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover {
+transform: scale(1.1);
+}
