@@ -24,9 +24,17 @@ body {
 
 /* Subtle floating or pulse effect */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .container {
@@ -36,7 +44,7 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 
+  box-shadow:
     0 10px 40px rgba(0, 0, 0, 0.5),
     0 0 20px rgba(255, 0, 204, 0.15),
     0 0 40px rgba(0, 240, 255, 0.1) inset;
