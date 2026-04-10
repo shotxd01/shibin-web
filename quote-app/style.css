@@ -1,40 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  --neon-pink: #ff00cc;
+  --neon-cyan: #00f0ff;
+  --dark-bg: #09090b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-background: radial-gradient(circle at top, #0f0f0f, #000);
-color: white;
-font-family: Arial;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-margin: 0;
+  background: radial-gradient(circle at top, #1a0b2e, var(--dark-bg) 80%);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Subtle floating or pulse effect */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .container {
-text-align: center;
-background: rgba(20, 20, 20, 0.8);
-padding: 30px;
-border-radius: 20px;
-width: 320px;
-backdrop-filter: blur(10px);
-box-shadow: 0 0 30px rgba(255, 0, 200, 0.3);
+  text-align: center;
+  /* Glass card UI with blur and border glow */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 0, 204, 0.15),
+    0 0 40px rgba(0, 240, 255, 0.1) inset;
+  padding: 40px 30px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 420px;
+  animation: float 6s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  /* Neon pink and cyan glow accents */
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 204, 0.4));
+  letter-spacing: 1px;
+}
+
+/* Glow effect on quote text */
 #quote {
-min-height: 80px;
-margin: 10px 0;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 10px 0;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  color: #e2e8f0;
+}
+
+#author {
+  font-size: 1rem;
+  color: #94a3b8;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+  text-align: right;
+  text-shadow: 0 0 8px rgba(255, 0, 204, 0.3);
+  min-height: 24px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 button {
-margin: 10px;
-padding: 10px 20px;
-border: none;
-background: linear-gradient(45deg, #ff00cc, #3333ff);
-color: white;
-border-radius: 20px;
-cursor: pointer;
-transition: 0.3s;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
+  z-index: -1;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
 }
 
 button:hover {
-transform: scale(1.1);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 0, 204, 0.4), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+button:hover::before {
+  opacity: 0.5;
+}
+
+button:active {
+  transform: translateY(1px);
 }

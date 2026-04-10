@@ -736,3 +736,40 @@ footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-siz
         margin: 25px 0 12px 5px;
     }
 }
+
+/* --- QUOTE APP PROJECT ENHANCEMENT --- */
+
+.project-icon-circle.quote {
+background: rgba(230, 0, 122, 0.1);
+border: 1px solid rgba(230, 0, 122, 0.3);
+color: var(--primary);
+box-shadow: 0 0 20px rgba(230, 0, 122, 0.25);
+}
+
+/* Extra glow on hover */
+.project-card:hover .project-icon-circle.quote {
+box-shadow: 0 0 30px rgba(230, 0, 122, 0.5);
+}
+
+/* Quote badge style */
+.project-badge.quote {
+background: linear-gradient(135deg, #E6007A, #ff4db8);
+color: white;
+border: none;
+box-shadow: 0 0 15px rgba(230, 0, 122, 0.5);
+}
+
+/* Smooth hover animation */
+.project-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+transform: translateY(-8px) scale(1.02);
+}
+
+/* Button glow upgrade */
+.btn-gradient:hover {
+box-shadow: 0 0 25px rgba(230, 0, 122, 0.6),
+0 0 40px rgba(0, 191, 255, 0.3);
+}
