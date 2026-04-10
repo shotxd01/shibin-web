@@ -48,14 +48,15 @@ body {
     0 10px 40px rgba(0, 0, 0, 0.5),
     0 0 20px rgba(255, 0, 204, 0.15),
     0 0 40px rgba(0, 240, 255, 0.1) inset;
-  padding: 40px 30px;
+  padding: 30px 20px;
   border-radius: 24px;
   width: 90%;
-  max-width: 420px;
+  max-width: 500px;
   animation: float 6s ease-in-out infinite;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -72,27 +73,35 @@ h1 {
 
 /* Glow effect on quote text */
 #quote {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 300;
-  line-height: 1.6;
-  margin: 10px 0;
-  min-height: 100px;
+  line-height: 1.8;
+  margin: 10px auto;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
   color: #e2e8f0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  max-width: 460px;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 #author {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #94a3b8;
   font-style: italic;
   font-weight: 400;
-  margin: 0;
+  margin: 15px 0 25px 0;
   text-align: right;
   text-shadow: 0 0 8px rgba(255, 0, 204, 0.3);
   min-height: 24px;
+  padding-right: 25px;
 }
 
 .buttons {
