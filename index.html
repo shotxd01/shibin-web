@@ -17,9 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style.css?v=6">
-    <a href="quote-app/index.html">View Quote App</a>
 </head>
 <body>
     
@@ -103,9 +101,13 @@
         
         <header class="hero" id="home">
             <div class="hero-content"> 
-                <div class="profile-wrapper">
-                    <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju" class="profile-photo">
-                    <div class="status-badge"><i class="fa-solid fa-code"></i> Coding</div>
+                <div class="profile-wrapper" id="profile-wrapper">
+                    <div class="profile-glow"></div>
+                    <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju" class="profile-photo" id="profile-photo">
+                    <div class="status-badge" id="discord-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Loading...</span>
+                    </div>
                 </div>
                 
                 <h1 class="hero-title">
@@ -240,116 +242,136 @@
 
             <section id="projects" class="section-spacer">
     <h2 class="section-heading">Projects</h2>
-
-    <div class="glass-card project-card carousel-item">
-    <div class="project-badge live">
-        <span class="pulsing-dot"></span> LIVE
-    </div><div class="project-header-center">
-    <div class="project-icon-circle quote">
-        <i class="fa-solid fa-quote-left"></i>
-    </div>
-    <h3>Quote <span class="text-gradient">Generator</span></h3>
-</div>
-
-<p class="project-desc-center">
-    A modern quote generator that fetches real-time quotes using API with smooth typing animation.
-</p>
-
-<ul class="project-features-center">
-    <li><i class="fa-solid fa-bolt icon-purple"></i> <span>Real-time API</span></li>
-    <li><i class="fa-solid fa-wand-magic-sparkles icon-pink"></i> <span>Typing Effect</span></li>
-    <li><i class="fa-solid fa-copy icon-blue"></i> <span>Copy Feature</span></li>
-</ul>
-
-<div class="project-actions-center">
-    <a href="quote-app/" target="_blank" class="btn btn-gradient">
-        Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
-    </a>
-</div>
-
-</div>
     
-    <div class="carousel-container">
-        <div class="carousel-track">
-    
-    <div class="glass-card project-card carousel-item">
-        <div class="project-badge live"><span class="pulsing-dot"></span> LIVE</div>
-        <div class="project-header-center">
-            <div class="project-icon-circle shotdevs"><i class="fa-brands fa-discord"></i></div>
-            <h3>ShotDevs <span class="text-gradient">Stats</span></h3>
-        </div>
-        <p class="project-desc-center">A real-time dashboard powered by the Discord API. Watch your community grow with live data updates.</p>
-        <ul class="project-features-center">
-            <li><i class="fa-solid fa-users icon-blue"></i> <span>Live Member Count</span></li>
-            <li><i class="fa-solid fa-bolt icon-purple"></i> <span>Auto-Refresh (30s)</span></li>
-            <li><i class="fa-solid fa-code icon-pink"></i> <span>Discord API</span></li>
-        </ul>
-        <div class="project-actions-center">
-            <a href="./projects" class="btn btn-gradient">View Live Demo</a>
-        </div>
+    <!-- Project Filter Buttons -->
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="discord">Discord Bots</button>
+        <button class="filter-btn" data-filter="website">Websites</button>
+        <button class="filter-btn" data-filter="minecraft">Minecraft</button>
     </div>
 
-    <div class="glass-card project-card carousel-item">
-        <div class="project-badge hardcore">
-            <i class="fa-solid fa-server"></i> SERVER
-        </div>
-        <div class="project-header-center">
-            <div class="project-icon-circle hardcore">
-                <i class="fa-solid fa-skull"></i>
-            </div>
-            <h3>HKMC <span class="text-hardcore">Network</span></h3>
-        </div>
-        <p class="project-desc-center">Kerala's #1 Hardcore Lifesteal SMP. Built on premium Ryzen nodes for 0% lag PvP.</p>
-        <ul class="project-features-center">
-            <li><i class="fa-solid fa-heart-pulse icon-red"></i> <span>Lifesteal SMP</span></li>
-            <li><i class="fa-solid fa-shield-halved icon-blue"></i> <span>GrimAC Anti-Cheat</span></li>
-            <li><i class="fa-solid fa-globe icon-yellow"></i> <span>Web Portal</span></li>
-        </ul>
-        <div class="project-actions-center">
-            <a href="https://hkmc.onrender.com/" target="_blank" class="btn btn-gradient">
-                Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-    </div>
-
-                    <div class="glass-card project-card carousel-item">
-        <div class="project-badge pink">
-            <i class="fa-solid fa-cube"></i> MODS
-        </div>
+    <div class="carousel-wrapper">
+        <button class="carousel-arrow carousel-prev" aria-label="Previous project">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
         
-        <div class="project-header-center">
-            <div class="project-icon-circle shotdevs">
-                <i class="fa-solid fa-download"></i>
-            </div>
-            <h3>Horizon <span class="text-gradient">Hub</span></h3>
-        </div>
-        
-        <p class="project-desc-center">The ultimate library for Minecraft. Download safe Mods, Shaders, and Texture Packs for Java & Bedrock.</p>
-        
-        <ul class="project-features-center">
-            <li><i class="fa-solid fa-puzzle-piece icon-pink"></i> <span>Mods & Addons</span></li>
-            <li><i class="fa-solid fa-image icon-purple"></i> <span>Textures & Shaders</span></li>
-            <li><i class="fa-solid fa-rotate icon-blue"></i> <span>Daily Updates</span></li>
-        </ul>
-        
-        <div class="project-actions-center">
-            <a href="https://hms.shotdevs.live/" target="_blank" class="btn btn-gradient">
-                Start Downloading <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                
+                <!-- Quote Generator -->
+                <div class="glass-card project-card carousel-item" data-category="website">
+                    <div class="project-badge live">
+                        <span class="pulsing-dot"></span> LIVE
                     </div>
-            
-            
+                    <div class="project-header-center">
+                        <div class="project-icon-circle quote">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <h3>Quote <span class="text-gradient">Generator</span></h3>
+                    </div>
+                    <p class="project-desc-center">
+                        A modern quote generator that fetches real-time quotes using API with smooth typing animation.
+                    </p>
+                    <ul class="project-features-center">
+                        <li><i class="fa-solid fa-bolt icon-purple"></i> <span>Real-time API</span></li>
+                        <li><i class="fa-solid fa-wand-magic-sparkles icon-pink"></i> <span>Typing Effect</span></li>
+                        <li><i class="fa-solid fa-copy icon-blue"></i> <span>Copy Feature</span></li>
+                    </ul>
+                    <div class="project-actions-center">
+                        <a href="quote-app/" target="_blank" class="btn btn-gradient">
+                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- ShotDevs Stats -->
+                <div class="glass-card project-card carousel-item" data-category="discord">
+                    <div class="project-badge live"><span class="pulsing-dot"></span> LIVE</div>
+                    <div class="project-header-center">
+                        <div class="project-icon-circle shotdevs"><i class="fa-brands fa-discord"></i></div>
+                        <h3>ShotDevs <span class="text-gradient">Stats</span></h3>
+                    </div>
+                    <p class="project-desc-center">A real-time dashboard powered by the Discord API. Watch your community grow with live data updates.</p>
+                    <ul class="project-features-center">
+                        <li><i class="fa-solid fa-users icon-blue"></i> <span>Live Member Count</span></li>
+                        <li><i class="fa-solid fa-bolt icon-purple"></i> <span>Auto-Refresh (30s)</span></li>
+                        <li><i class="fa-solid fa-code icon-pink"></i> <span>Discord API</span></li>
+                    </ul>
+                    <div class="project-actions-center">
+                        <a href="./projects" class="btn btn-gradient">View Live Demo</a>
+                    </div>
+                </div>
 
+                <!-- HKMC Network -->
+                <div class="glass-card project-card carousel-item" data-category="minecraft">
+                    <div class="project-badge hardcore">
+                        <i class="fa-solid fa-server"></i> SERVER
+                    </div>
+                    <div class="project-header-center">
+                        <div class="project-icon-circle hardcore">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <h3>HKMC <span class="text-hardcore">Network</span></h3>
+                    </div>
+                    <p class="project-desc-center">Kerala's #1 Hardcore Lifesteal SMP. Built on premium Ryzen nodes for 0% lag PvP.</p>
+                    <ul class="project-features-center">
+                        <li><i class="fa-solid fa-heart-pulse icon-red"></i> <span>Lifesteal SMP</span></li>
+                        <li><i class="fa-solid fa-shield-halved icon-blue"></i> <span>GrimAC Anti-Cheat</span></li>
+                        <li><i class="fa-solid fa-globe icon-yellow"></i> <span>Web Portal</span></li>
+                    </ul>
+                    <div class="project-actions-center">
+                        <a href="https://hkmc.onrender.com/" target="_blank" class="btn btn-gradient">
+                            Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Horizon Hub -->
+                <div class="glass-card project-card carousel-item" data-category="minecraft">
+                    <div class="project-badge pink">
+                        <i class="fa-solid fa-cube"></i> MODS
+                    </div>
+                    <div class="project-header-center">
+                        <div class="project-icon-circle shotdevs">
+                            <i class="fa-solid fa-download"></i>
+                        </div>
+                        <h3>Horizon <span class="text-gradient">Hub</span></h3>
+                    </div>
+                    <p class="project-desc-center">The ultimate library for Minecraft. Download safe Mods, Shaders, and Texture Packs for Java & Bedrock.</p>
+                    <ul class="project-features-center">
+                        <li><i class="fa-solid fa-puzzle-piece icon-pink"></i> <span>Mods & Addons</span></li>
+                        <li><i class="fa-solid fa-image icon-purple"></i> <span>Textures & Shaders</span></li>
+                        <li><i class="fa-solid fa-rotate icon-blue"></i> <span>Daily Updates</span></li>
+                    </ul>
+                    <div class="project-actions-center">
+                        <a href="https://hms.shotdevs.live/" target="_blank" class="btn btn-gradient">
+                            Start Downloading <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
         </div>
         
-        <div class="carousel-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
+        <button class="carousel-arrow carousel-next" aria-label="Next project">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
     </div>
-            </section>
+    
+    <div class="view-all-projects">
+        <a href="https://github.com/SHIBINSOJU" target="_blank" class="btn btn-outline">
+            <i class="fa-brands fa-github"></i> View All Projects
+        </a>
+    </div>
+</section>
             
 
             

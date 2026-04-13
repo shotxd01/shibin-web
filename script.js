@@ -3,15 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. MOBILE MENU & SCROLL SPY (FIXED) ---
     const menuToggle = document.getElementById('mobile-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    // Select all links inside the mobile menu
-    const navLinks = document.querySelectorAll('.mobile-nav-content a'); 
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-content a'); 
+    const desktopNavLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('section, header'); 
+    const navbar = document.querySelector('.navbar');
 
     // Function to close menu safely
     function closeMenu() {
         if (menuToggle) menuToggle.classList.remove('active');
         if (mobileMenu) mobileMenu.classList.remove('active');
-        document.body.style.overflow = 'auto'; // UNLOCK SCROLL INSTANTLY
+        document.body.style.overflow = 'auto';
     }
 
     if (menuToggle && mobileMenu) {
@@ -21,24 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isActive) {
                 menuToggle.classList.add('active');
                 mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Lock Scroll
+                document.body.style.overflow = 'hidden';
             } else {
                 closeMenu();
             }
         });
 
         // FIX: Manual Scroll Handling
-        navLinks.forEach(link => {
+        mobileNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault(); // Stop the default jump
+                e.preventDefault();
                 
                 const targetId = link.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
                 
-                closeMenu(); // Close menu first
+                closeMenu();
 
                 if (targetSection) {
-                    // Small delay to allow the menu to disappear visually
                     setTimeout(() => {
                         const navHeight = document.querySelector('.navbar').offsetHeight || 80;
                         const elementPosition = targetSection.getBoundingClientRect().top;
@@ -48,35 +48,119 @@ document.addEventListener('DOMContentLoaded', () => {
                             top: offsetPosition,
                             behavior: "smooth"
                         });
-                    }, 50); // 50ms delay is enough
+                    }, 50);
                 }
             });
         });
     }
 
-    // --- SCROLL SPY (Keeps Blue Box Updated) ---
+    // --- SCROLL SPY (Desktop & Mobile) ---
     function activeMenu() {
         let len = sections.length;
-        // Find which section is currently on screen
         while (--len && window.scrollY + 150 < sections[len].offsetTop) {}
         
-        navLinks.forEach(link => link.classList.remove('active'));
+        // Update mobile nav
+        mobileNavLinks.forEach(link => link.classList.remove('active'));
+        
+        // Update desktop nav
+        desktopNavLinks.forEach(link => link.classList.remove('active'));
         
         if(len >= 0) {
             const currentId = sections[len].id;
-            // Target the link that matches the current ID
-            const activeLink = document.querySelector(`.mobile-nav-content a[href="#${currentId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+            
+            // Mobile active link
+            const mobileActiveLink = document.querySelector(`.mobile-nav-content a[href="#${currentId}"]`);
+            if (mobileActiveLink) {
+                mobileActiveLink.classList.add('active');
+            }
+            
+            // Desktop active link
+            const desktopActiveLink = document.querySelector(`.nav-links a[href="#${currentId}"]`);
+            if (desktopActiveLink) {
+                desktopActiveLink.classList.add('active');
             }
         }
     }
+    
     window.addEventListener('scroll', activeMenu);
-    // Run once on load to highlight 'Home'
-    activeMenu(); 
+    activeMenu();
+    
+    // --- NAVBAR SCROLL EFFECT ---
+    function handleNavbarScroll() {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+    window.addEventListener('scroll', handleNavbarScroll); 
     
 
-    // --- 2. TYPEWRITER EFFECT ---
+    // --- 2. DISCORD STATUS FETCHER ---
+    const DISCORD_USER_ID = '1338869759441375254';
+    const statusBadge = document.getElementById('discord-status');
+    const statusText = statusBadge?.querySelector('.status-text');
+    
+    async function fetchDiscordStatus() {
+        try {
+            // Using Lanyard API (free, no auth required)
+            const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                const status = data.data.discord_status;
+                const statusMap = {
+                    'online': { text: 'Online', class: 'online' },
+                    'idle': { text: 'Idle', class: 'idle' },
+                    'dnd': { text: 'Do Not Disturb', class: 'dnd' },
+                    'offline': { text: 'Offline', class: 'offline' }
+                };
+                
+                const statusInfo = statusMap[status] || statusMap['offline'];
+                
+                if (statusBadge && statusText) {
+                    statusBadge.className = 'status-badge ' + statusInfo.class;
+                    statusText.textContent = statusInfo.text;
+                }
+            }
+        } catch (error) {
+            console.log('Discord status fetch failed:', error);
+            if (statusBadge && statusText) {
+                statusBadge.className = 'status-badge offline';
+                statusText.textContent = 'Offline';
+            }
+        }
+    }
+    
+    // Fetch immediately and then every 30 seconds
+    fetchDiscordStatus();
+    setInterval(fetchDiscordStatus, 30000);
+    
+    // --- 3. PROFILE PARALLAX TILT EFFECT ---
+    const profileWrapper = document.getElementById('profile-wrapper');
+    const profilePhoto = document.getElementById('profile-photo');
+    
+    if (profileWrapper && profilePhoto && !window.matchMedia('(pointer: coarse)').matches) {
+        profileWrapper.addEventListener('mousemove', (e) => {
+            const rect = profileWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            profilePhoto.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+        
+        profileWrapper.addEventListener('mouseleave', () => {
+            profilePhoto.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+    }
+
+    // --- 4. TYPEWRITER EFFECT ---
     const textElement = document.querySelector('.typing-text');
     if (textElement) {
         const words = ["Custom Discord Bots", "Modern Websites", "Minecraft Solutions"];
@@ -179,29 +263,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-      // --- 6. UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll) ---
+    // --- 7. UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll + Arrows + Filter) ---
     const track = document.querySelector('.carousel-track');
     const dots = document.querySelectorAll('.carousel-dots .dot');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const carouselItems = document.querySelectorAll('.carousel-item');
 
     if (track && dots.length > 0) {
         let autoScrollInterval;
+        let currentFilter = 'all';
         
-        // A. THE MATH: Highlight the correct dot on scroll
-        const updateDots = () => {
-            const width = track.offsetWidth;
+        // Get visible items based on filter
+        function getVisibleItems() {
+            return Array.from(carouselItems).filter(item => {
+                if (currentFilter === 'all') return true;
+                return item.dataset.category === currentFilter;
+            });
+        }
+        
+        // A. UPDATE DOTS & ACTIVE CARD
+        const updateCarousel = () => {
+            const visibleItems = getVisibleItems();
+            const cardWidth = track.offsetWidth * 0.85 + 20; // 85% + gap
             const scrollPos = track.scrollLeft;
-            const index = Math.round(scrollPos / width);
+            const index = Math.round(scrollPos / cardWidth);
             
-            dots.forEach(dot => dot.classList.remove('active'));
-            if (dots[index]) dots[index].classList.add('active');
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+                dot.style.display = i < visibleItems.length ? 'block' : 'none';
+            });
+            
+            // Update active card styling
+            visibleItems.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
         };
 
-        track.addEventListener('scroll', updateDots);
+        track.addEventListener('scroll', updateCarousel);
 
-        // B. THE ENGINE: Auto-move every 3 seconds
+        // B. ARROW NAVIGATION
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                const cardWidth = track.offsetWidth * 0.85 + 20;
+                track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                stopTimer();
+                startTimer();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                const cardWidth = track.offsetWidth * 0.85 + 20;
+                track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                stopTimer();
+                startTimer();
+            });
+        }
+
+        // C. FILTER FUNCTIONALITY
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                currentFilter = btn.dataset.filter;
+                
+                // Show/hide items
+                carouselItems.forEach(item => {
+                    if (currentFilter === 'all' || item.dataset.category === currentFilter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Reset scroll and update
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+                setTimeout(updateCarousel, 300);
+            });
+        });
+
+        // D. AUTO SCROLL
         const autoScroll = () => {
-            const cardWidth = track.offsetWidth;
-            const maxScroll = track.scrollWidth - track.clientWidth;
+            const visibleItems = getVisibleItems();
+            const cardWidth = track.offsetWidth * 0.85 + 20;
+            const maxScroll = (visibleItems.length - 1) * cardWidth;
 
             if (track.scrollLeft >= maxScroll - 10) {
                 track.scrollTo({ left: 0, behavior: 'smooth' });
@@ -210,10 +358,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // C. START/STOP LOGIC
+        // E. START/STOP LOGIC
         const startTimer = () => {
             clearInterval(autoScrollInterval);
-            autoScrollInterval = setInterval(autoScroll, 3000);
+            autoScrollInterval = setInterval(autoScroll, 4000);
         };
 
         const stopTimer = () => clearInterval(autoScrollInterval);
@@ -224,7 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
         track.addEventListener('touchend', startTimer);
         track.addEventListener('mouseleave', startTimer);
 
-        // Start the engine!
+        // Initialize
+        updateCarousel();
         startTimer();
 
         // --- 7. TECH STACK "SPINNER" PHYSICS ---
