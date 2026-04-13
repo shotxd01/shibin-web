@@ -43,14 +43,28 @@ async function getQuote() {
 
     // Fix quote text - add spaces between words if they're missing
     let quoteText = random.text;
-    // Add space between lowercase and uppercase letters (camelCase/PascalCase)
+    
+    // Step 1: Add space after punctuation
+    quoteText = quoteText.replace(/([.,!?;:])([a-zA-Z])/g, '$1 $2');
+    
+    // Step 2: Add space between camelCase words (lowercase followed by uppercase)
     quoteText = quoteText.replace(/([a-z])([A-Z])/g, '$1 $2');
-    // Add space after periods if followed immediately by a letter
-    quoteText = quoteText.replace(/\.([a-zA-Z])/g, '. $1');
-    // Add space after commas if followed immediately by a letter
-    quoteText = quoteText.replace(/,([a-zA-Z])/g, ', $1');
-    // Add space between words that are stuck together (more than 15 chars without space)
-    quoteText = quoteText.replace(/(\w{15,})([A-Z])/g, '$1 $2');
+    
+    // Step 3: Split long concatenated words by detecting word boundaries
+    // Split before common starting words/prefixes
+    const commonWords = ['If', 'The', 'A', 'An', 'Is', 'It', 'How', 'What', 'Why', 'When', 'Where', 'Who', 'Their', 'There', 'They', 'This', 'That', 'These', 'Those', 'And', 'But', 'Or', 'Nor', 'For', 'Yet', 'So', 'In', 'On', 'At', 'To', 'Of', 'With', 'By', 'From', 'As', 'No', 'One', 'Has', 'Have', 'Had', 'Do', 'Does', 'Did', 'Can', 'Could', 'Will', 'Would', 'Should', 'May', 'Might', 'Must', 'Shall'];
+    
+    commonWords.forEach(word => {
+        // Create regex to find the word attached to previous text (not at start)
+        const regex = new RegExp(`([a-z])(${word})`, 'g');
+        quoteText = quoteText.replace(regex, '$1 $2');
+    });
+    
+    // Step 4: Add space before common short words that might be stuck
+    quoteText = quoteText.replace(/([a-zA-Z])(is|it|in|on|at|to|of|no|one|has|have|had|do|does|did|can|will|would|should|may|might|must|shall)(?=[A-Z]|$)/gi, '$1 $2');
+    
+    // Step 5: Clean up multiple spaces
+    quoteText = quoteText.replace(/\s+/g, ' ').trim();
 
     // Execute the existing typing effect
     typeEffect(`"${quoteText}"`, quoteEl);
