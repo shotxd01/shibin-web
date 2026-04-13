@@ -41,8 +41,19 @@ async function getQuote() {
     if (!author || author === 'type.fit') author = "Unknown";
     author = author.replace(', type.fit', '');
 
+    // Fix quote text - add spaces between words if they're missing
+    let quoteText = random.text;
+    // Add space between lowercase and uppercase letters (camelCase/PascalCase)
+    quoteText = quoteText.replace(/([a-z])([A-Z])/g, '$1 $2');
+    // Add space after periods if followed immediately by a letter
+    quoteText = quoteText.replace(/\.([a-zA-Z])/g, '. $1');
+    // Add space after commas if followed immediately by a letter
+    quoteText = quoteText.replace(/,([a-zA-Z])/g, ', $1');
+    // Add space between words that are stuck together (more than 15 chars without space)
+    quoteText = quoteText.replace(/(\w{15,})([A-Z])/g, '$1 $2');
+
     // Execute the existing typing effect
-    typeEffect(`"${random.text}"`, quoteEl);
+    typeEffect(`"${quoteText}"`, quoteEl);
     authorEl.innerText = `- ${author}`;
 
   } catch (err) {
