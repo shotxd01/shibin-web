@@ -55,6 +55,7 @@ async function getQuote() {
 
 function typeEffect(text, element) {
   element.innerText = "";
+  element.classList.remove('long-quote');
   let i = 0;
   
   if (typingInterval) clearInterval(typingInterval);
@@ -62,26 +63,70 @@ function typeEffect(text, element) {
   typingInterval = setInterval(() => {
     element.innerText += text[i];
     i++;
-    if (i >= text.length) clearInterval(typingInterval);
-  }, 20); // Faster smooth typing
+    
+    if (i >= text.length) {
+      clearInterval(typingInterval);
+      // Check if quote needs scrolling after typing completes
+      if (text.length > 120) {
+        element.classList.add('long-quote');
+      }
+    }
+  }, 15); // Slightly faster typing
 }
 
 function copyQuote() {
-  const text = document.getElementById("quote").innerText;
+  const quoteEl = document.getElementById("quote");
+  const text = quoteEl.innerText;
   
   // Prevent copying loading text or error state
-  if (!text || text === "Loading..." || text.includes("Failed to load")) return;
+  if (!text || text === "Loading..." || text.includes("Failed to load") || text === "") return;
 
-  navigator.clipboard.writeText(text);
-  
-  // Visual feedback without blocking page
-  const buttons = document.querySelectorAll('.buttons button');
-  if (buttons.length > 1) {
-    const copyBtn = buttons[1];
-    const originalText = copyBtn.innerText;
-    copyBtn.innerText = "Copied!";
-    setTimeout(() => { copyBtn.innerText = originalText; }, 1500);
-  } else {
-    alert("Copied!");
-  }
+  navigator.clipboard.writeText(text).then(() => {
+    showToast("Quote copied to clipboard! 📋");
+    
+    // Button visual feedback
+    const buttons = document.querySelectorAll('.buttons button');
+    if (buttons.length > 1) {
+      const copyBtn = buttons[1];
+      copyBtn.classList.add('copied');
+      copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+      
+      setTimeout(() => { 
+        copyBtn.classList.remove('copied');
+        copyBtn.innerText = "Copy";
+      }, 2000);
+    }
+  }).catch(err => {
+    console.error('Copy failed:', err);
+    showToast("Failed to copy 😢");
+  });
 }
+
+// Toast notification function
+function showToast(message) {
+  // Remove existing toast
+  const existingToast = document.querySelector('.toast');
+  if (existingToast) existingToast.remove();
+  
+  // Create new toast
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  
+  // Trigger animation
+  requestAnimationFrame(() => {
+    toast.classList.add('show');
+  });
+  
+  // Remove after delay
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400);
+  }, 2500);
+}
+
+// Load first quote on page load
+document.addEventListener('DOMContentLoaded', () => {
+  getQuote();
+});

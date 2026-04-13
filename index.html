@@ -20,8 +20,28 @@
     <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <img src="https://i.ibb.co/Jw9XCRNk/file-00000000c7a87206a20e17bffb453e02.png" alt="Shibinsoju" class="preloader-logo">
+            <div class="preloader-spinner"></div>
+            <p class="preloader-text">Loading<span class="dots">...</span></p>
+        </div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="custom-cursor-follower" id="cursor-follower"></div>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-moon"></i>
+    </button>
     
     <div class="bg-wrapper">
+        <!-- Particle Canvas -->
+        <canvas id="particle-canvas" class="particle-canvas"></canvas>
         <div class="auras">
             <div class="aura aura-1"></div>
             <div class="aura aura-2"></div>
@@ -210,6 +230,74 @@
                         <div class="role-icon" style="color:#a855f7;"><i class="fa-solid fa-headset"></i></div>
                         <h3>Direct Support</h3>
                         <p style="font-size: 0.9rem; color:var(--text-muted);">You work directly with me. No middlemen, just clear communication and quick updates.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="stats" class="section-spacer">
+                <h2 class="section-heading">By The Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-robot"></i></div>
+                        <div class="stat-number" data-target="25">0</div>
+                        <div class="stat-label">Discord Bots Delivered</div>
+                    </div>
+                    <div class="stat-item reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-item reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-suffix">K+</div>
+                        <div class="stat-label">Lines of Code</div>
+                    </div>
+                    <div class="stat-item reveal">
+                        <div class="stat-icon"><i class="fa-solid fa-server"></i></div>
+                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-label">Communities Managed</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="section-spacer">
+                <h2 class="section-heading">What People Say</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testimonial-text">"Shibin built an amazing Discord bot for our community. Fast, reliable, and exactly what we needed. Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">A</div>
+                            <div class="author-info">
+                                <h4>Admin User</h4>
+                                <span>Malayalees Server</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testimonial-text">"Professional work on our Minecraft server setup. The performance improvements were noticeable immediately."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">H</div>
+                            <div class="author-info">
+                                <h4>HKMC Owner</h4>
+                                <span>HKMC Network</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testimonial-text">"Great communication throughout the project. Delivered on time and the website looks fantastic!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">C</div>
+                            <div class="author-info">
+                                <h4>Client</h4>
+                                <span>ShotDevs Customer</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -445,6 +533,26 @@
     </div>
 
     <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+        <a href="#home" class="bottom-nav-item active" data-section="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="#projects" class="bottom-nav-item" data-section="projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#stats" class="bottom-nav-item" data-section="stats">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span>Stats</span>
+        </a>
+        <a href="#contact" class="bottom-nav-item" data-section="contact">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
 
     <script src="script.js"></script>
 </body>

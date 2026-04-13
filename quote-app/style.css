@@ -16,10 +16,12 @@ body {
   font-family: 'Outfit', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  min-height: 100vh;
   margin: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 40px 20px;
 }
 
 /* Subtle floating or pulse effect */
@@ -48,15 +50,21 @@ body {
     0 10px 40px rgba(0, 0, 0, 0.5),
     0 0 20px rgba(255, 0, 204, 0.15),
     0 0 40px rgba(0, 240, 255, 0.1) inset;
-  padding: 30px 20px;
+  padding: 30px 25px;
   border-radius: 24px;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px;
+  min-width: 300px;
   animation: float 6s ease-in-out infinite;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   box-sizing: border-box;
+  margin: auto 0;
+  transition: all 0.3s ease;
+  /* Allow container to grow with content */
+  height: auto;
+  min-height: unset;
 }
 
 h1 {
@@ -71,25 +79,48 @@ h1 {
   letter-spacing: 1px;
 }
 
-/* Glow effect on quote text */
+/* Glow effect on quote text - EXPANDABLE */
 #quote {
   font-size: 1.35rem;
   font-weight: 300;
-  line-height: 1.8;
-  margin: 10px auto;
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  line-height: 1.6;
+  margin: 0;
+  padding: 10px 15px;
+  display: block;
   text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
   color: #e2e8f0;
   word-wrap: break-word;
   overflow-wrap: break-word;
   text-align: center;
-  max-width: 460px;
+  max-width: 540px;
   width: 100%;
-  padding: 0 15px;
   box-sizing: border-box;
+  transition: all 0.3s ease;
+  /* Remove fixed height - let content determine size */
+  min-height: unset;
+  height: auto;
+}
+
+/* Long quotes get scrolling */
+#quote.long-quote {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 10px;
+  text-align: left;
+}
+
+#quote.long-quote::-webkit-scrollbar {
+  width: 6px;
+}
+
+#quote.long-quote::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+#quote.long-quote::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--neon-pink), var(--neon-cyan));
+  border-radius: 3px;
 }
 
 #author {
@@ -97,10 +128,10 @@ h1 {
   color: #94a3b8;
   font-style: italic;
   font-weight: 400;
-  margin: 15px 0 25px 0;
+  margin: 5px 0 15px 0;
   text-align: right;
   text-shadow: 0 0 8px rgba(255, 0, 204, 0.3);
-  min-height: 24px;
+  min-height: unset;
   padding-right: 25px;
 }
 
@@ -152,4 +183,66 @@ button:hover::before {
 
 button:active {
   transform: translateY(1px);
+}
+
+/* Copy button success state */
+button.copied {
+  background: linear-gradient(45deg, #22c55e, #16a34a) !important;
+  border-color: #22c55e !important;
+  animation: copyPulse 0.5s ease;
+}
+
+button.copied::before {
+  opacity: 0 !important;
+}
+
+@keyframes copyPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(34, 197, 94, 0.3); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+    width: 95%;
+  }
+  
+  #quote {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }

@@ -1,5 +1,226 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- CUSTOM CURSOR ---
+    const cursor = document.getElementById('cursor');
+    const cursorFollower = document.getElementById('cursor-follower');
+    
+    // Only enable custom cursor on non-touch devices
+    if (window.matchMedia('(pointer: fine)').matches && cursor && cursorFollower) {
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        let followerX = 0, followerY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Smooth cursor animation
+        function animateCursor() {
+            // Cursor follows mouse directly with slight delay
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            
+            // Follower has more delay for trailing effect
+            followerX += (mouseX - followerX) * 0.1;
+            followerY += (mouseY - followerY) * 0.1;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            cursorFollower.style.left = followerX + 'px';
+            cursorFollower.style.top = followerY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        // Hover effects on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, [role="button"], input, textarea, select, .role-card, .project-card, .stat-item, .testimonial-card');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
+        });
+        
+        // Click effects
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('click');
+            cursorFollower.classList.add('click');
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('click');
+            cursorFollower.classList.remove('click');
+        });
+    }
+    
+    // --- PARTICLE BACKGROUND ---
+    const particleCanvas = document.getElementById('particle-canvas');
+    
+    if (particleCanvas && window.matchMedia('(pointer: fine)').matches) {
+        const ctx = particleCanvas.getContext('2d');
+        let particles = [];
+        let animationId;
+        let isActive = true;
+        
+        // Resize canvas
+        function resizeCanvas() {
+            particleCanvas.width = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Particle class
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * particleCanvas.width;
+                this.y = Math.random() * particleCanvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Wrap around screen
+                if (this.x < 0) this.x = particleCanvas.width;
+                if (this.x > particleCanvas.width) this.x = 0;
+                if (this.y < 0) this.y = particleCanvas.height;
+                if (this.y > particleCanvas.height) this.y = 0;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(230, 0, 122, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+        
+        // Create particles (limited number for performance)
+        const particleCount = Math.min(50, Math.floor((particleCanvas.width * particleCanvas.height) / 25000));
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Draw connections between nearby particles
+        function drawConnections() {
+            const maxDistance = 100;
+            const maxConnections = 3;
+            
+            for (let i = 0; i < particles.length; i++) {
+                let connections = 0;
+                
+                for (let j = i + 1; j < particles.length; j++) {
+                    if (connections >= maxConnections) break;
+                    
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < maxDistance) {
+                        const opacity = (1 - distance / maxDistance) * 0.2;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 191, 255, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                        connections++;
+                    }
+                }
+            }
+        }
+        
+        // Animation loop with visibility check
+        function animate() {
+            if (!isActive) return;
+            
+            ctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            drawConnections();
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Pause when tab is hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isActive = false;
+                cancelAnimationFrame(animationId);
+            } else {
+                isActive = true;
+                animate();
+            }
+        });
+        
+        // Start animation
+        animate();
+    }
+    
+    // --- 0. PRELOADER ---
+    const preloader = document.getElementById('preloader');
+    
+    function hidePreloader() {
+        if (preloader) {
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                // Trigger initial reveal animations after preloader
+                setTimeout(revealOnScroll, 100);
+            }, 1500); // Show preloader for at least 1.5 seconds
+        }
+    }
+    
+    // Hide preloader when page is fully loaded
+    if (document.readyState === 'complete') {
+        hidePreloader();
+    } else {
+        window.addEventListener('load', hidePreloader);
+    }
+    
+    // --- THEME TOGGLE ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Add a subtle rotation animation
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 300);
+        });
+    }
+    
     // --- 1. MOBILE MENU & SCROLL SPY (FIXED) ---
     const menuToggle = document.getElementById('mobile-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -7,6 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const desktopNavLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('section, header'); 
     const navbar = document.querySelector('.navbar');
+    const mobileBottomNav = document.getElementById('mobile-bottom-nav');
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
 
     // Function to close menu safely
     function closeMenu() {
@@ -65,6 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update desktop nav
         desktopNavLinks.forEach(link => link.classList.remove('active'));
         
+        // Update bottom nav
+        bottomNavItems.forEach(item => item.classList.remove('active'));
+        
         if(len >= 0) {
             const currentId = sections[len].id;
             
@@ -79,11 +305,76 @@ document.addEventListener('DOMContentLoaded', () => {
             if (desktopActiveLink) {
                 desktopActiveLink.classList.add('active');
             }
+            
+            // Bottom nav active link
+            const bottomActiveLink = document.querySelector(`.bottom-nav-item[href="#${currentId}"]`);
+            if (bottomActiveLink) {
+                bottomActiveLink.classList.add('active');
+            }
         }
     }
     
     window.addEventListener('scroll', activeMenu);
     activeMenu();
+    
+    // --- REVEAL ANIMATIONS ON SCROLL ---
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    
+    function revealOnScroll() {
+        const windowHeight = window.innerHeight;
+        const elementVisible = 100;
+        
+        revealElements.forEach((reveal) => {
+            const elementTop = reveal.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+                reveal.classList.add('active');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', revealOnScroll);
+    // Initial check
+    revealOnScroll();
+    
+    // --- STATISTICS COUNTER ANIMATION ---
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let countersStarted = false;
+    
+    function startCounters() {
+        if (countersStarted) return;
+        
+        const statsSection = document.getElementById('stats');
+        if (!statsSection) return;
+        
+        const sectionTop = statsSection.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (sectionTop < windowHeight - 100) {
+            countersStarted = true;
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const suffix = stat.nextElementSibling?.classList.contains('stat-suffix') ? stat.nextElementSibling.textContent : '';
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        stat.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+    }
+    
+    window.addEventListener('scroll', startCounters);
     
     // --- NAVBAR SCROLL EFFECT ---
     function handleNavbarScroll() {
@@ -104,7 +395,16 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchDiscordStatus() {
         try {
             // Using Lanyard API (free, no auth required)
-            const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+            
+            const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`, {
+                signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) throw new Error('API request failed');
+            
             const data = await response.json();
             
             if (data.success) {
@@ -122,9 +422,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     statusBadge.className = 'status-badge ' + statusInfo.class;
                     statusText.textContent = statusInfo.text;
                 }
+            } else {
+                throw new Error('API returned unsuccessful');
             }
         } catch (error) {
-            console.log('Discord status fetch failed:', error);
+            console.log('Discord status fetch failed:', error.message);
+            // Don't show error to user, just display as offline
             if (statusBadge && statusText) {
                 statusBadge.className = 'status-badge offline';
                 statusText.textContent = 'Offline';
@@ -185,17 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- 3. LOADING ANIMATION ON SCROLL ---
-    const reveals = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        reveals.forEach((reveal) => {
-            const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 50) reveal.classList.add('active');
-        });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
+    // --- LEGACY REVEAL ANIMATIONS (for backward compatibility) ---
     
     // Add scroll loading indicator
     const createScrollIndicator = () => {
@@ -230,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createScrollIndicator();
     window.addEventListener('scroll', updateScrollProgress);
 
-    // --- 4. COPY BUTTON ---
+    // --- COPY BUTTON --
     const copyBtn = document.getElementById('copy-btn');
     const discordInput = document.getElementById('discord-user');
     const copyArea = document.querySelector('.copy-area');
@@ -252,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. BACK TO TOP ---
+    // --- BACK TO TOP --
     const backToTop = document.getElementById('back-to-top');
     if (backToTop) {
         window.addEventListener('scroll', () => {
@@ -263,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 7. UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll + Arrows + Filter) ---
+    // --- UNIFIED CAROUSEL SYSTEM (Dots + Auto Scroll + Arrows + Filter) --
     const track = document.querySelector('.carousel-track');
     const dots = document.querySelectorAll('.carousel-dots .dot');
     const prevBtn = document.querySelector('.carousel-prev');
@@ -376,7 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarousel();
         startTimer();
 
-        // --- 7. TECH STACK "SPINNER" PHYSICS ---
+        // --- TECH STACK "SPINNER" PHYSICS --
         const techScroller = document.querySelector('.tech-scroller');
         
         if (techScroller) {
